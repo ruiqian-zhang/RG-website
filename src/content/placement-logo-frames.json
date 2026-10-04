@@ -1,0 +1,242 @@
+{
+  "agile-space-industries": {
+    "width": 1000,
+    "height": 423,
+    "viewBox": "0 0 1000 423",
+    "ratio": 2.3640661938534278
+  },
+  "altec": {
+    "width": 1000,
+    "height": 264,
+    "viewBox": "0 0 1000 264",
+    "ratio": 3.787878787878788
+  },
+  "amazon": {
+    "width": 1000,
+    "height": 335,
+    "viewBox": "0 0 1000 335",
+    "ratio": 2.985074626865672
+  },
+  "apple": {
+    "width": 1000,
+    "height": 1229,
+    "viewBox": "0 0 1000 1229",
+    "ratio": 0.8136696501220505
+  },
+  "aurora": {
+    "width": 1000,
+    "height": 278,
+    "viewBox": "0 0 1000 278",
+    "ratio": 3.597122302158273
+  },
+  "barclays": {
+    "width": 1000,
+    "height": 667,
+    "viewBox": "113 266 774 135",
+    "ratio": 5.733333333333333
+  },
+  "bmw": {
+    "width": 1000,
+    "height": 1000,
+    "viewBox": "0 0 1000 1000",
+    "ratio": 1
+  },
+  "boeing": {
+    "width": 1000,
+    "height": 462,
+    "viewBox": "0 3 1000 457",
+    "ratio": 2.1881838074398248
+  },
+  "capital-one": {
+    "width": 1000,
+    "height": 359,
+    "viewBox": "0 0 1000 359",
+    "ratio": 2.785515320334262
+  },
+  "carnegie-mellon": {
+    "width": 1000,
+    "height": 175,
+    "viewBox": "15 14 980 153",
+    "ratio": 6.405228758169935
+  },
+  "cisco": {
+    "width": 1000,
+    "height": 528,
+    "viewBox": "0 0 1000 528",
+    "ratio": 1.893939393939394
+  },
+  "comac": {
+    "width": 1000,
+    "height": 621,
+    "viewBox": "0 0 1000 621",
+    "ratio": 1.6103059581320451
+  },
+  "cornell": {
+    "width": 1000,
+    "height": 134,
+    "viewBox": "1 1 998 132",
+    "ratio": 7.5606060606060606
+  },
+  "dexmate": {
+    "width": 1000,
+    "height": 222,
+    "viewBox": "0 0 1000 222",
+    "ratio": 4.504504504504505
+  },
+  "dji": {
+    "width": 1000,
+    "height": 578,
+    "viewBox": "0 0 1000 578",
+    "ratio": 1.7301038062283738
+  },
+  "evoenergy": {
+    "width": 1000,
+    "height": 211,
+    "viewBox": "18 30 960 159",
+    "ratio": 6.037735849056604
+  },
+  "faraday-future": {
+    "width": 1000,
+    "height": 748,
+    "viewBox": "19 19 962 710",
+    "ratio": 1.3549295774647887
+  },
+  "ge-aerospace": {
+    "width": 1000,
+    "height": 235,
+    "viewBox": "0 0 1000 235",
+    "ratio": 4.25531914893617
+  },
+  "georgia-tech": {
+    "width": 1000,
+    "height": 225,
+    "viewBox": "25 29 952 173",
+    "ratio": 5.502890173410405
+  },
+  "goodyear": {
+    "width": 1000,
+    "height": 172,
+    "viewBox": "0 0 1000 172",
+    "ratio": 5.813953488372093
+  },
+  "google": {
+    "width": 1000,
+    "height": 1021,
+    "viewBox": "0 0 1000 1021",
+    "ratio": 0.9794319294809011
+  },
+  "honda": {
+    "width": 1000,
+    "height": 968,
+    "viewBox": "0 0 1000 968",
+    "ratio": 1.0330578512396693
+  },
+  "ime-cas": {
+    "width": 1000,
+    "height": 249,
+    "viewBox": "27 52 884 129",
+    "ratio": 6.852713178294573
+  },
+  "jd-com": {
+    "width": 1000,
+    "height": 800,
+    "viewBox": "9 2 983 798",
+    "ratio": 1.231829573934837
+  },
+  "kla": {
+    "width": 1000,
+    "height": 222,
+    "viewBox": "0 0 1000 222",
+    "ratio": 4.504504504504505
+  },
+  "milwaukee-tool": {
+    "width": 1000,
+    "height": 488,
+    "viewBox": "36 35 927 418",
+    "ratio": 2.2177033492822966
+  },
+  "mitre": {
+    "width": 1000,
+    "height": 285,
+    "viewBox": "0 0 1000 285",
+    "ratio": 3.508771929824561
+  },
+  "moog": {
+    "width": 1000,
+    "height": 154,
+    "viewBox": "10 5 983 144",
+    "ratio": 6.826388888888889
+  },
+  "nasa": {
+    "width": 1000,
+    "height": 836,
+    "viewBox": "39 42 895 734",
+    "ratio": 1.2193460490463215
+  },
+  "nvidia": {
+    "width": 1000,
+    "height": 800,
+    "viewBox": "86 76 883 652",
+    "ratio": 1.3542944785276074
+  },
+  "oracle": {
+    "width": 1000,
+    "height": 130,
+    "viewBox": "0 0 1000 130",
+    "ratio": 7.6923076923076925
+  },
+  "raytheon-technologies": {
+    "width": 1000,
+    "height": 263,
+    "viewBox": "5 5 990 253",
+    "ratio": 3.9130434782608696
+  },
+  "state-grid": {
+    "width": 1000,
+    "height": 228,
+    "viewBox": "0 0 1000 228",
+    "ratio": 4.385964912280702
+  },
+  "synopsys": {
+    "width": 1000,
+    "height": 226,
+    "viewBox": "4 3 994 221",
+    "ratio": 4.497737556561086
+  },
+  "texas-instruments": {
+    "width": 1000,
+    "height": 235,
+    "viewBox": "0 0 1000 235",
+    "ratio": 4.25531914893617
+  },
+  "tmeic": {
+    "width": 1000,
+    "height": 158,
+    "viewBox": "0 0 1000 158",
+    "ratio": 6.329113924050633
+  },
+  "torc": {
+    "width": 1000,
+    "height": 280,
+    "viewBox": "0 0 1000 280",
+    "ratio": 3.5714285714285716
+  },
+  "uc-berkeley": {
+    "width": 1000,
+    "height": 188,
+    "viewBox": "0 0 1000 188",
+    "ratio": 5.319148936170213
+  },
+  "uc-san-diego": {
+    "width": 1000,
+    "height": 195,
+    "viewBox": "3 4 992 189",
+    "ratio": 5.248677248677248
+  },
+  "university-of-michigan": {
+    "width": 1000,
+    "height": 199,
+    "viewBox": "2 1 997 197",
+    "ratio": 5.060913705583756
+  }
+}

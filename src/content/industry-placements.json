@@ -1,0 +1,286 @@
+{
+  "title": "Ready for what\u2019s next",
+  "description": "Hands-on engineering helps our members prepare for careers in engineering and technology, as well as research and graduate study.",
+  "companies": [
+    {
+      "name": "Agile Space Industries",
+      "slug": "agile-space-industries",
+      "logo": "/images/placements/agile-space-industries.png",
+      "source": "https://images.squarespace-cdn.com/content/v1/634ee7b32099c80fdfcc8cac/5f31e5fa-b605-4769-8459-b4da5449870f/Agile-logo-full-black_XL.png",
+      "sourcePage": "https://agilespaceindustries.com/press-kit"
+    },
+    {
+      "name": "Altec",
+      "slug": "altec",
+      "logo": "/images/placements/altec.png",
+      "source": "https://www.altec.com/wp-content/uploads/Altec-Color.png",
+      "sourcePage": "https://www.altec.com/wp-content/uploads/Altec-Color.png"
+    },
+    {
+      "name": "Amazon",
+      "slug": "amazon",
+      "logo": "/images/placements/amazon.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/06/Amazon_2024.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/0/06/Amazon_2024.svg"
+    },
+    {
+      "name": "Apple",
+      "slug": "apple",
+      "logo": "/images/placements/apple.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+    },
+    {
+      "name": "Aurora",
+      "slug": "aurora",
+      "logo": "/images/placements/aurora.svg",
+      "source": "https://ir.aurora.tech/_assets/_a79fe6f1ff1b34200e7f74a803ded825/aurora/db/982/9423/image.svg",
+      "sourcePage": "https://ir.aurora.tech/_assets/_a79fe6f1ff1b34200e7f74a803ded825/aurora/db/982/9423/image.svg"
+    },
+    {
+      "name": "Barclays",
+      "slug": "barclays",
+      "logo": "/images/placements/barclays.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Barclays-Logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Barclays-Logo.svg"
+    },
+    {
+      "name": "BMW",
+      "slug": "bmw",
+      "logo": "/images/placements/bmw.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f4/BMW_logo_%28gray%29.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/f/f4/BMW_logo_%28gray%29.svg"
+    },
+    {
+      "name": "Boeing",
+      "slug": "boeing",
+      "logo": "/images/placements/boeing.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/54/Boeing_full_logo_%28variant%29.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/5/54/Boeing_full_logo_%28variant%29.svg"
+    },
+    {
+      "name": "Capital One",
+      "slug": "capital-one",
+      "logo": "/images/placements/capital-one.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/98/Capital_One_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/9/98/Capital_One_logo.svg"
+    },
+    {
+      "name": "Carnegie Mellon University",
+      "slug": "carnegie-mellon",
+      "logo": "/images/placements/carnegie-mellon.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Carnegie_Mellon_wordmark.svg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Carnegie_Mellon_wordmark.svg"
+    },
+    {
+      "name": "Cisco",
+      "slug": "cisco",
+      "logo": "/images/placements/cisco.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg"
+    },
+    {
+      "name": "COMAC",
+      "slug": "comac",
+      "logo": "/images/placements/comac.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/en/c/c1/Commercial_Aircraft_Corporation_of_China_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/en/c/c1/Commercial_Aircraft_Corporation_of_China_logo.svg"
+    },
+    {
+      "name": "Cornell University",
+      "slug": "cornell",
+      "logo": "/images/placements/cornell-university.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Cornell_University_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Cornell_University_logo.svg"
+    },
+    {
+      "name": "Dexmate",
+      "slug": "dexmate",
+      "logo": "/images/placements/dexmate.png",
+      "source": "https://app.ashbyhq.com/api/images/org-theme-wordmark/a388bdb8-ef84-4e47-9d02-f8b8b2db8a58/33f8c0e5-b8b4-410b-91a4-705b1bbdf30f/4c35cd30-7b72-4fe5-83e3-f4234a4551af.png",
+      "sourcePage": "https://app.ashbyhq.com/api/images/org-theme-wordmark/a388bdb8-ef84-4e47-9d02-f8b8b2db8a58/33f8c0e5-b8b4-410b-91a4-705b1bbdf30f/4c35cd30-7b72-4fe5-83e3-f4234a4551af.png"
+    },
+    {
+      "name": "DJI",
+      "slug": "dji",
+      "logo": "/images/placements/dji.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/9a/DJI_Innovations_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/9/9a/DJI_Innovations_logo.svg"
+    },
+    {
+      "name": "Evoenergy",
+      "slug": "evoenergy",
+      "logo": "/images/placements/evoenergy.png",
+      "source": "https://www.evoenergy.com.au/-/media/Project/Evoenergy/EVO/Footer/logo-evo.png?rev=b6de6ab78e9c4b4687fa0616b0d4520f",
+      "sourcePage": "https://www.evoenergy.com.au/-/media/Project/Evoenergy/EVO/Footer/logo-evo.png?rev=b6de6ab78e9c4b4687fa0616b0d4520f"
+    },
+    {
+      "name": "Faraday Future",
+      "slug": "faraday-future",
+      "logo": "/images/placements/faraday-future.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/96/Faraday_Future_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/9/96/Faraday_Future_logo.svg"
+    },
+    {
+      "name": "GE Aerospace",
+      "slug": "ge-aerospace",
+      "logo": "/images/placements/ge-aerospace.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/2/2e/GE_Aerospace_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/2/2e/GE_Aerospace_logo.svg"
+    },
+    {
+      "name": "Georgia Tech",
+      "slug": "georgia-tech",
+      "logo": "/images/placements/georgia-tech.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/93/Georgia_Tech_logo_2021.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/9/93/Georgia_Tech_logo_2021.svg"
+    },
+    {
+      "name": "Goodyear",
+      "slug": "goodyear",
+      "logo": "/images/placements/goodyear.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/de/b/b6/Goodyear_Tire_%26_Rubber_Company_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/de/b/b6/Goodyear_Tire_%26_Rubber_Company_logo.svg"
+    },
+    {
+      "name": "Google",
+      "slug": "google",
+      "logo": "/images/placements/google.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Google_Favicon_2025.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Google_Favicon_2025.svg"
+    },
+    {
+      "name": "Honda",
+      "slug": "honda",
+      "logo": "/images/placements/honda.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/38/Honda.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/3/38/Honda.svg"
+    },
+    {
+      "name": "Institute of Microelectronics, CAS",
+      "slug": "ime-cas",
+      "logo": "/images/placements/ime-cas-replacement.jpg",
+      "source": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO1zDgRhof2GiD_eplhIDIFeLq5CC7J9KBqa-acCy11M4_NqprSTlpZNaX&s=10",
+      "sourcePage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO1zDgRhof2GiD_eplhIDIFeLq5CC7J9KBqa-acCy11M4_NqprSTlpZNaX&s=10"
+    },
+    {
+      "name": "JD.com",
+      "slug": "jd-com",
+      "logo": "/images/placements/jd-com.png",
+      "source": "https://upload.wikimedia.org/wikipedia/en/c/c4/JD.com_logo.png",
+      "sourcePage": "https://en.wikipedia.org/wiki/JD.com#/media/File:JD.com_logo.png"
+    },
+    {
+      "name": "KLA",
+      "slug": "kla",
+      "logo": "/images/placements/kla.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/08/KLA_Corp._logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/0/08/KLA_Corp._logo.svg"
+    },
+    {
+      "name": "Milwaukee Tool",
+      "slug": "milwaukee-tool",
+      "logo": "/images/placements/milwaukee-tool.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/de/Milwaukee_Logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/d/de/Milwaukee_Logo.svg"
+    },
+    {
+      "name": "MITRE",
+      "slug": "mitre",
+      "logo": "/images/placements/mitre.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Mitre_Corporation_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Mitre_Corporation_logo.svg"
+    },
+    {
+      "name": "Moog",
+      "slug": "moog",
+      "logo": "/images/placements/moog.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Moog_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Moog_logo.svg"
+    },
+    {
+      "name": "NASA",
+      "slug": "nasa",
+      "logo": "/images/placements/nasa.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/46/NASA_logo_%282023_colors%29.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/4/46/NASA_logo_%282023_colors%29.svg"
+    },
+    {
+      "name": "NVIDIA",
+      "slug": "nvidia",
+      "logo": "/images/placements/nvidia.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/48/Nvidia_Logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/4/48/Nvidia_Logo.svg"
+    },
+    {
+      "name": "Oracle",
+      "slug": "oracle",
+      "logo": "/images/placements/oracle.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
+    },
+    {
+      "name": "Raytheon Technologies",
+      "slug": "raytheon-technologies",
+      "logo": "/images/placements/raytheon-technologies.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Raytheon_Technologies_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Raytheon_Technologies_logo.svg"
+    },
+    {
+      "name": "State Grid Corporation of China",
+      "slug": "state-grid",
+      "logo": "/images/placements/state-grid.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/en/f/f5/State_Grid_Corporation_of_China_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/en/f/f5/State_Grid_Corporation_of_China_logo.svg"
+    },
+    {
+      "name": "Synopsys",
+      "slug": "synopsys",
+      "logo": "/images/placements/synopsys.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Synopsys_Logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Synopsys_Logo.svg"
+    },
+    {
+      "name": "Texas Instruments",
+      "slug": "texas-instruments",
+      "logo": "/images/placements/texas-instruments.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/36/Texas_Instruments_logo_2024.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/3/36/Texas_Instruments_logo_2024.svg"
+    },
+    {
+      "name": "TMEIC",
+      "slug": "tmeic",
+      "logo": "/images/placements/tmeic.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/99/TMEIC_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/9/99/TMEIC_logo.svg"
+    },
+    {
+      "name": "Torc",
+      "slug": "torc",
+      "logo": "/images/placements/torc.png",
+      "source": "https://torc.ai/wp-content/uploads/2024/08/torc-logo-rd.png",
+      "sourcePage": "https://torc.ai/wp-content/uploads/2024/08/torc-logo-rd.png"
+    },
+    {
+      "name": "UC Berkeley",
+      "slug": "uc-berkeley",
+      "logo": "/images/placements/uc-berkeley.svg",
+      "source": "https://identity.berkeley.edu/static/identity/img/UCBerkeley_Logo_Blue.192bda65f6b7.svg",
+      "sourcePage": "https://identity.berkeley.edu/static/identity/img/UCBerkeley_Logo_Blue.192bda65f6b7.svg"
+    },
+    {
+      "name": "UC San Diego",
+      "slug": "uc-san-diego",
+      "logo": "/images/placements/uc-san-diego.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/c/cc/University_of_California%2C_San_Diego_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/c/cc/University_of_California%2C_San_Diego_logo.svg"
+    },
+    {
+      "name": "University of Michigan",
+      "slug": "university-of-michigan",
+      "logo": "/images/placements/university-of-michigan.svg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/c/c1/University_of_Michigan_logo.svg",
+      "sourcePage": "https://upload.wikimedia.org/wikipedia/commons/c/c1/University_of_Michigan_logo.svg"
+    }
+  ]
+}

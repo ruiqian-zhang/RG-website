@@ -1,0 +1,125 @@
+---
+import site from '../content/site.json';
+const { active = 'Home' } = Astro.props;
+const links = [
+  { label: 'Achievements', href: '/#achievements', active: 'Achievements' },
+  { label: 'Subteams', href: '/#subteams', active: 'Home' },
+  { label: 'Members', href: '/members/', active: 'Members' },
+  { label: 'Gallery', href: '/gallery/', active: 'Gallery' },
+  { label: 'Sponsors & Partners', href: '/sponsors/', active: 'Sponsors' },
+  { label: 'Contact us', href: '/contact/', active: 'Contact' },
+];
+---
+
+<div class="header-shell">
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="RoboGrinder home">
+      <img src="/images/rg-white.png" alt="" />
+    </a>
+    <div class="header-controls">
+    <details class="mobile-menu primary-menu" data-disclosure>
+      <summary aria-label="Open About us menu"><span class="primary-label">About us</span><span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span><span class="material-icon burger-icon" aria-hidden="true">menu</span><span class="material-icon burger-close" aria-hidden="true">close</span></summary>
+      <nav aria-label="Main navigation">
+        {links.map((link) => <a class:list={[['Sponsors & Partners', 'Contact us'].includes(link.label) && 'mobile-only']} href={link.href} aria-current={active === link.active && link.label !== 'Subteams' ? 'page' : undefined}>{link.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>)}
+        <a class="mobile-only" href={site.joinLink}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+      </nav>
+    </details>
+    <details class="mobile-menu support-menu" data-disclosure>
+      <summary aria-label="Open Connect menu">Connect<span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span></summary>
+      <nav aria-label="Connect"><a href="/sponsors/" aria-current={active === 'Sponsors' ? 'page' : undefined}>Sponsors &amp; Partners<span class="material-icon" aria-hidden="true">chevron_right</span></a><a href="/contact/" aria-current={active === 'Contact' ? 'page' : undefined}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a></nav>
+    </details>
+    <a class="header-cta button-swipe" href={site.joinLink}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+    </div>
+  </header>
+</div>
+
+<script>
+  const disclosures = new Map<HTMLDetailsElement, (open: boolean) => void>();
+  const narrowScreen = matchMedia('(max-width: 850px)');
+  const updateMenuLabel = () => {
+    const summary = document.querySelector<HTMLElement>('.primary-menu > summary');
+    if (summary) summary.setAttribute('aria-label', `${summary.getAttribute('aria-expanded') === 'true' ? 'Close' : 'Open'} ${narrowScreen.matches ? 'navigation' : 'About us'} menu`);
+  };
+  narrowScreen.addEventListener('change', updateMenuLabel);
+  updateMenuLabel();
+  document.querySelectorAll<HTMLDetailsElement>('[data-disclosure]').forEach((details) => {
+    const summary = details.querySelector<HTMLElement>(':scope > summary')!;
+    const panel = details.querySelector<HTMLElement>(':scope > nav, :scope > .disclosure-panel')!;
+    let animation: Animation | undefined;
+    let expanded = details.open;
+    summary.setAttribute('aria-expanded', String(expanded));
+    const setExpanded = (open: boolean) => {
+      if (expanded === open) return;
+      expanded = open;
+      animation?.cancel();
+      summary.setAttribute('aria-expanded', String(open));
+      if (details.classList.contains('mobile-menu')) {
+        const label = details.classList.contains('support-menu') ? 'Connect' : matchMedia('(max-width: 850px)').matches ? 'navigation' : 'About us';
+        summary.setAttribute('aria-label', `${open ? 'Close' : 'Open'} ${label} menu`);
+        if (open) disclosures.forEach((set, other) => { if (other !== details && other.classList.contains('mobile-menu')) set(false); });
+      }
+      details.open = true;
+      const height = panel.scrollHeight;
+      animation = panel.animate(
+        open ? [{ height: '0px', opacity: 0 }, { height: `${height}px`, opacity: 1 }] : [{ height: `${height}px`, opacity: 1 }, { height: '0px', opacity: 0 }],
+        { duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300, easing: 'ease', fill: 'both' }
+      );
+      const current = animation;
+      animation.onfinish = () => { if (animation === current) { details.open = open; current.cancel(); animation = undefined; } };
+    };
+    disclosures.set(details, setExpanded);
+    summary.addEventListener('click', (event) => { event.preventDefault(); setExpanded(!expanded); });
+  });
+  document.querySelectorAll<HTMLDetailsElement>('.mobile-menu').forEach((menu) => {
+    document.addEventListener('click', (event) => { if (!menu.contains(event.target as Node)) disclosures.get(menu)?.(false); });
+    menu.addEventListener('keydown', (event) => { if (event.key === 'Escape') { disclosures.get(menu)?.(false); menu.querySelector('summary')?.focus(); } });
+  });
+  document.querySelectorAll<HTMLAnchorElement>('.mobile-menu nav a').forEach((link) => {
+    link.addEventListener('click', () => {
+      const menu = link.closest<HTMLDetailsElement>('details');
+      if (menu) disclosures.get(menu)?.(false);
+    });
+  });
+</script>
+
+<style>
+  .header-shell { position: sticky; top: 0; z-index: 20; }
+  .site-header { position: relative; height: 76px; display: flex; align-items: center; gap: 28px; justify-content: space-between; padding: 0 clamp(24px, 6vw, 92px); background: var(--ink); color: var(--paper); }
+  .brand { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; gap: 12px; color: var(--paper); text-decoration: none; flex: 0 0 auto; }
+  .brand img { width: 42px; height: 42px; object-fit: contain; }
+  .header-controls { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+  .header-cta { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; background: var(--orange); color: var(--paper); font-size: var(--font-ui-min); font-weight: 700; text-decoration: none; }
+  .mobile-menu { position: relative; display: block; }
+  .mobile-menu summary { min-width: 48px; height: 48px; padding: 0 16px; display: flex; gap: 10px; align-items: center; justify-content: center; list-style: none; cursor: pointer; color: var(--paper); font-size: var(--font-ui-min); font-weight: 600; white-space: nowrap; }
+  .burger-icon, .burger-close { display: none; }
+  .dropdown-arrow { transition: rotate 300ms ease; }
+  [aria-expanded="true"] .dropdown-arrow { rotate: 180deg; }
+  .primary-menu nav .mobile-only { display: none; }
+  .mobile-menu .menu-close { display: none; }
+  .mobile-menu[open] .menu-open { display: none; }
+  .mobile-menu[open] .menu-close { display: inline-block; }
+  .mobile-menu nav a[aria-current="page"] { color: var(--orange); }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu nav { position: absolute; top: calc(100% + 14px); right: 0; width: min(320px, calc(100vw - 32px)); padding: 0 20px; overflow: hidden; background: var(--ink); border: 1px solid rgba(240,240,240,.25); box-shadow: 0 16px 28px rgba(0,0,0,.18); }
+  .mobile-menu nav a { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--paper); font-size: var(--font-ui-min); text-decoration: none; border-bottom: 1px solid rgba(240,240,240,.15); }
+  .mobile-menu nav a:last-child { border-bottom: 0; }
+  @media (max-width: 850px) {
+    .site-header { height: 70px; padding: 0 22px; gap: 12px; }
+    .mobile-menu { position: relative; display: block; }
+    .mobile-menu summary { min-width: 44px; height: 44px; padding: 0; }
+    .support-menu, .header-cta, .brand-copy, .primary-label, .primary-menu .dropdown-arrow { display: none; }
+    .primary-menu .burger-icon { display: inline-block; }
+    .primary-menu summary[aria-expanded="true"] .burger-icon { display: none; }
+    .primary-menu summary[aria-expanded="true"] .burger-close { display: inline-block; }
+    .primary-menu nav .mobile-only { display: flex; }
+    .mobile-menu summary .material-icon { font-size: 23px; }
+  }
+  @media (max-width: 360px) {
+    .mobile-menu summary { gap: 4px; }
+  }
+  @media (max-width: 520px) {
+    .site-header { padding: 0 15px; }
+    .brand { gap: 8px; }
+    .brand img { width: 35px; height: 35px; }
+  }
+</style>

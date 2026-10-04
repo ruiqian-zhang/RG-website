@@ -1,0 +1,17 @@
+---
+const { title, description, image, imageAlt } = Astro.props;
+---
+
+<section class="members" id="members" aria-labelledby="members-title">
+  <div><h2 id="members-title">{title}</h2><p>{description}</p><a class="button button-swipe button-dark" href="/members/">Meet the team<span class="material-icon" aria-hidden="true">chevron_right</span></a></div>
+  <img src={image} alt={imageAlt} loading="lazy" />
+</section>
+
+<style>
+  .members { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(24px, 3vw, 48px); align-items: center; padding: 84px clamp(24px, 4vw, 64px); background: var(--paper); }
+  h2 { margin: 0 0 24px; font: 700 clamp(38px, 5vw, 62px)/1.05 var(--display); letter-spacing: -.04em; }
+  p { margin: 0; font-size: var(--font-body-min); line-height: 1.75; }
+  .button { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; gap: 12px; margin-top: 24px; padding: 0 20px; background: var(--ink); color: var(--paper); font-size: var(--font-ui-min); font-weight: 700; text-decoration: none; }
+  img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; clip-path: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px); }
+  @media (max-width: 800px) { .members { grid-template-columns: 1fr; padding-top: 64px; padding-bottom: 64px; } }
+</style>

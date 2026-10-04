@@ -1,0 +1,26 @@
+---
+import { compareMembers, leadershipRank, presidencyYear } from '../lib/roster';
+type Person = { name: string; subteam: string; role: string; major?: string };
+const { people, alumni = false } = Astro.props as { people: Person[]; alumni?: boolean };
+const order = ['Mechanical', 'Electronics', 'Embedded Controls', 'Software & Computer Vision', 'Operations'];
+const groups = [
+  { name: alumni ? 'Past presidents' : 'Leadership', people: people.filter((person) => person.role && leadershipRank(person.role) < 4) },
+  ...order.map((name) => ({ name, people: people.filter((person) => leadershipRank(person.role) === 4 && person.subteam === name) })),
+  { name: alumni ? 'Other alumni' : 'Other members', people: people.filter((person) => leadershipRank(person.role) === 4 && !person.subteam) },
+  { name: 'Faculty advisors', people: people.filter((person) => leadershipRank(person.role) === 5) },
+].filter((group) => group.people.length);
+---
+<div class="roster-groups">
+  {groups.map((group) => <div><h3>{group.name}</h3><ul>
+    {[...group.people].sort(alumni && group.name === 'Past presidents' ? (a, b) => presidencyYear(b.role) - presidencyYear(a.role) || compareMembers(a, b) : compareMembers).map((person) => <li>{person.name}{person.role && <span>{person.role}</span>}</li>)}
+  </ul></div>)}
+</div>
+<style>
+  .roster-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding: 20px 0 36px; }
+  h3 { font: 700 20px/1.4 var(--display); margin: 0 0 16px; }
+  ul { padding: 0; margin: 0; list-style: none; }
+  li { padding: 5px 0; font-size: var(--font-body-min); line-height: 1.6; overflow-wrap: anywhere; }
+  li span { display: block; font-size: var(--font-label-min); color: var(--muted-ink); }
+  @media (max-width: 700px) { .roster-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
+  @media (max-width: 440px) { .roster-groups { grid-template-columns: 1fr; } }
+</style>

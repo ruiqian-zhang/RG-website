@@ -1,0 +1,43 @@
+---
+import site from '../content/site.json';
+import ProfileIcon from './ProfileIcon.astro';
+const gobblerConnect = site.socialLinks.find((social) => social.name === 'GobblerConnect');
+const socialLinks = site.socialLinks.filter((social) => social.name !== 'GobblerConnect');
+const groups = [
+  { title: 'Team', links: [{ name: 'Our mission', url: '/#story' }, { name: 'Subteams', url: '/#subteams' }, { name: 'Members', url: '/members/' }, { name: 'Gallery', url: '/gallery/' }, { name: 'Join us', url: site.joinLink }] },
+  { title: 'Community', links: [{ name: 'ARC Robotics', url: site.arcUrl }, { name: 'Virginia Tech', url: 'https://www.vt.edu/' }] },
+  { title: 'Connect', links: [{ name: 'Sponsor us', url: '/sponsors/' }, { name: 'Contact us', url: '/contact/' }, ...(gobblerConnect?.url ? [gobblerConnect] : []), { name: 'Linktree', url: site.linktreeUrl }] },
+];
+---
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand-block">
+      <a class="footer-brand" href="/" aria-label="RoboGrinder home"><img src="/images/rg-white.png" alt="" width="110" height="110" /></a>
+      <div class="social-links" aria-label="Social media">
+        {socialLinks.map((social) => social.url ? <a class="icon-button" href={social.url} target="_blank" rel="noreferrer" aria-label={social.name}><ProfileIcon name={social.name} /></a> : <button class="icon-button" type="button" disabled aria-label={`${social.name} (link coming soon)`} title={`${social.name}: coming soon`}><ProfileIcon name={social.name} /></button>)}
+      </div>
+    </div>
+    {groups.map((group) => <nav class="footer-nav" aria-label={group.title}>
+      <h2>{group.title}</h2>
+      {group.links.map((link) => <a href={link.url} target={link.url.startsWith('https:') ? '_blank' : undefined} rel={link.url.startsWith('https:') ? 'noreferrer' : undefined}>{link.name}</a>)}
+    </nav>)}
+  </div>
+  <div class="footer-legal"><p>© {new Date().getFullYear()} RoboGrinder at Virginia Tech</p><p>Made with <3 in Blacksburg</p></div>
+</footer>
+<style>
+  .site-footer { padding: 64px clamp(24px, 6vw, 100px) 28px; background: var(--ink); color: var(--paper); }
+  .footer-top { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 40px; align-items: start; }
+  .footer-brand { display: inline-block; }
+  .footer-brand img { width: 90px; height: 90px; object-fit: contain; }
+  .footer-brand-block { min-width: 0; padding-right: 24px; }
+  .social-links { display: grid; grid-template-columns: repeat(3, 44px); gap: 12px; width: max-content; margin-top: 28px; }
+  .footer-nav { display: grid; gap: 4px; }
+  .footer-nav h2 { margin: 16px 0 18px; font: 700 16px/1.2 var(--body); letter-spacing: .1em; text-transform: uppercase; }
+  .footer-nav a { display: flex; align-items: center; min-height: 44px; padding: 8px 4px; color: rgba(240,240,240,.8); font-size: var(--font-body-min); text-decoration: none; }
+  .footer-legal { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px 24px; margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(240,240,240,.2); color: rgba(240,240,240,.72); font-size: var(--font-label-min); }
+  .footer-legal p { margin: 0; }
+  .footer-legal p:last-child { margin-left: auto; text-align: right; }
+  @media (max-width: 1000px) { .footer-top { gap: 28px; grid-template-columns: 1.4fr repeat(3, 1fr); } }
+  @media (max-width: 760px) { .footer-top { grid-template-columns: repeat(3, 1fr); } .footer-brand-block { grid-column: 1 / -1; } }
+  @media (max-width: 480px) { .site-footer { padding: 40px 22px 24px; } .footer-top { grid-template-columns: repeat(2, 1fr); gap: 24px; } .footer-legal { margin-top: 36px; } }
+</style>

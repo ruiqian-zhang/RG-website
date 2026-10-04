@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SponsorLogos from '../components/SponsorLogos.astro';
+import IndustryExperience from '../components/IndustryExperience.astro';
+import Achievements from '../components/Achievements.astro';
+import TeamNumbers from '../components/TeamNumbers.astro';
+import site from '../content/site.json';
+import placements from '../content/industry-placements.json';
+import subteams from '../content/subteams.json';
+import sponsorship from '../content/sponsors.json';
+
+const description = `${site.teamName} at ${site.university} brings students together to turn classroom knowledge into hands-on engineering experience.`;
+---
+
+<BaseLayout title="RoboGrinder | Virginia Tech Robotics" description={description}>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <SiteHeader active="Home" />
+
+  <main id="main">
+    <section class="landing" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">{site.headline}</h1>
+        <p class="hero-intro">{site.intro}</p>
+        <div class="hero-actions">
+          <a class="button button-swipe button-light" href={site.joinLink}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        </div>
+      </div>
+      <div class="hero-background" aria-hidden="true">
+        <iframe class="hero-video" tabindex="-1"
+          src={`https://www.youtube-nocookie.com/embed/${site.heroVideoId}?autoplay=0&mute=1&loop=1&playlist=${site.heroVideoId}&playsinline=1&rel=0&controls=0&disablekb=1&enablejsapi=1`}
+          title="RoboGrinder background footage" allow="autoplay; encrypted-media"></iframe>
+      </div>
+      <div class="anniversary-banner" aria-label={`Celebrating 10 years, ${site.founded} to ${site.anniversaryYear}`}>
+        <img src="/images/rg-white.png" alt="" width="48" height="48" />
+        <span class="banner-label">CELEBRATING</span>
+        <strong>10</strong><span class="banner-band">YEARS</span>
+        <span class="banner-dates">{site.founded}<br />{site.anniversaryYear}</span>
+      </div>
+      <button class="button button-swipe button-light video-toggle" type="button" aria-label="Pause video" aria-pressed="false"><span class="material-icon" aria-hidden="true">pause</span></button>
+    </section>
+
+    <section class="story section-shell" id="story" aria-labelledby="story-title">
+      <div class="story-heading">
+        <h2 id="story-title">{site.missionTitle}</h2>
+        <p class="story-copy">{site.mission}</p>
+        <p class="story-context">{site.missionContext}</p>
+      </div>
+      <figure class="story-photo">
+        <img src={site.teamImage} alt={site.teamImageAlt} loading="lazy" />
+      </figure>
+    </section>
+
+    <TeamNumbers />
+    <Achievements />
+
+    <section class="subteams section-shell" id="subteams" aria-labelledby="subteams-title">
+      <div class="subteams-head">
+        <div>
+          <h2 id="subteams-title">Our subteams</h2>
+        </div>
+      </div>
+      <div class="team-grid">
+        {subteams.teams.map((team) => (
+          <article class="team-card">
+            <img src={team.image} alt={team.imageAlt} loading="lazy" width="1600" height="1000" />
+            <h3>{team.name}</h3>
+            <p>{team.summary}</p>
+          </article>
+        ))}
+      </div>
+      <div class="subteams-actions">
+        <p class="discipline-note">Students from every major are welcome.</p>
+        <a class="button button-swipe button-dark" href="/members/">Meet the team<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+      </div>
+    </section>
+
+    <IndustryExperience companies={placements.companies} title={placements.title} description={placements.description} />
+
+    <section class="supporters section-shell" aria-labelledby="supporters-title">
+      <div class="supporters-heading">
+        <h2 id="supporters-title">Our sponsors</h2>
+      </div>
+      <SponsorLogos partners={sponsorship.partners} />
+      <div class="sponsor-callout">
+        <h3>Interested in partnering with us?</h3>
+        <a class="button button-swipe button-dark" href="/sponsors/">Partner with us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+      </div>
+    </section>
+
+    <section class="join" id="join" aria-labelledby="join-title">
+      <div class="join-photo"><img src={site.joinImage} alt={site.joinImageAlt} loading="lazy" /></div>
+      <div class="join-copy">
+        <h2 id="join-title">{site.joinTitle}</h2>
+        <p>{site.joinCopy}</p>
+        <a class="button button-swipe button-dark" href={site.joinLink}>{site.joinLabel}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+      </div>
+      <span class="join-cut" aria-hidden="true"></span>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<script>
+  const video = document.querySelector<HTMLIFrameElement>('.hero-video');
+  const hero = document.querySelector<HTMLElement>('.landing');
+  const toggle = document.querySelector<HTMLButtonElement>('.video-toggle');
+  if (video && hero && toggle) {
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    let paused = reducedMotion.matches;
+    const source = new URL(video.src);
+    source.searchParams.set('origin', location.origin);
+    source.searchParams.set('autoplay', paused ? '0' : '1');
+    video.src = source.toString();
+    const updateToggle = () => {
+      toggle.querySelector('.material-icon')!.textContent = paused ? 'play_arrow' : 'pause';
+      toggle.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+      toggle.setAttribute('aria-pressed', String(paused));
+    };
+    const setPlayback = (pause: boolean) => {
+      paused = pause;
+      video.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: paused ? 'pauseVideo' : 'playVideo', args: [] }), 'https://www.youtube-nocookie.com');
+      updateToggle();
+    };
+    toggle.addEventListener('click', () => setPlayback(!paused));
+    reducedMotion.addEventListener('change', (event) => { if (event.matches) setPlayback(true); });
+    const sizeVideo = () => {
+      const width = Math.max(hero.clientWidth, hero.clientHeight * 16 / 9);
+      video.style.width = `${width}px`;
+      video.style.height = `${width * 9 / 16}px`;
+    };
+    new ResizeObserver(sizeVideo).observe(hero);
+    sizeVideo();
+    updateToggle();
+  }
+</script>
+
+<style>
+  .landing { position: relative; display: flex; align-items: center; min-height: calc(100svh - var(--header-height)); isolation: isolate; overflow: hidden; padding: 100px clamp(24px, 8vw, 124px); background: var(--orange); color: var(--paper); }
+  .hero-copy { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; max-width: 680px; padding: 20px 0 35px; }
+  h1, h2, h3, p { margin-top: 0; }
+  h1, h2, h3 { font-family: var(--display); }
+  .landing h1 { max-width: 650px; margin: 0 0 24px; font-size: clamp(52px, 6vw, 88px); font-weight: 700; line-height: .94; letter-spacing: -.055em; white-space: pre-line; }
+  .hero-intro { max-width: 440px; margin-bottom: 30px; color: var(--paper); font-size: var(--font-body-min); line-height: 1.7; }
+  .hero-actions { display: flex; align-items: center; gap: 25px; flex-wrap: wrap; }
+  .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 12px; padding: 0 18px; font-size: max(var(--font-ui-min), 11px); font-weight: 700; text-decoration: none; }
+  .button .material-icon { font-size: 18px; }
+  .button-light { background: var(--paper); color: var(--ink); }
+  .hero-background { position: absolute; inset: 0; z-index: -2; overflow: hidden; background: var(--ink); pointer-events: none; }
+  .hero-background::after { position: absolute; inset: 0; content: ''; background: linear-gradient(90deg, rgba(0,0,0,.64), rgba(0,0,0,.22)), linear-gradient(rgba(237,114,30,.24), rgba(237,114,30,.24)); }
+  .hero-video { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 0; }
+  .anniversary-banner { position: absolute; top: 0; right: clamp(24px, 8vw, 124px); width: 126px; height: 246px; padding: 22px 10px 30px; display: flex; flex-direction: column; align-items: center; background: var(--ink); color: var(--paper); clip-path: polygon(0 0,100% 0,100% 88%,50% 100%,0 88%); }
+  .anniversary-banner img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 14px; }
+  .banner-label { font-size: 10px; letter-spacing: .08em; font-weight: 700; }
+  .anniversary-banner strong { font: 700 64px/.95 var(--display); margin: 4px 0 8px; }
+  .banner-band { background: var(--paper); color: var(--ink); width: calc(100% + 20px); text-align: center; padding: 5px; font: 700 16px/1 var(--display); }
+  .banner-dates { margin-top: 10px; font: 700 14px/1.25 var(--display); letter-spacing: .05em; text-align: center; }
+  .video-toggle { position: absolute; right: 24px; bottom: 22px; width: 52px; min-height: 52px; border: 0; cursor: pointer; }
+  .section-shell { padding-left: clamp(24px, 8vw, 124px); padding-right: clamp(24px, 8vw, 124px); }
+  .story { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 0; padding: 0; background: var(--paper); }
+  .story-heading { align-self: center; padding: 80px clamp(24px, 6vw, 90px) 80px clamp(24px, 8vw, 124px); }
+  .story-heading h2 { max-width: 515px; margin: 0 0 32px; font-size: clamp(40px, 5.1vw, 70px); line-height: .99; letter-spacing: -.055em; }
+  .story-copy { margin-bottom: 24px; color: var(--ink); font-size: clamp(20px, 2vw, 26px); line-height: 1.5; }
+  .story-context { margin: 0; color: var(--muted-ink); font-size: var(--font-body-min); line-height: 1.75; }
+  .story-photo { position: relative; min-height: 512px; margin: 0; overflow: hidden; background: var(--paper); clip-path: polygon(24px 0, 100% 0, 100% 100%, 0 100%, 0 24px); }
+  .story-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .subteams { padding-top: 111px; padding-bottom: 112px; background: var(--orange); color: var(--ink); }
+  .subteams-head { display: flex; align-items: end; justify-content: space-between; gap: 50px; margin-bottom: 49px; }
+  .subteams h2 { margin: 0; font-size: clamp(42px, 5vw, 64px); line-height: 1.08; letter-spacing: -.06em; }
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 28px; }
+  .team-card { min-width: 0; }
+  .team-card img { width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; display: block; margin-bottom: 22px; clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); }
+  .team-card h3 { margin: 0 0 14px; font-size: clamp(18px, 1.75vw, 25px); line-height: 1.05; letter-spacing: -.035em; }
+  .team-card p { margin: 0; color: var(--ink); font-size: var(--font-body-min); line-height: 1.6; }
+  .subteams-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-top: 36px; }
+  .discipline-note { margin: 0; font-size: max(var(--font-label-min), 10px); font-weight: 600; }
+  .supporters { padding-top: 84px; padding-bottom: 90px; background: var(--paper); }
+  .supporters-heading { margin-bottom: 64px; }
+  .supporters-heading h2 { max-width: 740px; margin: 0 auto; text-align: center; font-size: clamp(38px, 5vw, 62px); line-height: .98; letter-spacing: -.045em; }
+  .join { position: relative; min-height: 512px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; background: var(--orange); color: var(--ink); }
+  .join-photo { position: relative; min-height: 512px; clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%); }
+  .join-photo img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: 62% center; filter: saturate(.7); }
+  .join-copy { position: relative; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 75px clamp(24px, 8vw, 110px) 85px clamp(35px, 7vw, 105px); }
+  .join-copy h2 { max-width: 430px; margin: 0 0 20px; font-size: clamp(42px, 5vw, 69px); line-height: .93; letter-spacing: -.05em; }
+  .join-copy > p { max-width: 390px; margin-bottom: 27px; color: var(--ink); font-size: var(--font-body-min); line-height: 1.7; }
+  .button-dark { background: var(--ink); color: var(--paper); }
+  .join-cut { position: absolute; top: 0; right: 0; width: 30px; height: 30px; background: var(--orange); clip-path: polygon(100% 0, 100% 100%, 0 0); }
+  .sponsor-callout { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 24px; margin-top: 48px; }
+  .sponsor-callout h3 { margin: 0; font-size: clamp(24px, 2.5vw, 32px); line-height: 1.2; letter-spacing: -.025em; }
+  @media (max-width: 950px) {
+    .landing { min-height: calc(100svh - var(--header-height)); padding: 180px clamp(24px, 4vw, 38px) 80px; }
+    .hero-copy { max-width: 620px; }
+    .anniversary-banner { right: 24px; width: 100px; height: 202px; padding: 14px 8px 25px; }
+    .anniversary-banner img { width: 30px; height: 30px; margin-bottom: 10px; }
+    .anniversary-banner strong { font-size: 48px; }
+    .banner-label { font-size: 8px; }
+    .banner-band { width: calc(100% + 16px); }
+    .banner-dates { font-size: 12px; margin-top: 8px; }
+    .landing h1 { font-size: clamp(52px, 6.8vw, 68px); }
+    .story-heading { padding: 64px 32px; }
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+    .join-copy { padding-left: 45px; }
+  }
+  @media (max-width: 680px) {
+    .landing { align-items: flex-start; min-height: calc(100svh - var(--header-height)); padding: 226px 22px 90px; }
+    .hero-copy { padding: 0; }
+    .landing h1 { margin: 0 0 20px; font-size: clamp(38px, 11vw, 64px); }
+    .hero-intro { max-width: 380px; margin-bottom: 23px; font-size: var(--font-body-min); }
+    .hero-actions { gap: 16px; }
+    .button { min-height: 48px; padding: 0 14px; font-size: var(--font-ui-min); }
+    .section-shell { padding-left: 23px; padding-right: 23px; }
+    .story { grid-template-columns: 1fr; gap: 0; padding: 0; }
+    .story-heading { padding: 64px 23px 48px; }
+    .story-heading h2 { max-width: 420px; margin: 0 0 24px; font-size: clamp(42px, 11vw, 62px); }
+    .story-copy { margin-bottom: 24px; font-size: 22px; }
+    .story-photo { min-height: 0; aspect-ratio: 1.5 / 1; }
+    .subteams { padding-top: 80px; padding-bottom: 78px; }
+    .subteams-head { display: block; margin-bottom: 35px; }
+    .subteams h2 { margin-top: 0; font-size: clamp(42px, 11vw, 56px); }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .supporters { padding: 72px 23px; }
+    .supporters-heading { margin-bottom: 44px; }
+    .supporters-heading h2 { font-size: clamp(38px, 10vw, 54px); }
+    .join { grid-template-columns: 1fr; }
+    .join-photo { min-height: 320px; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); }
+    .join-copy { min-height: 420px; padding: 58px 23px 75px; }
+    .join-copy h2 { max-width: 360px; font-size: clamp(48px, 12vw, 68px); }
+    .join-copy > p { font-size: var(--font-body-min); }
+    .sponsor-callout { gap: 18px; margin-top: 36px; text-align: center; }
+  }
+  @media (max-width: 520px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .team-card, .team-card + .team-card, .team-card:nth-child(4) { min-height: 0; border-left: 0; padding: 24px 0; }
+  }
+</style>

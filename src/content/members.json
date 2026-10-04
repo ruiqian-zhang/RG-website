@@ -1,0 +1,2941 @@
+{
+  "title": "Members",
+  "intro": "Meet the people behind RoboGrinder.",
+  "rosterYear": "2026-2027",
+  "people": [
+    {
+      "name": "Briny Jiang",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "Business Information Technology",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Cheuk Yin Lee",
+      "subteam": "Mechanical",
+      "role": "Mechanical Branch Lead",
+      "major": "Mechanical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Chris Kiledea",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "Computer Science",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Corinne Chang",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "David Dai",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ethan O'Brian",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "Mechanical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ethan Xu",
+      "subteam": "Software & Computer Vision",
+      "role": "Software & Computer Vision Technical Advisor",
+      "major": "Computer Science",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ittai Saadia",
+      "subteam": "Mechanical",
+      "role": "Mechanical Project Lead",
+      "major": "Mechanical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jonah Leopold",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "Computer Science",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Katherin Marroquin",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Xianxu Luo",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Michael Hatami",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "Computer Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Mikiya Stein",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "Computer Science",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Moses Wang",
+      "subteam": "Mechanical",
+      "role": "President",
+      "major": "Mechanical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Nancy Wang",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Patrick Knowles",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "Mechanical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Qihang Zhu",
+      "subteam": "Electronics",
+      "role": "Electronics Lead",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Rui Ma",
+      "subteam": "Software & Computer Vision",
+      "role": "Software & Computer Vision Lead",
+      "major": "Computer Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ruiqian Zhang",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Sean Chung",
+      "subteam": "Operations",
+      "role": "",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Siddhesh Dash",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Steven Morro",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "Mechanical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Tina Pan",
+      "subteam": "Operations",
+      "role": "Vice President",
+      "major": "Computer Science",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Tommy Nguyen",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "Computer Science",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Tyler Wang",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yanrun Li",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yaqi Guan",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "Electrical Engineering",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Kushagra Saxena",
+      "subteam": "Software & Computer Vision",
+      "role": "Software & Computer Vision Project Lead",
+      "major": "",
+      "photo": "",
+      "linkedin": "https://www.linkedin.com/in/kushagra-saxena-33406934b/",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Kayleigh Harney",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Juan Flores Gurrola",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Kaitlyn Nguyen",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Sihan Zhao",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Steve Jung",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Stanley Fu",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jerry Wang",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Myles Bonilla",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jayden Borges",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ryan Kordic",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Xuehan Song",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Haolin Ai",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jason McIrvin",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jack Millward",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Colton Cumberland",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Owen Burden",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Denzel Morrison",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Isabella Meza",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ali Bahar",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Krishanth Sorna Aravintha Losanan",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Rowan White",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ben Ark",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Sterling Hsu",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Houyue Chen",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Aryan Patil",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Elijah O'Donoghue",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Rishi Murali",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Wensi Dai",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yi Cao",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Marcel Francisco",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Maged Al Qabany",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Nick Boukens",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Qichen Bao",
+      "subteam": "Embedded Controls",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Lifu Xu",
+      "subteam": "Embedded Controls",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Huy Vu",
+      "subteam": "Embedded Controls",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Alex Zhao",
+      "subteam": "Embedded Controls",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jared Forchheimer",
+      "subteam": "Embedded Controls",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ayan Nawaz",
+      "subteam": "Embedded Controls",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zayd Kemper",
+      "subteam": "Embedded Controls",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Fahd Aldhaher",
+      "subteam": "Embedded Controls",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jude Othman",
+      "subteam": "Embedded Controls",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Eva Benitez",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Annie Hu",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jiahui Tan",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Joseph Karakuz",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Oscar Ren",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Annie Nguyen",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    }
+  ],
+  "seasons": [
+    {
+      "year": "2025-2026",
+      "people": [
+        {
+          "name": "Briny Jiang",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "Business Information Technology",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Cheuk Yin Lee",
+          "subteam": "Mechanical",
+          "role": "Mechanical Branch Lead",
+          "major": "Mechanical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Chris Kiledea",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "Computer Science",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Corinne Chang",
+          "subteam": "Electronics",
+          "role": "",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "David Dai",
+          "subteam": "Electronics",
+          "role": "",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Ethan O'Brian",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "Mechanical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Ethan Xu",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "Computer Science",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Ittai Saadia",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "Mechanical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Jonah Leopold",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "Computer Science",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Katherin Marroquin",
+          "subteam": "Electronics",
+          "role": "",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Xianxu Luo",
+          "subteam": "Electronics",
+          "role": "",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Michael Hatami",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "Computer Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Mikiya Stein",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "Computer Science",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Moses Wang",
+          "subteam": "Mechanical",
+          "role": "President",
+          "major": "Mechanical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Nancy Wang",
+          "subteam": "Operations",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Patrick Knowles",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "Mechanical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Qihang Zhu",
+          "subteam": "Electronics",
+          "role": "Electronics Lead",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Rui Ma",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "Computer Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Ruiqian Zhang",
+          "subteam": "Electronics",
+          "role": "",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Sean Chung",
+          "subteam": "Operations",
+          "role": "",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Siddhesh Dash",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Stanley Wu",
+          "subteam": "Mechanical",
+          "role": "Vice President",
+          "major": "Mechanical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Steven Morro",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "Mechanical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Tina Pan",
+          "subteam": "Operations",
+          "role": "Operations Lead",
+          "major": "Computer Science",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Tommy Nguyen",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "Computer Science",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Tyler Wang",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Ved Soolgiri",
+          "subteam": "Software & Computer Vision",
+          "role": "Software & Computer Vision Lead",
+          "major": "Computer Science",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Yanrun Li",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Yaqi Guan",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Yufei Gao",
+          "subteam": "Mechanical",
+          "role": "Mechanical Lead",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        }
+      ]
+    },
+    {
+      "year": "2024-2025",
+      "people": [
+        {
+          "name": "Ahmad Ali",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Britney Jiang",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Chengyi Xu",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Chris Kildea",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Ethan Chung",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Howard Yu",
+          "subteam": "",
+          "role": "President",
+          "major": "Computer Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Ittai Saadia",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Jacob Takeshita",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Junie Lin",
+          "subteam": "Operations",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Katherin Marroquin",
+          "subteam": "Electronics",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Michael Hatami",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Mikiya Stein",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Moses Wang",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Patrick Knowles",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Qihang Zhu",
+          "subteam": "Electronics",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Rui Ma",
+          "subteam": "Software & Computer Vision",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Rui Peng",
+          "subteam": "Electronics",
+          "role": "Electronics Lead",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Ruiqian Zhang",
+          "subteam": "Electronics",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Sean Chung",
+          "subteam": "Operations",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Stanley Wu",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Tina Pan",
+          "subteam": "Operations",
+          "role": "Operations Lead",
+          "major": "Computer Science",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Tvisha Gala",
+          "subteam": "Operations",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Ved Soolgiri",
+          "subteam": "Software & Computer Vision",
+          "role": "Software & Computer Vision Lead",
+          "major": "Computer Science",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Yanrun Li",
+          "subteam": "Mechanical",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Yaqi Guan",
+          "subteam": "Operations",
+          "role": "",
+          "major": "",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Yufei Gao",
+          "subteam": "Mechanical",
+          "role": "Mechanical Lead",
+          "major": "Electrical Engineering",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        },
+        {
+          "name": "Zelin Shen",
+          "subteam": "Embedded Controls",
+          "role": "Embedded Lead",
+          "major": "Computational Modeling and Data Analytics",
+          "photo": "",
+          "linkedin": "",
+          "github": "",
+          "portfolio": ""
+        }
+      ]
+    }
+  ],
+  "alumni": [
+    {
+      "name": "Aahan Atrey",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Abraham Tenonio",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Adrian Torrico",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ahmad Ali",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Alana Thomas",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ali Alnukhali",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Alyssa Micheli",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Anna Brogowski",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Anthony Lee",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Austin Allison",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Brendan Love",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Brenden Gonzalez",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Carl Nicklas",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Chongque Zhang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Chris Kildea",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Christian Mueth",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Christopher Mitchell",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Christopher Rosend",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Christopher Taylor",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Chuyue Liang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Colin Velasquez",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Colin Wargo",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Crew Gipson",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Daniel Albacarys",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Daniel Valdez",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "David Chen",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "David Rajwan",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "De La Vega Jayson",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Delaney J Theilman",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Dennis Chiu",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Dinachi Utah",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Dowon Lee",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ebony Shields",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Elliot Hipski",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Eric Kauppi",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ethan Bass",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Evan Miller",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Evelyn Chua",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Fairuz Ahmed",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Fengze Han",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Frank Eyenga",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Fujun Ruan",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Gallagher Matthew",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Grant Pitcher",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Grayson Richmond",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Guanang Su",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Haonan Wang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Henry Zhang",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jacob Hayes",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jacob Takeshita",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jamie Chen",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jarod Junco",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jasher Grunau",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jayant Dulani",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jerry Sun",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jiawei Gu",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jingyu Liang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Jingyuan Qi",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Junjie Cheng",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Junjie Liang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Junyi Fu",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Justin Lee",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Justin Park",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Justin Turnbow",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Justin Vogel",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Kaisheng Li",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Katyan Jay",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Keenan Kopf",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Kevin Alegre",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Lingze Zeng",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Liurui Li",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Long Robert",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Lucas Wood",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Luke Walter",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Luyi Tang",
+      "subteam": "",
+      "role": "President, 2021-2022",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Marco Zamora",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Martin Wei",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Matt Peters",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Matthew Chang",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Matthew Foran",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Maya Keely",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Meiyu Zheng",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Melissa Mayo",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Mikayla Dolo-Pittman",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Mitchell Huynh",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Moses Wang",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Munkhzaya Majig",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Nathaniel Casson",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Nicholas Poole",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Orr Jack",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Patrick Cross",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Pillai Rakesh",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Qihang Zhu",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Rajwan David",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ramiandrisoa Rojo",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Rashelle Amao",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Raymond Lin",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Renrui Liu",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Res Sharpe",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Rhealyn Hensley",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ritish Shailly",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ross Williams",
+      "subteam": "",
+      "role": "President, 2020-2021",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ruichang Chen",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ruizhe Li",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Shashidhar Namita",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Sheng He Lu",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Shih-Hung Sun",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Shilei Zhang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Shriver Chase",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Shuhan Liu",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Silas Turner",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Silei Peng",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Siwei Xiang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Stanley Wu",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Stephanie Chen",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Thomas Powderly",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Thomas Wheeler",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Tiffany Widjaja",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Tikki Cui",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Trevor Ierardi",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Tyler Kruszewski",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Victor Cappuzzo",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Wade Handy",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Weber Andrew",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Xi Chen",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Xingyu Lu",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yajie Zhang",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yang Jeffrey Jiarui",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yassin Lahrime",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yifan Wang",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yijia Shi",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yilin Liu",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Ying Yang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yipin Zhou",
+      "subteam": "",
+      "role": "President, 2017-2019",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yixin Lu",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yixin Xie",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yixuan Li",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Youming Qin",
+      "subteam": "",
+      "role": "President, 2016-2017",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Youness Bella",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yuanzhi Zhang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yue Yang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yuexin Luo",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yufei Chen",
+      "subteam": "Operations",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yufeng Wu",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Yuhui Xu",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zekun Li",
+      "subteam": "Software & Computer Vision",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zeyan Wu",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zhanxiang Xu",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zhao Yu",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zhenghao Zhou",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zhengrui Wang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zhenting Xu",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zheyu Wu",
+      "subteam": "Mechanical",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zhilin Huang",
+      "subteam": "",
+      "role": "President, 2022-2023",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zhiyi Zhang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zhiyuan Zhang",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zida Song",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zifan Ye",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zishuai Li",
+      "subteam": "",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    },
+    {
+      "name": "Zonghao Lu",
+      "subteam": "Electronics",
+      "role": "",
+      "major": "",
+      "photo": "",
+      "linkedin": "",
+      "github": "",
+      "portfolio": ""
+    }
+  ]
+}

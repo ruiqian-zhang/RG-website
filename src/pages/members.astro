@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import members from '../content/members.json';
+import ProfileIcon from '../components/ProfileIcon.astro';
+import RosterNames from '../components/RosterNames.astro';
+import { compareMembers } from '../lib/roster';
+const people = [...members.people].sort(compareMembers);
+const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season.people.filter((person) => /^President$/i.test(person.role)).map((person) => ({ ...person, role: `President, ${season.year}` })))];
+---
+
+<BaseLayout title="Members | RoboGrinder at Virginia Tech" description="Meet the RoboGrinder team at Virginia Tech.">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <SiteHeader active="Members" />
+  <main id="main">
+    <header class="members-heading">
+      <h1>{members.title}</h1>
+      <p>{members.intro}</p>
+      <h2 class="roster-year">{members.rosterYear}</h2>
+
+    </header>
+    <div class="member-grid">
+      {people.map((person) => <article class="member">
+        {person.photo ? <img src={person.photo} alt={`Portrait of ${person.name}`} width="320" height="400" loading="lazy" /> : <div class="portrait-placeholder" aria-label={`Photo pending for ${person.name}`}><span aria-hidden="true">{person.name.split(' ').map((part) => part[0]).filter(Boolean).slice(0, 2).join('')}</span></div>}
+        <h2>{person.name}</h2>
+        {person.role && <p class="member-role">{person.role}</p>}
+        <p>{person.subteam}</p>
+        {person.major && <p class="member-major">Major: {person.major}</p>}
+        {(person.linkedin || person.github || person.portfolio) && <div class="member-links" aria-label={`${person.name} profiles`}>
+          {[{ name: 'LinkedIn', url: person.linkedin }, { name: 'GitHub', url: person.github }, { name: 'Portfolio', url: person.portfolio }].filter((link) => link.url).map((link) => <a class="icon-button" href={link.url} target="_blank" rel="noreferrer" aria-label={`${person.name}: ${link.name}`}><ProfileIcon name={link.name} /></a>)}
+        </div>}
+      </article>)}
+    </div>
+    <section class="archive" aria-label="Previous seasons and alumni">
+      <details data-disclosure>
+        <summary>Previous seasons<span class="material-icon archive-arrow" aria-hidden="true">expand_more</span></summary>
+        <div class="disclosure-panel">
+          {members.seasons.map((season) => <details class="season" data-disclosure>
+            <summary>{season.year}<span class="material-icon archive-arrow" aria-hidden="true">expand_more</span></summary>
+            <div class="disclosure-panel"><RosterNames people={season.people} /></div>
+          </details>)}
+        </div>
+      </details>
+      <details class="alumni" data-disclosure>
+        <summary>Alumni<span class="material-icon archive-arrow" aria-hidden="true">expand_more</span></summary>
+        <div class="disclosure-panel"><RosterNames people={alumni} alumni={true} /></div>
+      </details>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  main { padding: 72px clamp(24px, 8vw, 124px) 96px; }
+  .members-heading { max-width: 800px; margin: 0 0 48px; }
+  h1 { margin: 0 0 24px; font: 700 clamp(48px, 6vw, 76px)/1 var(--display); letter-spacing: -.04em; }
+  .members-heading p { margin: 0 0 16px; font-size: var(--font-body-min); line-height: 1.65; }
+  .roster-year { margin-top: 32px; font-size: 28px; }
+  .member-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 48px 24px; }
+  .member { min-width: 0; }
+  .member img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #ddd; clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px); }
+  .portrait-placeholder { display: grid; place-items: center; width: 100%; aspect-ratio: 4 / 5; background: #e0e0e0; color: rgba(0,0,0,.45); font: 700 clamp(40px, 6vw, 72px)/1 var(--display); clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px); }
+  h2 { margin: 20px 0 8px; font: 700 clamp(22px, 2vw, 28px)/1.2 var(--display); }
+  .member p { margin: 0 0 12px; font-size: var(--font-body-min); line-height: 1.5; }
+  .member .member-role { font-weight: 600; }
+  .member .member-major { font-size: var(--font-label-min); color: var(--muted-ink); }
+  .archive-note { color: var(--muted-ink); line-height: 1.6; }
+  .alumni { border-top: 1px solid var(--line); }
+  .member-links { display: flex; gap: 8px; margin: 0 0 12px; }
+  .archive { margin-top: 72px; border-top: 1px solid var(--line); }
+  .archive summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 16px 0; font: 700 24px/1.2 var(--display); }
+  .archive-arrow { transition: rotate 300ms ease; }
+  summary[aria-expanded="true"] > .archive-arrow { rotate: 180deg; }
+  .season { border-top: 1px solid var(--line); }
+  .season summary { font-size: 20px; }
+  .archive-teams { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 32px; padding: 16px 0 32px; }
+  .archive h3 { font: 700 18px/1.4 var(--display); margin: 0 0 12px; }
+  .archive ul { padding: 0; margin: 0; list-style: none; }
+  .archive li { font-size: var(--font-body-min); line-height: 1.8; }
+  @media (max-width: 1100px) { .member-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 800px) { .member-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; } }
+  @media (max-width: 600px) { .archive-teams { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 420px) { main { padding: 48px 16px 64px; } .member-grid { gap: 32px 16px; } .member h2 { font-size: 20px; overflow-wrap: anywhere; } .member p { overflow-wrap: anywhere; } .archive-teams { grid-template-columns: 1fr; } }
+</style>

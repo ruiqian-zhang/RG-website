@@ -1,0 +1,31 @@
+---
+import frames from '../content/sponsor-artwork-frames.json';
+const { partners } = Astro.props;
+---
+
+<div class="sponsor-logos">
+  {partners.filter((partner) => partner.logo).map((partner) => (
+    <a class="sponsor-logo" href={partner.url || '/contact/'} target={partner.url ? '_blank' : undefined} rel={partner.url ? 'noreferrer' : undefined} aria-label={`Visit ${partner.name}`}>
+      {frames[partner.logo] ? <svg viewBox={frames[partner.logo].viewBox} aria-hidden="true" style={`--sponsor-ratio: ${frames[partner.logo].ratio}`}><image href={partner.logo} width={frames[partner.logo].width} height={frames[partner.logo].height} preserveAspectRatio="xMidYMid meet" /></svg> : <img src={partner.logo} alt="" loading="lazy" width="320" height="200" />}
+    </a>
+  ))}
+</div>
+
+<style>
+  .sponsor-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 28px 64px; width: 100%; }
+  .sponsor-logo { display: grid; flex: 0 0 calc((100% - 128px) / 3); place-items: center; min-width: 0; min-height: 160px; text-decoration: none; transition: opacity .2s; }
+  .sponsor-logo:hover { opacity: .75; }
+  .sponsor-logo img { width: 100%; max-width: 340px; height: 140px; object-fit: contain; }
+  .sponsor-logo svg { display: block; width: min(100%, 340px, calc(var(--sponsor-ratio) * 140px)); aspect-ratio: var(--sponsor-ratio); overflow: hidden; }
+  @media (max-width: 680px) {
+    .sponsor-logos { gap: 24px 32px; }
+    .sponsor-logo { flex-basis: calc((100% - 32px) / 2); min-height: 120px; }
+    .sponsor-logo img { height: 120px; }
+    .sponsor-logo svg { width: min(100%, 340px, calc(var(--sponsor-ratio) * 120px)); }
+  }
+  @media (max-width: 420px) {
+    .sponsor-logo { flex-basis: 100%; }
+    .sponsor-logo img { max-width: 280px; height: 180px; }
+    .sponsor-logo svg { width: min(100%, 280px, calc(var(--sponsor-ratio) * 180px)); }
+  }
+</style>

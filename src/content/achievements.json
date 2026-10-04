@@ -1,0 +1,79 @@
+{
+  "title": "A history of achievement",
+  "records": [
+    {
+      "year": "2026",
+      "competition": "ARC Robotics Competition \u00b7 Season One",
+      "results": [
+        "2nd place in 3v3"
+      ],
+      "image": "/images/arc-2026-24.webp",
+      "imageAlt": "RoboGrinder members with their robot at the 2026 ARC Robotics Competition"
+    },
+    {
+      "year": "2025",
+      "competition": "RoboMaster University League North America",
+      "results": [
+        "1st place in 3v3"
+      ],
+      "image": "/images/rmul-2025-champions.webp",
+      "imageAlt": "RoboGrinder's first-place 2025 team with their robots in San Diego"
+    },
+    {
+      "year": "2024",
+      "competition": "RoboMaster University League North America",
+      "results": [
+        "2nd place in 3v3"
+      ]
+    },
+    {
+      "year": "2023",
+      "competition": "RoboMaster University League North America",
+      "results": [
+        "4th place in 3v3",
+        "4th place in 1v1"
+      ]
+    },
+    {
+      "year": "2022",
+      "competition": "ICRA AI Challenge and RMUL North America",
+      "results": [
+        "1st Prize at the ICRA AI Challenge",
+        "2nd place in RMUL 1v1"
+      ]
+    },
+    {
+      "year": "2021",
+      "competition": "RoboMaster University League North America",
+      "results": [
+        "2nd place in 3v3"
+      ]
+    },
+    {
+      "year": "2019",
+      "competition": "RoboMaster University League",
+      "results": [
+        "2nd team in the International Group",
+        "1st team in North America",
+        "2nd Prize in the Final Tournament",
+        "Global top 32 university teams"
+      ]
+    },
+    {
+      "year": "2018",
+      "competition": "RoboMaster University League",
+      "results": [
+        "1st Prize in International Regionals",
+        "2nd Prize in the Final Tournament"
+      ]
+    },
+    {
+      "year": "2017",
+      "competition": "RoboMaster University League",
+      "results": [
+        "3rd Prize in the Final Tournament",
+        "Our first competition season"
+      ]
+    }
+  ]
+}

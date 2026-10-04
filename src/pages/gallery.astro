@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import OrangeFeature from '../components/OrangeFeature.astro';
+import gallery from '../content/gallery.json';
+---
+<BaseLayout title="Gallery | RoboGrinder at Virginia Tech" description="Competition and season photos from RoboGrinder at Virginia Tech.">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <SiteHeader active="Gallery" />
+  <main id="main">
+    <OrangeFeature title="Life on the grind." description="The builds, the competitions, and the moments we share along the way." image="/images/rmul-2025-fleet.webp" imageAlt="RoboGrinder's three competition robots in the arena">
+      <a class="button button-swipe button-dark" href="#seasons">Explore the photos<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+    </OrangeFeature>
+    <div class="seasons" id="seasons">
+      {gallery.seasons.map((season) => <section class="season">
+        <header><h2>{season.title}</h2><p>{season.description}</p></header>
+        <div class="photo-grid">{season.photos.map((photo) => <figure>
+          <a href={photo.image} target="_blank" rel="noreferrer" aria-label={`View photo: ${photo.caption}`}><img src={photo.image} alt={photo.caption} loading="lazy" width="1600" height="1067" /></a>
+          <figcaption>{photo.caption}</figcaption>
+        </figure>)}</div>
+      </section>)}
+    </div>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+<style>
+  .seasons { padding: 80px clamp(24px, 8vw, 124px); scroll-margin-top: var(--header-height); }
+  .season + .season { margin-top: 80px; padding-top: 64px; border-top: 1px solid rgba(0,0,0,.2); }
+  header { margin-bottom: 36px; }
+  h2 { margin: 0 0 16px; font: 700 clamp(32px, 3.5vw, 48px)/1.1 var(--display); letter-spacing: -.03em; }
+  header p { margin: 0; font-size: var(--font-body-min); line-height: 1.6; }
+  .photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 36px 28px; }
+  figure { margin: 0; }
+  figure a { display: block; }
+  img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%); }
+  figcaption { margin-top: 14px; font-size: var(--font-label-min); line-height: 1.5; }
+  @media (max-width: 950px) { .photo-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+  @media (max-width: 520px) { .seasons { padding: 56px 23px; } .photo-grid { grid-template-columns: 1fr; gap: 28px; } .season + .season { margin-top: 56px; padding-top: 48px; } }
+</style>

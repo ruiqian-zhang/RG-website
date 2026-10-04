@@ -1,0 +1,35 @@
+{
+  "seasons": [
+    {
+      "title": "2026–2027 season",
+      "description": "A new season, shared ideas, and the people behind the build.",
+      "photos": [
+        { "image": "/images/interest-meeting-software.webp", "caption": "Sharing ideas at our interest meeting" }
+      ]
+    },
+    {
+      "title": "2026 · ARC Robotics Competition",
+      "description": "On the field and behind the scenes at ARC Season One.",
+      "photos": [
+        { "image": "/images/arc-2026-team.jpg", "caption": "The team and fleet at ARC" },
+        { "image": "/images/arc-2026-24.webp", "caption": "Team photo with our infantry robot" },
+        { "image": "/images/arc-2026-infantry.webp", "caption": "Infantry on the move" },
+        { "image": "/images/arc-2026-52.webp", "caption": "Preparing the fleet for a match" },
+        { "image": "/images/arc-2026-31.webp", "caption": "Robots ready in the staging area" },
+        { "image": "/images/arc-2026-13.webp", "caption": "Celebrating together" },
+        { "image": "/images/arc-2026-17.webp", "caption": "A moment worth celebrating" },
+        { "image": "/images/arc-2026-54.webp", "caption": "Supporting each other from the sidelines" }
+      ]
+    },
+    {
+      "title": "2025 · RoboMaster University League",
+      "description": "Our first-place 3v3 season in San Diego.",
+      "photos": [
+        { "image": "/images/rmul-2025-champions.webp", "caption": "The 2025 team after our first-place finish" },
+        { "image": "/images/rmul-2025-fleet.webp", "caption": "Our competition fleet" },
+        { "image": "/images/rmul-2025-robot-maintenance.webp", "caption": "Working on the robot between matches" },
+        { "image": "/images/rmul-2025-interview.webp", "caption": "Sharing the team's story in San Diego" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="svg1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 54.3 74.79">
+  <!-- Generator: Adobe Illustrator 29.8.2, SVG Export Plug-In . SVG Version: 2.1.1 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        display: none;
+        isolation: isolate;
+        opacity: .54;
+        stroke: #000;
+        stroke-linejoin: round;
+        stroke-width: .23px;
+      }
+    </style>
+  </defs>
+  <sodipodi:namedview id="namedview1" bordercolor="#000000" borderopacity="0.25" inkscape:current-layer="g2" inkscape:cx="43.582727" inkscape:cy="83.51327" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1017" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="1912" inkscape:window-y="-8" inkscape:zoom="2.0535659" pagecolor="#ffffff" showgrid="false" showguides="true">
+    <inkscape:grid id="grid1" color="#0099e5" empcolor="#0099e5" empopacity="0.30196078" empspacing="5" enabled="true" opacity="0.14901961" originx="-57.232229" originy="-85.994408" spacingx="0.26458333" spacingy="0.26458334" units="mm" visible="false"/>
+  </sodipodi:namedview>
+  <rect id="rect1" class="st0" x="3.18" y=".08" width="53.24" height="74.57"/>
+  <g>
+    <path d="M18.06,26.42c.37,0,.74-.13,1.02-.36l21.44-17.41c.43-.35,1.02.16.74.63l-9.35,16.19c-.24.42.06.94.55.94h15.23c.27,0,.5-.22.5-.5v-5.96c0-.27-.22-.5-.5-.5h-3.41c-.38,0-.62-.41-.43-.74L54.23.74c.19-.33-.05-.74-.43-.74h-13c-.42,0-.84.15-1.17.41L8.47,25.71c-.29.24-.12.71.25.71h9.33Z"/>
+    <path d="M38.44,30.93c-.37,0-.74.13-1.02.36l-21.44,17.41c-.43.35-1.02-.16-.74-.63l9.35-16.19c.24-.42-.06-.94-.55-.94h-15.23c-.27,0-.5.22-.5.5v5.96c0,.27.22.5.5.5h3.41c.38,0,.62.41.43.74L2.27,56.6c-.19.33.05.74.43.74h13c.42,0,.84-.15,1.17-.41l31.16-25.29c.29-.24.12-.71-.25-.71h-9.33Z"/>
+  </g>
+  <g>
+    <path d="M4.78,74.79c.18,0,.36-.06.5-.18l10.52-8.54c.21-.17.5.08.36.31l-4.59,7.94c-.12.21.03.46.27.46h7.47c.13,0,.24-.11.24-.24v-2.92c0-.13-.11-.24-.24-.24h-1.67c-.19,0-.3-.2-.21-.37l5.09-8.82c.09-.16-.02-.37-.21-.37h-6.38c-.21,0-.41.07-.57.2L.07,74.44c-.14.12-.06.35.12.35h4.58Z"/>
+    <path d="M23.95,74.79h-2.77c-.43,0-.52-.22-.27-.65l6.75-11.66c.25-.43.59-.65,1.02-.65h5.99c.9,0,1.53.13,1.91.38.37.25.53.6.49,1.05-.04.45-.24.97-.59,1.57l-.48.83c-.29.5-.61.93-.96,1.28-.35.35-.76.61-1.24.77.62.07.99.34,1.13.79.13.46-.02,1.06-.46,1.82l-2.21,3.82c-.25.43-.59.65-1.02.65h-2.79c-.43,0-.52-.22-.27-.65l1.59-2.75c.16-.28.22-.47.19-.59-.03-.12-.17-.18-.43-.18h-2.52l-2.04,3.53c-.25.43-.59.65-1.02.65ZM30.23,65.07l-1.33,2.3h1.35c.31,0,.57-.08.77-.24.2-.16.37-.36.51-.6l.35-.61c.14-.24.2-.44.19-.6-.01-.16-.18-.24-.49-.24h-1.35Z"/>
+    <path d="M42.44,74.79h-4.39c-1.51,0-2.45-.3-2.83-.9-.37-.6-.2-1.52.53-2.77l3.24-5.6c.73-1.26,1.63-2.19,2.7-2.79,1.07-.6,2.36-.9,3.87-.9h4.39c.43,0,.52.22.27.65l-1.26,2.18c-.25.43-.59.65-1.02.65h-3.62c-.73,0-1.27.3-1.62.9l-2.48,4.28c-.33.58-.13.86.6.86h3.62c.43,0,.52.22.27.65l-1.24,2.14c-.25.43-.59.65-1.02.65Z"/>
+  </g>
+</svg>

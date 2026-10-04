@@ -1,0 +1,38 @@
+---
+const { records } = Astro.props;
+---
+<ol class="timeline">
+  {records.map((record) => <li class="timeline-entry">
+    <h3>{record.year}</h3>
+    <div class="milestone">
+      <p class="award"><span class="material-icon" aria-hidden="true">emoji_events</span><strong>{record.results[0]}</strong></p>
+      <p class="competition">{record.competition}</p>
+      {record.results.length > 1 && <ul class="additional-results">{record.results.slice(1).map((result) => <li>{result}</li>)}</ul>}
+    </div>
+  </li>)}
+</ol>
+<style>
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline-entry { position: relative; display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 40px; padding: 0 0 24px; }
+  .timeline-entry::before { position: absolute; top: 10px; bottom: -10px; left: 96px; width: 1px; background: var(--line); content: ''; }
+  .timeline-entry::after { position: absolute; top: 10px; left: 92px; width: 9px; height: 9px; background: var(--orange); content: ''; }
+  .timeline-entry:last-child { padding-bottom: 0; }
+  .timeline-entry:last-child::before { display: none; }
+  h3 { margin: 0; font: 700 28px/1.15 var(--display); }
+  .milestone { min-width: 0; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+  .timeline-entry:last-child .milestone { border-bottom: 0; padding-bottom: 0; }
+  .award { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 8px; }
+  .award .material-icon { flex: 0 0 auto; font-size: 24px; margin-top: 2px; }
+  .award strong { font: 700 clamp(22px, 2.3vw, 30px)/1.15 var(--display); }
+  .competition { margin: 0 0 0 36px; font-size: var(--font-label-min); line-height: 1.5; color: var(--muted-ink); }
+  .additional-results { margin: 12px 0 0 36px; padding-left: 18px; font-size: var(--font-label-min); line-height: 1.65; }
+  @media (max-width: 520px) {
+    .timeline-entry { grid-template-columns: 58px minmax(0, 1fr); gap: 24px; }
+    .timeline-entry::before { left: 68px; }
+    .timeline-entry::after { left: 64px; }
+    h3 { font-size: 22px; }
+    .award { gap: 8px; }
+    .award .material-icon { font-size: 20px; }
+    .competition, .additional-results { margin-left: 28px; }
+  }
+</style>

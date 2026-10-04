@@ -1,0 +1,53 @@
+{
+  "headline": "Partner with RoboGrinder",
+  "intro": "Connect your company with Virginia Tech students who turn classroom knowledge into working systems. Together, we build practical experience and the next generation of engineers.",
+  "packetUrl": "/packets/robogrinder-partnership-2026-2027.pdf",
+  "benefits": [
+    { "title": "Meet students ready for industry", "description": "Our members work through design reviews, manufacturing, software integration, and testing. Get to know students with practical experience for internships and early-career roles." },
+    { "title": "Build a relationship with the team", "description": "Share engineering experience through mentorship, technical conversations, and feedback. Help students understand the challenges your company solves." },
+    { "title": "Put your contribution in view", "description": "Discuss recognition through our website, team media, and competition presence. We can agree on opportunities that fit your contribution and goals." }
+  ],
+  "image": "/images/arc-2026-team.jpg",
+  "imageAlt": "RoboGrinder students and robots at a robotics competition",
+  "supportOptions": [
+    {
+      "title": "Fund the build",
+      "description": "Help cover materials, components, travel, and the other costs of a new season."
+    },
+    {
+      "title": "Share your expertise",
+      "description": "Connect students with engineers, technical mentors, and real-world feedback."
+    },
+    {
+      "title": "Equip the team",
+      "description": "Contribute tools, parts, software, or shop resources that support student projects."
+    }
+  ],
+  "partners": [
+    {
+      "name": "Bradley Department of Electrical and Computer Engineering",
+      "logo": "/images/partners/ece.svg",
+      "url": "https://ece.vt.edu/"
+    },
+    {
+      "name": "Department of Mechanical Engineering at Virginia Tech",
+      "logo": "/images/partners/mechanical-engineering.svg",
+      "url": "https://me.vt.edu/"
+    },
+    {
+      "name": "Student Engineers' Council at Virginia Tech",
+      "logo": "/images/partners/sec.png",
+      "url": "https://www.sec.vt.edu/"
+    },
+    {
+      "name": "SOLIDWORKS",
+      "logo": "/images/partners/solidworks.svg",
+      "url": "https://www.solidworks.com/"
+    },
+    {
+      "name": "Polymaker",
+      "logo": "/images/partners/polymaker.png",
+      "url": "https://polymaker.com/"
+    }
+  ]
+}

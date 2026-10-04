@@ -1,0 +1,38 @@
+{
+  "/images/partners/virginia-tech-full-color.svg": {
+    "width": 1000,
+    "height": 526,
+    "viewBox": "76 78 868 368",
+    "ratio": 2.358695652173913
+  },
+  "/images/partners/ece.svg": {
+    "width": 1000,
+    "height": 1000,
+    "viewBox": "231 389 538 222",
+    "ratio": 2.4234234234234235
+  },
+  "/images/partners/sec.png": {
+    "width": 1000,
+    "height": 349,
+    "viewBox": "0 0 1000 349",
+    "ratio": 2.865329512893983
+  },
+  "/images/partners/solidworks.svg": {
+    "width": 1000,
+    "height": 206,
+    "viewBox": "0 0 1000 206",
+    "ratio": 4.854368932038835
+  },
+  "/images/partners/mechanical-engineering.svg": {
+    "width": 1000,
+    "height": 1000,
+    "viewBox": "278 406 444 188",
+    "ratio": 2.3617021276595747
+  },
+  "/images/partners/polymaker.png": {
+    "width": 1000,
+    "height": 463,
+    "viewBox": "19 101 963 262",
+    "ratio": 3.6755725190839694
+  }
+}

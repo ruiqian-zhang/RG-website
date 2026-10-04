@@ -1,0 +1,26 @@
+---
+import members from '../content/members.json';
+import subteams from '../content/subteams.json';
+
+const memberCount = new Set(members.people.map((person) => person.name.trim().toLowerCase())).size;
+const numbers = [
+  { value: String(memberCount), label: 'Current members' },
+  { value: String(subteams.teams.length), label: 'Subteams' },
+  { value: '1', label: 'Shared mission' },
+  { value: '1st', label: '2025 RMUL North America · 3v3' },
+];
+---
+<section class="team-numbers" id="numbers" aria-labelledby="numbers-title">
+  <h2 id="numbers-title">By the numbers</h2>
+  <dl>{numbers.map((number) => <div><dt>{number.label}</dt><dd>{number.value}</dd></div>)}</dl>
+</section>
+<style>
+  .team-numbers { padding: 64px clamp(24px, 8vw, 124px); background: var(--orange); color: var(--ink); scroll-margin-top: 76px; }
+  h2 { margin: 0 0 36px; font: 700 clamp(28px, 3vw, 40px)/1.1 var(--display); }
+  dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin: 0; }
+  dl > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 16px; }
+  dt { font-size: var(--font-body-min); line-height: 1.5; color: var(--ink); }
+  dd { margin: 0; font: 700 clamp(54px, 7vw, 96px)/1 var(--display); color: var(--ink); }
+  @media (max-width: 750px) { dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; } }
+  @media (max-width: 420px) { .team-numbers { padding: 48px 23px; } dd { font-size: 56px; } }
+</style>
