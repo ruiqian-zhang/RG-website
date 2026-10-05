@@ -75,6 +75,49 @@ collections:
         file: src/content/sponsors.json
         format: json
         fields:
+          - { label: Browser title, name: pageTitle, widget: string }
+          - { label: Page description, name: pageDescription, widget: text }
+          - { label: Conversation button text, name: conversationLabel, widget: string }
+          - { label: Conversation button destination, name: conversationUrl, widget: string }
+          - { label: Packet button text, name: packetLabel, widget: string }
+          - { label: Team introduction heading, name: whoTitle, widget: text, hint: Use a new line to split the heading. }
+          - { label: Team introduction, name: whoDescription, widget: text }
+          - label: Team numbers
+            name: facts
+            widget: list
+            summary: '{{fields.label}}'
+            hint: Choose Manual to use your own value. Automatic sources stay synced with the roster or subteams. Drag entries to reorder them.
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Value source, name: source, widget: select, options: [{ label: Manual, value: manual }, { label: Current member count, value: members }, { label: Subteam count, value: subteams }], default: manual }
+              - { label: Manual value, name: value, widget: string, required: false, hint: Used when Value source is Manual. Supports numbers or text such as Top 4. }
+          - { label: Benefits heading, name: benefitsTitle, widget: string }
+          - { label: Benefits introduction, name: benefitsIntro, widget: text }
+          - { label: Text before tier link, name: benefitsPacketBefore, widget: string }
+          - { label: Tier link text, name: benefitsPacketLabel, widget: string }
+          - { label: Text after tier link, name: benefitsPacketAfter, widget: string }
+          - { label: Support heading, name: supportTitle, widget: string }
+          - { label: Support introduction, name: supportIntro, widget: text }
+          - { label: Sponsors heading, name: partnersTitle, widget: string }
+          - { label: Departmental supporters heading, name: departmentalTitle, widget: string }
+          - { label: Contact heading, name: connectTitle, widget: string }
+          - { label: Contact introduction, name: connectIntro, widget: text }
+          - label: Sponsorship form text
+            name: form
+            widget: object
+            fields:
+              - { label: Name label, name: nameLabel, widget: string }
+              - { label: Email label, name: emailLabel, widget: string }
+              - { label: Organization label, name: companyLabel, widget: string }
+              - { label: Topic label, name: topicLabel, widget: string }
+              - { label: Topic placeholder, name: topicPlaceholder, widget: string }
+              - { label: Joining option, name: joiningLabel, widget: string }
+              - { label: Sponsorship option, name: sponsorshipLabel, widget: string }
+              - { label: Collaboration option, name: collaborationLabel, widget: string }
+              - { label: Other option, name: otherLabel, widget: string }
+              - { label: Message label, name: messageLabel, widget: string }
+              - { label: Submit button, name: submitLabel, widget: string }
+              - { label: Form helper text, name: statusText, widget: text }
           - { label: Sponsorship packet PDF, name: packetUrl, widget: file }
           - label: Partnership benefits
             name: benefits
