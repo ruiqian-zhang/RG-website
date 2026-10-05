@@ -7,7 +7,9 @@ import OrangeFeature from '../components/OrangeFeature.astro';
 import ContactForm from '../components/ContactForm.astro';
 import sponsorship from '../content/sponsors.json';
 import site from '../content/site.json';
-import { teamStats } from '../lib/teamStats';
+import members from '../content/members.json';
+import subteams from '../content/subteams.json';
+const memberCount = new Set(members.people.map((person) => person.name.trim().toLowerCase())).size;
 ---
 <BaseLayout title="Partnerships | RoboGrinder at Virginia Tech" description="Partner with Virginia Tech's student-led RoboGrinder team. Connect with emerging engineering talent, share expertise, and help students build practical experience.">
   <a class="skip-link" href="#main">Skip to content</a>

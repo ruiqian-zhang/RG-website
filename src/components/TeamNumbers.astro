@@ -12,7 +12,7 @@ const numbers = [
 ---
 <section class="team-numbers" id="numbers" aria-labelledby="numbers-title">
   <h2 id="numbers-title">By the numbers</h2>
-  <dl>{teamStats.map((number) => <div><dt>{number.label}</dt><dd>{number.value}</dd></div>)}</dl>
+  <dl>{numbers.map((number) => <div><dt>{number.label}</dt><dd>{number.value}</dd></div>)}</dl>
 </section>
 <style>
   .team-numbers { padding: 64px clamp(24px, 8vw, 124px); background: var(--orange); color: var(--ink); scroll-margin-top: 76px; }
