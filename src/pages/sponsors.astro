@@ -6,6 +6,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import OurSponsors from '../components/OurSponsors.astro';
 import OrangeFeature from '../components/OrangeFeature.astro';
 import ContactForm from '../components/ContactForm.astro';
+import AnimatedStat from '../components/AnimatedStat.astro';
 import sponsorship from '../content/sponsors.json';
 import members from '../content/members.json';
 import subteams from '../content/subteams.json';
@@ -23,7 +24,7 @@ const memberCount = new Set(members.people.map((person) => person.name.trim().to
     </OrangeFeature>
     <section class="who section-shell" aria-labelledby="who-title">
       <div><h2 id="who-title">{sponsorship.whoTitle}</h2><p>{sponsorship.whoDescription}</p></div>
-      <dl class="team-facts">{sponsorship.facts.map((fact) => <div><dt>{fact.label}</dt><dd>{fact.source === 'members' ? memberCount : fact.source === 'subteams' ? subteams.teams.length : fact.value}</dd></div>)}</dl>
+      <dl class="team-facts">{sponsorship.facts.map((fact) => <div><dt>{fact.label}</dt><dd><AnimatedStat value={fact.source === 'members' ? memberCount : fact.source === 'subteams' ? subteams.teams.length : fact.value} /></dd></div>)}</dl>
     </section>
     <section class="benefits section-shell" aria-labelledby="benefits-title">
       <header><h2 id="benefits-title">{sponsorship.benefitsTitle}</h2><p>{sponsorship.benefitsIntro} {sponsorship.benefitsPacketBefore} <a href={withBase(sponsorship.packetUrl)} target="_blank" rel="noreferrer">{sponsorship.benefitsPacketLabel}</a> {sponsorship.benefitsPacketAfter}</p></header>

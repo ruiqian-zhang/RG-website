@@ -1,0 +1,58 @@
+---
+interface Props { value: string | number }
+const { value } = Astro.props;
+const text = String(value);
+const match = text.match(/^(Top\s+)?(\d+)$/i);
+const end = match ? Number(match[2]) : undefined;
+const prefix = match?.[1] || '';
+const start = prefix ? Math.max(30, end ?? 30) : 0;
+const reserve = prefix && start > (end ?? 0) ? `${prefix}${start}` : text;
+---
+<span class="stat-value" aria-label={text} data-stat-end={end} data-stat-start={start} data-stat-prefix={prefix}>
+  <span class="stat-reserve" aria-hidden="true">{reserve}</span>
+  <span class="stat-digits" aria-hidden="true">{text}</span>
+</span>
+<script>
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const active = new Map<HTMLElement, number>();
+  const finish = (element: HTMLElement) => {
+    const frame = active.get(element);
+    if (frame !== undefined) cancelAnimationFrame(frame);
+    active.delete(element);
+    const digits = element.querySelector<HTMLElement>('.stat-digits');
+    if (digits) digits.textContent = element.getAttribute('aria-label');
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const element = entry.target as HTMLElement;
+      observer.unobserve(element);
+      if (reducedMotion.matches) return;
+      const start = Number(element.dataset.statStart);
+      const end = Number(element.dataset.statEnd);
+      const prefix = element.dataset.statPrefix || '';
+      const digits = element.querySelector<HTMLElement>('.stat-digits');
+      if (!digits || start === end) return;
+      let started: number | undefined;
+      const tick = (now: number) => {
+        started ??= now;
+        const progress = Math.min((now - started) / 1400, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = start + (end - start) * eased;
+        digits.textContent = `${prefix}${end > start ? Math.floor(value) : Math.ceil(value)}`;
+        if (progress < 1) active.set(element, requestAnimationFrame(tick));
+        else finish(element);
+      };
+      active.set(element, requestAnimationFrame(tick));
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll<HTMLElement>('[data-stat-end]').forEach((element) => observer.observe(element));
+  reducedMotion.addEventListener('change', () => {
+    if (reducedMotion.matches) active.forEach((_, element) => finish(element));
+  });
+</script>
+<style>
+  .stat-value { display: inline-grid; font-variant-numeric: tabular-nums; }
+  .stat-value > span { grid-area: 1 / 1; }
+  .stat-reserve { visibility: hidden; }
+</style>
