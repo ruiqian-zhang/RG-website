@@ -1,7 +1,7 @@
 ---
-const { title, description, image, imageAlt, label, imagePosition = '62% center', imageFirstSnap = false } = Astro.props;
+const { title, description, image, imageAlt, label, imagePosition = '62% center' } = Astro.props;
 ---
-<section class:list={['orange-feature', { 'image-first-snap': imageFirstSnap }]}>
+<section class="orange-feature">
   <div class="feature-photo"><img src={image} alt={imageAlt} style={{ objectPosition: imagePosition }} loading="lazy" /></div>
   <div class="feature-copy">
     {label && <p class="feature-label">{label}</p>}

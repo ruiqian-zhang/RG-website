@@ -13,13 +13,13 @@ import sponsorship from '../content/sponsors.json';
 
 ---
 
-<BaseLayout sectionScroll darkCanvas>
+<BaseLayout>
   <a class="skip-link" href="#main">Skip to content</a>
   <SiteHeader active="Home" />
 
   <main id="main">
-    <div id="top" class="scroll-origin" aria-hidden="true"></div>
-    <section class="landing" aria-labelledby="hero-title">
+
+    <section class="landing" id="top" aria-labelledby="hero-title">
       <div class="hero-copy">
         <h1 id="hero-title">{site.headline}</h1>
         <p class="hero-intro">{site.intro}</p>
@@ -123,30 +123,21 @@ import sponsorship from '../content/sponsors.json';
       const width = Math.max(hero.clientWidth, hero.clientHeight * 16 / 9);
       video.style.width = `${width}px`;
       video.style.height = `${width * 9 / 16}px`;
-      const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 0;
-      // Allow the entire landing content to remain reachable on short screens.
-      hero.style.setProperty('--hero-sticky-top', `${Math.min(headerHeight, innerHeight - hero.offsetHeight)}px`);
     };
-    const updateHeroInteraction = () => {
-      // Covered controls must not receive keyboard focus behind the next section.
-      const nextSection = hero.nextElementSibling;
-      const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 0;
-      hero.inert = !reducedMotion.matches && !!nextSection && nextSection.getBoundingClientRect().top <= headerHeight;
-    };
-    window.addEventListener('scroll', updateHeroInteraction, { passive: true });
-    window.addEventListener('resize', () => { sizeVideo(); updateHeroInteraction(); });
-    reducedMotion.addEventListener('change', updateHeroInteraction);
+
+    window.addEventListener('resize', sizeVideo);
+
     new ResizeObserver(sizeVideo).observe(hero);
     sizeVideo();
-    updateHeroInteraction();
+
     updateToggle();
   }
 </script>
 
 <style>
-  .mission-chapter { position: relative; z-index: 1; display: grid; grid-template-rows: auto 1fr; min-height: calc(100svh - var(--header-height)); background: var(--paper); scroll-snap-align: start; scroll-margin-top: var(--header-height); }
+  .mission-chapter { background: var(--paper); }
   .mission-chapter :global(.team-numbers) { display: flex; flex-direction: column; justify-content: center; }
-  .scroll-origin { height: 0; scroll-margin-top: var(--header-height); scroll-snap-align: start; }
+
   .landing { position: relative; display: flex; align-items: center; min-height: calc(100svh - var(--header-height)); isolation: isolate; overflow: hidden; padding: 100px clamp(24px, 8vw, 124px); background: var(--orange); color: var(--paper); }
   .hero-copy { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; max-width: 680px; padding: 20px 0 35px; }
   h1, h2, h3, p { margin-top: 0; }
