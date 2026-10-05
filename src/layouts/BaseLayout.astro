@@ -46,7 +46,6 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
       <div class="site-loader-track"><span></span></div>
     </div>
     <slot />
-    <div class="ios-bottom-blur" aria-hidden="true"></div>
     <script>
       const isImageTarget = (target: EventTarget | null) => target instanceof Element
         ? target.closest('img, svg image, svg.lazy-artwork')
@@ -157,10 +156,6 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
   .site-loader-track { width: min(220px, 56vw); height: 3px; overflow: hidden; background: rgba(240,240,240,.2); }
   .site-loader-track span { display: block; width: 40%; height: 100%; background: var(--orange); transform-origin: left; animation: site-loader-progress 900ms ease-in-out infinite alternate; }
   @keyframes site-loader-progress { from { transform: translateX(-100%) scaleX(.55); } to { transform: translateX(250%) scaleX(1); } }
-  .ios-bottom-blur { display: none; }
-  @supports (-webkit-touch-callout: none) and (-webkit-backdrop-filter: blur(1px)) {
-    .ios-bottom-blur { position: fixed; z-index: 19; right: 0; bottom: 0; left: 0; display: block; height: calc(28px + env(safe-area-inset-bottom)); pointer-events: none; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 70%); mask-image: linear-gradient(to bottom, transparent, #000 70%); }
-  }
   ::selection { color: #fff; background: var(--orange); }
   :is(.orange-feature, .subteams, .team-numbers, .join, .support, .header-cta)::selection,
   :is(.orange-feature, .subteams, .team-numbers, .join, .support, .header-cta) ::selection { color: #fff; background: var(--ink); }
