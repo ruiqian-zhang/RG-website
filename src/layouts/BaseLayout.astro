@@ -1,14 +1,14 @@
 ---
 const siteTitle = 'RoboGrinder at Virginia Tech';
 const siteDescription = 'RoboGrinder brings students together to turn classroom knowledge into hands-on engineering experience through competitive robotics.';
-const { title = siteTitle, description = siteDescription, sectionScroll = true } = Astro.props;
+const { title = siteTitle, description = siteDescription, sectionScroll = true, darkCanvas = false } = Astro.props;
 ---
 <!doctype html>
-<html lang="en" class:list={{ 'section-scroll': sectionScroll }}>
+<html lang="en" class:list={{ 'section-scroll': sectionScroll, 'dark-canvas': darkCanvas }}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f0f0f0" />
+    <meta name="theme-color" content={darkCanvas ? '#000000' : '#f0f0f0'} />
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteTitle} />
@@ -77,6 +77,8 @@ const { title = siteTitle, description = siteDescription, sectionScroll = true }
   }
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; min-width: 0; font-size: var(--font-body-min); }
+  html.dark-canvas, .dark-canvas body { background: var(--ink); }
+  .dark-canvas main > .landing { min-height: calc(100dvh - var(--header-height)); }
   a { color: inherit; }
   .mobile-menu nav a { transition: color 200ms ease; }
   .mobile-menu nav a:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
@@ -95,6 +97,18 @@ const { title = siteTitle, description = siteDescription, sectionScroll = true }
   .section-scroll .seasons > section, .section-scroll .member-roster { scroll-snap-align: start; scroll-margin-top: var(--header-height); }
   .section-scroll main > .landing { position: sticky; top: var(--hero-sticky-top, var(--header-height)); z-index: 0; scroll-snap-align: none; }
   .section-scroll footer { position: relative; z-index: 1; scroll-snap-align: end; }
+  @media (max-width: 680px), (max-height: 600px) {
+    .section-scroll main > :is(.orange-feature, .join), .section-scroll .mission-chapter { scroll-snap-align: none; }
+    .section-scroll :is(.feature-copy, .join-copy, .story-heading, .team-numbers) { scroll-snap-align: start; scroll-margin-top: var(--header-height); }
+    .section-scroll .subteams-actions { scroll-snap-align: end; scroll-margin-bottom: 24px; }
+    .section-scroll :is(.feature-copy, .join-copy) { min-height: calc(100svh - var(--header-height)); padding-top: 32px; padding-bottom: 32px; }
+  }
+  @media (max-width: 680px) {
+    .section-scroll main > :is(.orange-feature, .join) { scroll-snap-align: start; }
+    .section-scroll :is(.feature-copy, .join-copy) { min-height: 0; }
+  }
+  .section-scroll main > .image-first-snap { scroll-snap-align: start; }
+  .section-scroll .image-first-snap .feature-copy { scroll-snap-align: none; }
   @media (prefers-reduced-motion: reduce) {
     html.section-scroll { scroll-snap-type: none; }
     .section-scroll main > .landing { position: relative; top: auto; }

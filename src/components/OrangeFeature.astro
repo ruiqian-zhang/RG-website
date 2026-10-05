@@ -1,7 +1,7 @@
 ---
-const { title, description, image, imageAlt, label, imagePosition = '62% center' } = Astro.props;
+const { title, description, image, imageAlt, label, imagePosition = '62% center', imageFirstSnap = false } = Astro.props;
 ---
-<section class="orange-feature">
+<section class:list={['orange-feature', { 'image-first-snap': imageFirstSnap }]}>
   <div class="feature-photo"><img src={image} alt={imageAlt} style={{ objectPosition: imagePosition }} loading="lazy" /></div>
   <div class="feature-copy">
     {label && <p class="feature-label">{label}</p>}
@@ -20,7 +20,7 @@ const { title, description, image, imageAlt, label, imagePosition = '62% center'
   .feature-label { margin-bottom: 20px; font-size: var(--font-label-min); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
   @media (max-width: 680px) {
     .orange-feature { grid-template-columns: 1fr; }
-    .feature-photo { min-height: 300px; }
-    .feature-copy { padding: 48px 23px 64px; }
+    .feature-photo { min-height: 0; aspect-ratio: 16 / 9; }
+    .feature-copy { padding: 32px 23px; }
   }
 </style>

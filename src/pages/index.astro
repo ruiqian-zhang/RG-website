@@ -13,7 +13,7 @@ import sponsorship from '../content/sponsors.json';
 
 ---
 
-<BaseLayout sectionScroll>
+<BaseLayout sectionScroll darkCanvas>
   <a class="skip-link" href="#main">Skip to content</a>
   <SiteHeader active="Home" />
 
@@ -208,7 +208,7 @@ import sponsorship from '../content/sponsors.json';
     .join-copy { padding-left: 45px; }
   }
   @media (max-width: 680px) {
-    .landing { align-items: flex-start; min-height: calc(100svh - var(--header-height)); padding: 226px 22px 90px; }
+    .landing { align-items: flex-start; min-height: calc(100svh - var(--header-height)); padding: clamp(140px, 25svh, 202px) 22px 76px; }
     .hero-copy { padding: 0; }
     .landing h1 { margin: 0 0 20px; font-size: clamp(38px, 11vw, 64px); }
     .hero-intro { max-width: 380px; margin-bottom: 23px; font-size: var(--font-body-min); }
@@ -225,8 +225,8 @@ import sponsorship from '../content/sponsors.json';
     .subteams h2 { margin-top: 0; font-size: clamp(42px, 11vw, 56px); }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
     .join { grid-template-columns: 1fr; }
-    .join-photo { min-height: 320px; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); }
-    .join-copy { min-height: 420px; padding: 58px 23px 75px; }
+    .join-photo { min-height: 0; aspect-ratio: 16 / 9; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); }
+    .join-copy { min-height: 0; padding: 32px 23px; }
     .join-copy h2 { max-width: 360px; font-size: clamp(48px, 12vw, 68px); }
     .join-copy > p { font-size: var(--font-body-min); }
   }
