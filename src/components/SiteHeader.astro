@@ -146,12 +146,14 @@ const links = [
   .mobile-menu[open] .menu-close { display: inline-block; }
   .mobile-menu nav a[aria-current="page"] { color: var(--orange); }
   .mobile-menu summary::-webkit-details-marker { display: none; }
-  .mobile-menu nav { position: absolute; top: calc(100% + 14px); right: 0; width: min(320px, calc(100vw - 32px)); padding: 0 20px; overflow: hidden; background: var(--ink); border: 1px solid rgba(240,240,240,.25); box-shadow: 0 16px 28px rgba(0,0,0,.18); }
+  .mobile-menu { --menu-dropdown-offset: 14px; }
+  .mobile-menu nav { position: absolute; top: calc(100% + var(--menu-dropdown-offset)); right: 0; width: min(320px, calc(100vw - 32px)); padding: 0 20px; overflow: hidden; background: var(--ink); border: 1px solid rgba(240,240,240,.25); box-shadow: 0 16px 28px rgba(0,0,0,.18); }
   .mobile-menu nav a { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--menu-link-color, var(--paper)); font-size: var(--font-ui-min); text-decoration: none; border-bottom: 1px solid rgba(240,240,240,.15); }
   .mobile-menu nav a:last-child { border-bottom: 0; }
   @media (max-width: 850px) {
     .site-header { height: 70px; padding: 0 24px; gap: 12px; }
     .mobile-menu { position: relative; display: block; }
+    .mobile-menu { --menu-dropdown-offset: 13px; }
     .mobile-menu nav { max-height: calc(100dvh - 90px); overflow-y: auto; }
     .mobile-menu summary { min-width: 44px; height: 44px; padding: 0; }
     .support-menu, .header-cta, .brand-copy, .primary-label, .primary-menu .dropdown-arrow { display: none; }
