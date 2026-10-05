@@ -1,10 +1,11 @@
 ---
+import { withBase } from '../lib/urls';
 const { title, description, image, imageAlt } = Astro.props;
 ---
 
 <section class="members" id="members" aria-labelledby="members-title">
-  <div><h2 id="members-title">{title}</h2><p>{description}</p><a class="button button-swipe button-dark" href="/members/">Meet the team<span class="material-icon" aria-hidden="true">chevron_right</span></a></div>
-  <img src={image} alt={imageAlt} loading="lazy" />
+  <div><h2 id="members-title">{title}</h2><p>{description}</p><a class="button button-swipe button-dark" href={withBase('/members/')}>Meet the team<span class="material-icon" aria-hidden="true">chevron_right</span></a></div>
+  <img src={withBase(image)} alt={imageAlt} loading="lazy" />
 </section>
 
 <style>

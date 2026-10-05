@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/urls';
 import frames from '../content/sponsor-artwork-frames.json';
 const { partners, departmentalTitle = 'Departmental supporters' } = Astro.props;
 const paperChannels = Array.from({ length: 256 }, (_, value) => Math.min(value, 240) / 255).join(' ');
@@ -14,8 +15,8 @@ const groups = [
   {group.departmental && <h3>{departmentalTitle}</h3>}
   <div class="sponsor-logos">
   {group.partners.map((partner) => (
-    <a class="sponsor-logo" href={partner.url || '/contact/'} target={partner.url ? '_blank' : undefined} rel={partner.url ? 'noreferrer' : undefined} aria-label={`Visit ${partner.name}`}>
-      {frames[partner.logo] && partner.logo !== '/images/partners/sec.png' ? <><svg class="lazy-artwork" viewBox={frames[partner.logo].viewBox} aria-hidden="true" style={`--sponsor-ratio: ${frames[partner.logo].ratio}`}><image data-lazy-src={partner.logo} width={frames[partner.logo].width} height={frames[partner.logo].height} preserveAspectRatio="xMidYMid meet" /></svg><noscript><img src={partner.logo} alt="" loading="lazy" /></noscript></> : <img src={partner.logo} alt="" loading="lazy" />}
+    <a class="sponsor-logo" href={withBase(partner.url || '/contact/')} target={partner.url ? '_blank' : undefined} rel={partner.url ? 'noreferrer' : undefined} aria-label={`Visit ${partner.name}`}>
+      {frames[partner.logo] && partner.logo !== '/images/partners/sec.png' ? <><svg class="lazy-artwork" viewBox={frames[partner.logo].viewBox} aria-hidden="true" style={`--sponsor-ratio: ${frames[partner.logo].ratio}`}><image data-lazy-src={withBase(partner.logo)} width={frames[partner.logo].width} height={frames[partner.logo].height} preserveAspectRatio="xMidYMid meet" /></svg><noscript><img src={withBase(partner.logo)} alt="" loading="lazy" /></noscript></> : <img src={withBase(partner.logo)} alt="" loading="lazy" />}
     </a>
   ))}
 </div>
@@ -27,7 +28,7 @@ const groups = [
   .sponsor-logo:hover { opacity: .75; }
   .sponsor-logo img { width: 100%; max-width: 340px; height: 140px; object-fit: contain; }
   .logo-color-definition { position: absolute; pointer-events: none; }
-  img[src="/images/partners/auvsi.png"] { filter: url(#auvsi-paper); }
+  img[src$="/images/partners/auvsi.png"] { filter: url(#auvsi-paper); }
   .sponsor-logo svg { display: block; width: min(100%, 340px, calc(var(--sponsor-ratio) * 140px)); aspect-ratio: var(--sponsor-ratio); overflow: hidden; }
   .departmental { margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,.2); }
   .departmental h3 { margin: 0 0 28px; text-align: center; font: 700 24px/1.2 var(--display); }

@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: YOUR_GITHUB_OWNER/YOUR_REPOSITORY
+  repo: ruiqian-zhang/RG-website
   branch: main
   base_url: https://YOUR_OAUTH_HOST
 

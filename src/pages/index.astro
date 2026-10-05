@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/urls';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -24,7 +25,7 @@ import sponsorship from '../content/sponsors.json';
         <h1 id="hero-title">{site.headline}</h1>
         <p class="hero-intro">{site.intro}</p>
         <div class="hero-actions">
-          <a class="button button-swipe button-light" href={site.joinLink}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+          <a class="button button-swipe button-light" href={withBase(site.joinLink)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
         </div>
       </div>
       <div class="hero-background" aria-hidden="true">
@@ -33,7 +34,7 @@ import sponsorship from '../content/sponsors.json';
           title="RoboGrinder background footage" allow="autoplay; encrypted-media"></iframe>
       </div>
       <div class="anniversary-banner" aria-label={`Celebrating 10 years, ${site.founded} to ${site.anniversaryYear}`}>
-        <img src="/images/rg-white.png" alt="" width="48" height="48" loading="lazy" />
+        <img src={withBase('/images/rg-white.png')} alt="" width="48" height="48" loading="lazy" />
         <span class="banner-label">CELEBRATING</span>
         <strong>10</strong><span class="banner-band">YEARS</span>
         <span class="banner-dates">{site.founded}<br />{site.anniversaryYear}</span>
@@ -49,7 +50,7 @@ import sponsorship from '../content/sponsors.json';
         <p class="story-context">{site.missionContext}</p>
       </div>
       <figure class="story-photo">
-        <img src={site.teamImage} alt={site.teamImageAlt} loading="lazy" />
+        <img src={withBase(site.teamImage)} alt={site.teamImageAlt} loading="lazy" />
       </figure>
     </section>
 
@@ -66,7 +67,7 @@ import sponsorship from '../content/sponsors.json';
       <div class="team-grid">
         {subteams.teams.map((team) => (
           <article class="team-card">
-            <img src={team.image} alt={team.imageAlt} loading="lazy" width="1600" height="1000" />
+            <img src={withBase(team.image)} alt={team.imageAlt} loading="lazy" width="1600" height="1000" />
             <h3>{team.name}</h3>
             <p>{team.summary}</p>
           </article>
@@ -74,7 +75,7 @@ import sponsorship from '../content/sponsors.json';
       </div>
       <div class="subteams-actions">
         <p class="discipline-note">Students from every major are welcome.</p>
-        <a class="button button-swipe button-dark" href="/members/">Meet the team<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        <a class="button button-swipe button-dark" href={withBase('/members/')}>Meet the team<span class="material-icon" aria-hidden="true">chevron_right</span></a>
       </div>
     </section>
 
@@ -83,11 +84,11 @@ import sponsorship from '../content/sponsors.json';
     <OurSponsors partners={sponsorship.partners} showCta={true} />
 
     <section class="join" id="join" aria-labelledby="join-title">
-      <div class="join-photo"><img src={site.joinImage} alt={site.joinImageAlt} loading="lazy" /></div>
+      <div class="join-photo"><img src={withBase(site.joinImage)} alt={site.joinImageAlt} loading="lazy" /></div>
       <div class="join-copy">
         <h2 id="join-title">{site.joinTitle}</h2>
         <p>{site.joinCopy}</p>
-        <a class="button button-swipe button-dark" href={site.joinLink}>{site.joinLabel}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        <a class="button button-swipe button-dark" href={withBase(site.joinLink)}>{site.joinLabel}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
       </div>
       <span class="join-cut" aria-hidden="true"></span>
     </section>

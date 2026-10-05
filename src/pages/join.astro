@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/urls';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -10,11 +11,11 @@ import site from '../content/site.json';
   <SiteHeader active="Join" />
   <main id="main">
     <OrangeFeature title="Your next chapter starts here." description="Thanks for your interest in RoboGrinder! Applications for the 2026–2027 season are closed, but we’d love to meet you next fall when recruitment opens again." image="/images/join-gobblerfest.webp" imageAlt="RoboGrinder members smiling with their robot at Gobblerfest" imagePosition="50% 30%">
-      <a class="button button-swipe button-dark" href="/#subteams">Explore our subteams<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+      <a class="button button-swipe button-dark" href={withBase('/#subteams')}>Explore our subteams<span class="material-icon" aria-hidden="true">chevron_right</span></a>
     </OrangeFeature>
     <section class="next-season">
-      <div><h2>Stay on the grind.</h2><p>Follow our latest builds and competition updates, cheer us on during matches, and help support the team throughout the season.</p><div class="support-actions"><a class="button button-swipe button-dark" href="/sponsors/">Support the team<span class="material-icon" aria-hidden="true">chevron_right</span></a><a class="button button-swipe button-dark" href={site.linktreeUrl} target="_blank" rel="noreferrer">Linktree<span class="material-icon" aria-hidden="true">chevron_right</span></a></div></div>
-      <img src="/images/interest-meeting-software.webp" alt="RoboGrinder students sharing ideas around a laptop at an interest meeting" loading="lazy" width="1600" height="1067" />
+      <div><h2>Stay on the grind.</h2><p>Follow our latest builds and competition updates, cheer us on during matches, and help support the team throughout the season.</p><div class="support-actions"><a class="button button-swipe button-dark" href={withBase('/sponsors/')}>Support the team<span class="material-icon" aria-hidden="true">chevron_right</span></a><a class="button button-swipe button-dark" href={withBase(site.linktreeUrl)} target="_blank" rel="noreferrer">Linktree<span class="material-icon" aria-hidden="true">chevron_right</span></a></div></div>
+      <img src={withBase('/images/interest-meeting-software.webp')} alt="RoboGrinder students sharing ideas around a laptop at an interest meeting" loading="lazy" width="1600" height="1067" />
     </section>
   </main>
   <SiteFooter />

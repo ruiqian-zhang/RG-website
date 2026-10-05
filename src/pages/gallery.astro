@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/urls';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -16,7 +17,7 @@ import gallery from '../content/gallery.json';
       {gallery.seasons.map((season) => <section class="season">
         <header><h2>{season.title}</h2><p>{season.description}</p></header>
         <div class="photo-grid">{season.photos.map((photo) => <figure>
-          <button class="photo-preview" type="button" data-image={photo.image} data-caption={photo.caption} aria-label={`View photo: ${photo.caption}`} aria-haspopup="dialog"><img src={photo.image} alt={photo.caption} loading="lazy" width="1600" height="1067" /></button>
+          <button class="photo-preview" type="button" data-image={withBase(photo.image)} data-caption={photo.caption} aria-label={`View photo: ${photo.caption}`} aria-haspopup="dialog"><img src={withBase(photo.image)} alt={photo.caption} loading="lazy" width="1600" height="1067" /></button>
           <figcaption>{photo.caption}</figcaption>
         </figure>)}</div>
       </section>)}

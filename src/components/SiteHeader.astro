@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/urls';
 import site from '../content/site.json';
 import ConnectSocialLinks from './ConnectSocialLinks.astro';
 const { active = 'Home' } = Astro.props;
@@ -14,23 +15,23 @@ const links = [
 
 <div class="header-shell">
   <header class="site-header">
-    <a class="brand" href="/" aria-label="RoboGrinder home">
-      <img src="/images/rg-white.png" alt="" loading="lazy" />
+    <a class="brand" href={withBase('/')} aria-label="RoboGrinder home">
+      <img src={withBase('/images/rg-white.png')} alt="" loading="lazy" />
     </a>
     <div class="header-controls">
     <details class="mobile-menu primary-menu" data-disclosure>
       <summary aria-label="Open About us menu"><span class="primary-label">About us</span><span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span><span class="material-icon burger-icon" aria-hidden="true">menu</span><span class="material-icon burger-close" aria-hidden="true">close</span></summary>
       <nav aria-label="Main navigation">
-        {links.map((link) => <a class:list={[['Sponsors & Partners', 'Contact us'].includes(link.label) && 'mobile-only']} href={link.href} aria-current={active === link.active && link.label !== 'Subteams' ? 'page' : undefined}>{link.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>)}
-        <a class="mobile-only" href={site.joinLink}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        {links.map((link) => <a class:list={[['Sponsors & Partners', 'Contact us'].includes(link.label) && 'mobile-only']} href={withBase(link.href)} aria-current={active === link.active && link.label !== 'Subteams' ? 'page' : undefined}>{link.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>)}
+        <a class="mobile-only" href={withBase(site.joinLink)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
         <ConnectSocialLinks mobileOnly />
       </nav>
     </details>
     <details class="mobile-menu support-menu" data-disclosure>
       <summary aria-label="Open Connect menu">Connect<span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span></summary>
-      <nav aria-label="Connect"><a href="/sponsors/" aria-current={active === 'Sponsors' ? 'page' : undefined}>Sponsors &amp; Partners<span class="material-icon" aria-hidden="true">chevron_right</span></a><a href="/contact/" aria-current={active === 'Contact' ? 'page' : undefined}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a><ConnectSocialLinks /></nav>
+      <nav aria-label="Connect"><a href={withBase('/sponsors/')} aria-current={active === 'Sponsors' ? 'page' : undefined}>Sponsors &amp; Partners<span class="material-icon" aria-hidden="true">chevron_right</span></a><a href={withBase('/contact/')} aria-current={active === 'Contact' ? 'page' : undefined}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a><ConnectSocialLinks /></nav>
     </details>
-    <a class="header-cta button-swipe" href={site.joinLink}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+    <a class="header-cta button-swipe" href={withBase(site.joinLink)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
     </div>
   </header>
 </div>

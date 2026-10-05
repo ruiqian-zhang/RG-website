@@ -15,6 +15,29 @@ npm run dev
 
 Open the local address printed by Astro (normally `http://localhost:4321`).
 
+## GitHub Pages deployment
+
+The repository is `ruiqian-zhang/RG-website`. Its default Pages address is
+`https://ruiqian-zhang.github.io/RG-website/`.
+
+1. Open repository **Settings → Pages** and select **GitHub Actions** under **Build and deployment → Source**.
+2. Commit and push these setup changes to `main`.
+3. Open **Actions → Deploy Astro to GitHub Pages** and wait for the deployment. Future pushes to `main` rebuild the website automatically. You can also use **Run workflow**.
+
+The workflow installs dependencies with `npm ci`, builds Astro, and uploads only `dist/`. GitHub's Pages metadata supplies `SITE_URL` and `SITE_BASE`, supporting either the repository path or a configured custom domain. Local development stays at `/`. Local links and artwork use `src/lib/urls.ts` to respect the deployment path; use `withBase()` when adding new root-relative URLs.
+
+To build and preview the default Pages path in PowerShell:
+
+```powershell
+$env:SITE_BASE = '/RG-website'
+npm run build
+npm run preview
+```
+
+Visit the printed preview origin with `/RG-website/` appended. Remove the variable afterward with `Remove-Item Env:SITE_BASE` to return to ordinary local builds.
+
+GitHub Pages serves static files. The contact form uses the visitor's email app. CMS login needs a separate GitHub OAuth provider; configure its host in `public/admin/config.yml` before using the CMS online. Never put OAuth client secrets in this repository.
+
 ## Content management
 
 The admin app is served from `public/admin/`. Before deploying it:

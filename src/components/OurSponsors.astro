@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/urls';
 import SponsorLogos from './SponsorLogos.astro';
 const { partners, id = 'supporters', showCta = false, title = 'Our sponsors', departmentalTitle = 'Departmental supporters' } = Astro.props;
 const headingId = `${id}-title`;
@@ -8,7 +9,7 @@ const headingId = `${id}-title`;
   <SponsorLogos partners={partners} departmentalTitle={departmentalTitle} />
   {showCta && <div class="partner-cta">
     <h3>Interested in partnering with us?</h3>
-    <a class="button button-swipe button-dark" href="/sponsors/">Sponsor us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+    <a class="button button-swipe button-dark" href={withBase('/sponsors/')}>Sponsor us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
   </div>}
 </section>
 <style>

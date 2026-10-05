@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/urls';
 import site from '../content/site.json';
 import ProfileIcon from './ProfileIcon.astro';
 const { mobileOnly = false } = Astro.props;
@@ -6,11 +7,11 @@ const gobbler = site.socialLinks.find((link) => link.name === 'GobblerConnect');
 const socials = site.socialLinks.filter((link) => link.name !== 'GobblerConnect');
 ---
 <div class:list={['connect-extras', mobileOnly && 'mobile-only']}>
-  {gobbler && <a class="menu-link" href={gobbler.url} target="_blank" rel="noreferrer">GobblerConnect<span class="material-icon" aria-hidden="true">open_in_new</span></a>}
+  {gobbler && <a class="menu-link" href={withBase(gobbler.url)} target="_blank" rel="noreferrer">GobblerConnect<span class="material-icon" aria-hidden="true">open_in_new</span></a>}
   <div class="social-group" role="group" aria-label="Social media">
     <p>Social media</p>
-    <div class="social-links">{socials.map((link) => <a class="icon-button" href={link.url} target="_blank" rel="noreferrer" aria-label={link.name} title={link.name}><ProfileIcon name={link.name} /></a>)}</div>
-    <a class="menu-link" href={site.linktreeUrl} target="_blank" rel="noreferrer">All social links<span class="material-icon" aria-hidden="true">open_in_new</span></a>
+    <div class="social-links">{socials.map((link) => <a class="icon-button" href={withBase(link.url)} target="_blank" rel="noreferrer" aria-label={link.name} title={link.name}><ProfileIcon name={link.name} /></a>)}</div>
+    <a class="menu-link" href={withBase(site.linktreeUrl)} target="_blank" rel="noreferrer">All social links<span class="material-icon" aria-hidden="true">open_in_new</span></a>
   </div>
 </div>
 <style>
