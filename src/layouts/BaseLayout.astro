@@ -7,7 +7,7 @@ const { title = siteTitle, description = siteDescription, sectionScroll = true, 
 <html lang="en" class:list={{ 'section-scroll': sectionScroll, 'dark-canvas': darkCanvas }}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content={darkCanvas ? 'width=device-width, initial-scale=1, viewport-fit=cover' : 'width=device-width, initial-scale=1'} />
     <meta name="theme-color" content={darkCanvas ? '#000000' : '#f0f0f0'} />
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
@@ -78,7 +78,15 @@ const { title = siteTitle, description = siteDescription, sectionScroll = true, 
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; min-width: 0; font-size: var(--font-body-min); }
   html.dark-canvas, .dark-canvas body { background: var(--ink); }
+  html.dark-canvas { --header-height: calc(76px + env(safe-area-inset-top, 0px)); }
+  .dark-canvas .site-header { height: var(--header-height); padding-top: env(safe-area-inset-top, 0px); padding-left: max(clamp(24px, 6vw, 92px), env(safe-area-inset-left, 0px)); padding-right: max(clamp(24px, 6vw, 92px), env(safe-area-inset-right, 0px)); }
   .dark-canvas main > .landing { min-height: calc(100dvh - var(--header-height)); }
+  .dark-canvas .video-toggle { bottom: calc(22px + env(safe-area-inset-bottom, 0px)); }
+  .dark-canvas .site-footer { padding-bottom: max(28px, env(safe-area-inset-bottom, 0px)); }
+  @media (max-width: 850px) {
+    html.dark-canvas { --header-height: calc(70px + env(safe-area-inset-top, 0px)); }
+    .dark-canvas .site-header { padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+  }
   a { color: inherit; }
   .mobile-menu nav a { transition: color 200ms ease; }
   .mobile-menu nav a:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
