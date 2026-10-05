@@ -91,6 +91,7 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
     --header-height: 64px;
     --scroll-header-offset: var(--measured-header-height, var(--header-height));
     --orange: #ed721e;
+    --orange-action: #a84400; /* White and paper text remain readable on action fills. */
     --ink: #000000;
     --paper: #f0f0f0;
     --muted-ink: rgba(0,0,0,.68);
@@ -134,11 +135,11 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
   .button-swipe { --hover-fill: var(--paper); --hover-ink: var(--ink); position: relative; isolation: isolate; overflow: hidden; transition: color 250ms ease; }
   .button-swipe::before { position: absolute; inset: 0; z-index: -1; content: ''; background: var(--hover-fill); transform: scaleX(0); transform-origin: left; transition: transform 250ms ease; }
   .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 12px; padding: 0 18px; border: 0; font: 700 var(--font-ui-min) var(--body); text-decoration: none; cursor: pointer; }
-  .button-dark { background: var(--ink); color: var(--paper); --hover-fill: var(--orange); --hover-ink: var(--paper); }
+  .button-dark { background: var(--ink); color: var(--paper); --hover-fill: var(--orange-action); --hover-ink: var(--paper); }
   .orange-feature .button-dark { --hover-fill: var(--paper); --hover-ink: var(--ink); }
   .button-light { --hover-fill: var(--ink); --hover-ink: var(--paper); }
   .subteams-actions .button-dark { --hover-fill: var(--paper); --hover-ink: var(--ink); }
-  .landing .button-light { --hover-fill: var(--orange); --hover-ink: var(--paper); }
+  .landing .button-light { --hover-fill: var(--orange-action); --hover-ink: var(--paper); }
   .join .button-dark, .header-cta, .contact-form .button-dark { --hover-fill: var(--paper); --hover-ink: var(--ink); }
   .button-accent { --hover-fill: var(--ink); --hover-ink: var(--paper); }
   @media (hover: hover) and (pointer: fine) {
@@ -159,15 +160,16 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
   .site-loader-track { width: min(220px, 56vw); height: 3px; overflow: hidden; background: rgba(240,240,240,.2); }
   .site-loader-track span { display: block; width: 40%; height: 100%; background: var(--orange); transform-origin: left; animation: site-loader-progress 900ms ease-in-out infinite alternate; }
   @keyframes site-loader-progress { from { transform: translateX(-100%) scaleX(.55); } to { transform: translateX(250%) scaleX(1); } }
-  ::selection { color: #fff; background: var(--orange); }
+  ::selection { color: #fff; background: var(--orange-action); }
   :is(.orange-feature, .subteams, .team-numbers, .join, .support, .header-cta)::selection,
   :is(.orange-feature, .subteams, .team-numbers, .join, .support, .header-cta) ::selection { color: #fff; background: var(--ink); }
   :is(.orange-feature, .subteams, .team-numbers, .join, .support) .button-dark::selection,
-  :is(.orange-feature, .subteams, .team-numbers, .join, .support) .button-dark ::selection { color: #fff; background: var(--orange); }
+  :is(.orange-feature, .subteams, .team-numbers, .join, .support) .button-dark ::selection { color: #fff; background: var(--orange-action); }
   :focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
   :is(.button, .header-cta, .icon-button):focus-visible { outline-offset: -4px; }
   .button-dark:focus-visible { outline-color: var(--paper); }
   .header-shell :focus-visible, .site-footer :focus-visible { outline-color: var(--orange); }
+  .header-cta:focus-visible { outline-color: #fff; }
   .material-icon { font-family: 'Material Icons Round'; font-weight: normal; font-style: normal; font-size: 22px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; }
   @media (max-width: 850px) { :root { --header-height: 60px; } }
   @media (max-width: 680px) {
