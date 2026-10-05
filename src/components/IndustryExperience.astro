@@ -39,7 +39,7 @@ const rows = Array.from({ length: 3 }, (_, index) => {
               {Array.from({ length: 5 }, () => row).flat().map((company, logoIndex) => {
                   const frame = logoFrames[company.slug as keyof typeof logoFrames];
                   const label = !duplicate && logoIndex < row.length ? company.name : undefined;
-                  return <li class="industry-logo" data-brand={company.slug} style={`--logo-ratio: ${frame?.ratio ?? 2.5}`}>
+                  return <li class="industry-logo" data-brand={company.slug} data-repeat={duplicate || logoIndex >= row.length ? 'true' : undefined} style={`--logo-ratio: ${frame?.ratio ?? 2.5}`}>
                     <svg class="lazy-artwork" viewBox={frame?.viewBox ?? '0 0 1000 400'} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'}>
                       <image href={withBase(company.logo)} xlink:href={withBase(company.logo)} width={frame?.width ?? 1000} height={frame?.height ?? 400} preserveAspectRatio="xMidYMid meet" />
                     </svg>
@@ -53,11 +53,20 @@ const rows = Array.from({ length: 3 }, (_, index) => {
     ))}
   </div>
   <div class="industry-actions">
+    <button class="button button-swipe button-light marquee-toggle" type="button" aria-pressed="false"><span class="material-icon" aria-hidden="true">pause</span><span class="toggle-label">Pause logos</span></button>
     <a class="button button-swipe button-dark" href={withBase(site.joinLink)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
   </div>
 </section>
 
 <script>
+  const industry = document.querySelector<HTMLElement>('.industry');
+  const logoToggle = industry?.querySelector<HTMLButtonElement>('.marquee-toggle');
+  logoToggle?.addEventListener('click', () => {
+    const paused = industry!.classList.toggle('logos-paused');
+    logoToggle.setAttribute('aria-pressed', String(paused));
+    logoToggle.querySelector('.toggle-label')!.textContent = paused ? 'Play logos' : 'Pause logos';
+    logoToggle.querySelector('.material-icon')!.textContent = paused ? 'play_arrow' : 'pause';
+  });
   document.querySelectorAll<SVGImageElement>('.industry-logo image').forEach((image) => {
     const removeUnavailableLogo = () => {
       const brand = image.closest<HTMLElement>('.industry-logo')?.dataset.brand;
@@ -78,6 +87,8 @@ const rows = Array.from({ length: 3 }, (_, index) => {
   .industry-copy p { max-width: 740px; margin: 0 auto; color: var(--muted-ink); font-size: var(--font-body-min); line-height: 1.75; }
   .marquees { display: grid; gap: 24px; }
   .industry-actions { display: flex; justify-content: center; gap: 16px; margin-top: 40px; padding: 0 24px; }
+  .marquee-toggle { border: 1px solid var(--ink); background: var(--paper); color: var(--ink); --hover-fill: var(--ink); --hover-ink: var(--paper); cursor: pointer; }
+  .logos-paused .marquee-track { animation-play-state: paused; }
   .marquee { position: relative; width: 100%; overflow: hidden; }
   .marquee::before, .marquee::after { position: absolute; z-index: 1; top: 0; bottom: 0; width: clamp(24px, 6vw, 90px); content: ''; pointer-events: none; }
   .marquee::before { left: 0; background: linear-gradient(90deg, var(--paper), transparent); }
@@ -99,5 +110,10 @@ const rows = Array.from({ length: 3 }, (_, index) => {
     .marquees { gap: 16px; }
     .marquee-list { gap: 48px; padding: 16px 24px; }
     .industry-logo { width: min(170px, calc(var(--logo-ratio) * 48px)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-toggle, .marquee-list[aria-hidden="true"], .industry-logo[data-repeat="true"], .marquee::before, .marquee::after { display: none; }
+    .marquee-track { width: 100%; transform: none; animation: none; }
+    .marquee-list { width: 100%; flex-wrap: wrap; justify-content: center; gap: 32px; padding: 20px 24px; }
   }
 </style>
