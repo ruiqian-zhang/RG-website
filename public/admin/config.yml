@@ -19,14 +19,6 @@ collections:
         file: src/content/site.json
         format: json
         fields:
-          - label: Team details
-            name: team
-            widget: object
-            fields:
-              - { label: Team name, name: name, widget: string }
-              - { label: University, name: university, widget: string }
-              - { label: Founded, name: founded, widget: string }
-              - { label: Anniversary year, name: anniversaryYear, widget: string }
           - label: Recruiting season
             name: recruitment
             widget: object
@@ -34,6 +26,10 @@ collections:
               - { label: Recruiting is open, name: open, widget: boolean, default: false, hint: 'On: navbar and hero use the Join action. Off: both use the Support action.' }
               - { label: Join button text, name: joinLabel, widget: string }
               - { label: Join link, name: joinUrl, widget: string }
+              - { label: Application button text, name: applicationLabel, widget: string }
+              - { label: Application form URL, name: applicationUrl, widget: string, hint: Destination for the Join page button when recruiting is open. }
+              - { label: Join page message when open, name: openDescription, widget: text }
+              - { label: Join page message when closed, name: closedDescription, widget: text }
               - { label: Support button text, name: supportLabel, widget: string }
               - { label: Support link, name: supportUrl, widget: string }
           - label: Hero
@@ -41,6 +37,15 @@ collections:
             widget: object
             fields:
               - { label: Headline, name: headline, widget: text, hint: Use a new line to control the headline breaks. }
+              - label: Anniversary banner
+                name: anniversaryBanner
+                widget: object
+                fields:
+                  - { label: Show banner, name: enabled, widget: boolean, default: true }
+                  - { label: Team name, name: teamName, widget: string, hint: Used in the accessible banner description. }
+                  - { label: University, name: university, widget: string, hint: Used in the accessible banner description. }
+                  - { label: Founded, name: founded, widget: string }
+                  - { label: Anniversary year, name: anniversaryYear, widget: string, hint: The displayed year count is calculated from this year minus the founding year. }
               - { label: Introduction, name: intro, widget: text }
               - { label: Video source, name: videoSource, widget: select, options: [{ label: YouTube, value: youtube }, { label: Uploaded file, value: file }], default: youtube }
               - { label: YouTube video ID, name: videoId, widget: string, required: false, hint: Used when Video source is YouTube. }

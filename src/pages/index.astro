@@ -15,6 +15,8 @@ import sponsorship from '../content/sponsors.json';
 
 const localVideo = site.hero.videoSource === 'file';
 const videoEnabled = site.hero.videoEnabled && Boolean(localVideo ? site.hero.videoFile : site.hero.videoId);
+const banner = site.hero.anniversaryBanner;
+const anniversaryYears = Math.max(0, Number(banner.anniversaryYear) - Number(banner.founded));
 ---
 
 <BaseLayout>
@@ -46,12 +48,12 @@ const videoEnabled = site.hero.videoEnabled && Boolean(localVideo ? site.hero.vi
           data-src={`https://www.youtube-nocookie.com/embed/${site.hero.videoId}?autoplay=1&mute=1&loop=1&playlist=${site.hero.videoId}&playsinline=1&rel=0&controls=0&disablekb=1&enablejsapi=1`}
           title="RoboGrinder background footage" allow="autoplay; encrypted-media"></iframe>)}
       </div>
-      <div class="anniversary-banner" aria-label={`Celebrating 10 years, ${site.team.founded} to ${site.team.anniversaryYear}`}>
+      {banner.enabled && <div class="anniversary-banner" aria-label={`${banner.teamName} at ${banner.university}: celebrating ${anniversaryYears} years, ${banner.founded} to ${banner.anniversaryYear}`}>
         <img src={withBase('/images/rg-white.png')} alt="" width="48" height="48" loading="lazy" />
         <span class="banner-label">CELEBRATING</span>
-        <strong>10</strong><span class="banner-band">YEARS</span>
-        <span class="banner-dates">{site.team.founded}<br />{site.team.anniversaryYear}</span>
-      </div>
+        <strong>{anniversaryYears}</strong><span class="banner-band">YEARS</span>
+        <span class="banner-dates">{banner.founded}<br />{banner.anniversaryYear}</span>
+      </div>}
       {videoEnabled && <button class="button button-swipe button-light video-toggle" type="button" aria-label="Pause video" aria-pressed="false"><span class="material-icon" aria-hidden="true">pause</span></button>}
     </section>
 
@@ -104,15 +106,28 @@ const videoEnabled = site.hero.videoEnabled && Boolean(localVideo ? site.hero.vi
     let paused = reducedMotion.matches;
     let started = false;
     let revealScheduled = false;
+    let resumeWithoutDelay = false;
+    let revealedOnce = false;
     let revealTimer: number | undefined;
     const revealVideo = () => {
+      if (paused) return;
+      if (resumeWithoutDelay || revealedOnce) {
+        window.clearTimeout(revealTimer);
+        hero.classList.add('video-playing');
+        revealedOnce = true;
+        return;
+      }
       if (revealScheduled) return;
       revealScheduled = true;
-      revealTimer = window.setTimeout(() => hero.classList.add('video-playing'), Number(hero.dataset.videoRevealDelay) || 0);
+      revealTimer = window.setTimeout(() => {
+        if (paused) return;
+        hero.classList.add('video-playing');
+        revealedOnce = true;
+      }, Number(hero.dataset.videoRevealDelay) || 0);
     };
     const playFile = () => {
       if (!(video instanceof HTMLVideoElement)) return;
-      video.play().catch(() => { paused = true; updateToggle(); });
+      video.play().catch(() => { paused = true; hero.classList.remove('video-playing'); updateToggle(); });
     };
     if (video instanceof HTMLVideoElement) {
       video.addEventListener('playing', revealVideo);
@@ -170,6 +185,14 @@ const videoEnabled = site.hero.videoEnabled && Boolean(localVideo ? site.hero.vi
     };
     const setPlayback = (pause: boolean) => {
       paused = pause;
+      hero.classList.toggle('video-paused', paused);
+      if (paused) {
+        window.clearTimeout(revealTimer);
+        revealScheduled = false;
+        hero.classList.remove('video-playing');
+      } else {
+        resumeWithoutDelay = true;
+      }
       if (!paused) startVideo();
       if (video instanceof HTMLVideoElement) {
         if (paused) video.pause(); else playFile();
@@ -235,6 +258,7 @@ const videoEnabled = site.hero.videoEnabled && Boolean(localVideo ? site.hero.vi
   .hero-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .hero-video { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 0; opacity: 0; transition: opacity 300ms ease; }
   .video-playing .hero-video { opacity: 1; }
+  .video-paused .hero-video { opacity: 0; transition: none; }
   .hero-video-file { inset: 0; width: 100%; height: 100%; transform: none; object-fit: cover; }
   .video-toggle[hidden] { display: none; }
   .anniversary-banner { position: absolute; top: 0; right: clamp(24px, 8vw, 124px); width: 126px; height: 246px; padding: 22px 10px 30px; display: flex; flex-direction: column; align-items: center; background: var(--ink); color: var(--paper); clip-path: polygon(0 0,100% 0,100% 88%,50% 100%,0 88%); }

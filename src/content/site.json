@@ -1,14 +1,12 @@
 {
-  "team": {
-    "name": "RoboGrinder",
-    "university": "Virginia Tech",
-    "founded": "2016",
-    "anniversaryYear": "2026"
-  },
   "recruitment": {
     "open": false,
     "joinLabel": "Join us",
     "joinUrl": "/join/",
+    "applicationLabel": "Application forms",
+    "applicationUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "openDescription": "Applications are open! Students from every major are welcome. Apply to join a subteam and help build our next fleet.",
+    "closedDescription": "Thanks for your interest in RoboGrinder! Applications for the 2026–2027 season are closed, but we’d love to meet you next fall when recruitment opens again.",
     "supportLabel": "Support us",
     "supportUrl": "/sponsors/"
   },
@@ -20,7 +18,14 @@
     "videoFile": "",
     "poster": "/images/robot-competition-2019.jpg",
     "videoEnabled": true,
-    "videoRevealDelayMs": 2000
+    "videoRevealDelayMs": 2000,
+    "anniversaryBanner": {
+      "enabled": true,
+      "teamName": "RoboGrinder",
+      "university": "Virginia Tech",
+      "founded": "2016",
+      "anniversaryYear": "2026"
+    }
   },
   "mission": {
     "title": "Our mission",

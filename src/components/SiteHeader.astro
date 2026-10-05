@@ -25,14 +25,14 @@ const links = [
       <summary aria-label="Open About us menu"><span class="primary-label">About us</span><span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span><span class="material-icon burger-icon" aria-hidden="true">menu</span><span class="material-icon burger-close" aria-hidden="true">close</span></summary>
       <nav aria-label="Main navigation">
         {links.map((link) => <a class:list={[['Sponsors & Partners', 'Contact us'].includes(link.label) && 'mobile-only']} href={withBase(link.href)} aria-current={active === link.active && link.label !== 'Subteams' ? 'page' : undefined}>{link.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>)}
-        {site.recruitment.open && <a class="mobile-only" href={withBase(primaryAction.href)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>}
+        <a class="mobile-only" href={withBase(site.recruitment.joinUrl)} aria-current={active === 'Join' ? 'page' : undefined}>{site.recruitment.joinLabel}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
         <ConnectSocialLinks mobileOnly />
       </nav>
     </details>
     <details class="mobile-menu support-menu" data-disclosure>
       <summary aria-label="Open Connect menu">Connect<span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span></summary>
       <nav aria-label="Connect">
-        <a href={withBase(site.recruitment.joinUrl)} aria-current={active === 'Join' ? 'page' : undefined}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        <a href={withBase(site.recruitment.joinUrl)} aria-current={active === 'Join' ? 'page' : undefined}>{site.recruitment.joinLabel}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
         <a href={withBase('/sponsors/')} aria-current={active === 'Sponsors' ? 'page' : undefined}>Sponsors &amp; Partners<span class="material-icon" aria-hidden="true">chevron_right</span></a>
         <a href={withBase('/contact/')} aria-current={active === 'Contact' ? 'page' : undefined}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
         <ConnectSocialLinks />

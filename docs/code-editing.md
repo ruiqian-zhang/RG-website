@@ -6,7 +6,9 @@ Astro frontmatter (between `---` lines) holds imports, editable display settings
 
 Set `recruitment.open` in `src/content/site.json` to `true` for recruiting season or `false` when recruiting is closed. In the CMS, use **Landing page → Homepage content → Recruiting season → Recruiting is open**.
 
-The navbar and hero share `src/lib/season.ts`: `true` uses `recruitment.joinLabel` and `recruitment.joinUrl`; `false` uses `recruitment.supportLabel` and `recruitment.supportUrl`. The navbar has one seasonal primary button. Edit the Join page's application information in `src/pages/join.astro` when opening a new recruiting season.
+The standalone navbar CTA and homepage hero share `src/lib/season.ts`: `true` uses `recruitment.joinLabel` and `recruitment.joinUrl`; `false` uses `recruitment.supportLabel` and `recruitment.supportUrl`. The Connect dropdown, footer, industry section, and lower homepage Join section always link to the Join page, regardless of recruitment status.
+
+On `/join/`, `true` shows **Application forms** using `recruitment.applicationLabel` and `recruitment.applicationUrl`. Replace the temporary Rickroll link with your actual form URL before opening recruiting. `false` shows **Explore our subteams**. Edit `recruitment.openDescription` and `closedDescription` for the matching Join page messages. The lower homepage Join section always uses `join.title` and `join.description`. Sponsor-specific links still lead to sponsors in both seasons.
 
 ## Site settings
 
@@ -14,13 +16,14 @@ The navbar and hero share `src/lib/season.ts`: `true` uses `recruitment.joinLabe
 
 | Group | What to edit |
 | --- | --- |
-| `team` | Name, university, founding year, anniversary year |
 | `recruitment` | Open/closed toggle, shared Join and Support button text and destinations |
 | `hero` | Headline, introduction, YouTube ID, loading photo, delay before fading into playback |
 | `mission` | Heading, tagline, description, photo, photo alt text |
 | `join` | Lower-page joining section copy, photo, photo alt text |
 | `contact` | General and sponsorship inboxes |
 | `links` | ARC, Linktree, and social destinations |
+
+All banner settings live under `hero.anniversaryBanner`. Set `enabled` to `false` to hide it. `founded` and `anniversaryYear` supply the dates and automatically calculate the large year count. `teamName` and `university` supply the accessible banner description. The CMS group is **Hero → Anniversary banner**. The hero headline is edited separately.
 
 Change `hero.poster` to a photo path under `/images/` or `/uploads/`. Control the background with:
 
@@ -37,7 +40,7 @@ Change `hero.poster` to a photo path under `/images/` or `/uploads/`. Control th
 - `videoSource: "youtube"` uses `videoId` and continuously loops that video.
 - `videoSource: "file"` uses `videoFile`, such as `/videos/hero.mp4` (place the file in `public/videos/`) or a CMS upload under `/uploads/`. MP4 and WebM files loop continuously using the browser's video player, with no YouTube connection. Both sources share the loading photo, millisecond delay, muted playback, and pause/play control. If the selected source is blank, the hero falls back to the photo with no playback button.
 
-Both settings are in **Landing page → Homepage content → Hero** in the CMS. The Join section and other informational Join links use the shared `recruitment.joinUrl`, even when the primary seasonal action switches to Support.
+Both settings are in **Landing page → Homepage content → Hero** in the CMS.
 
 JSON does not allow comments. Keep editing instructions here; keep `site.json` focused on values used by the site.
 

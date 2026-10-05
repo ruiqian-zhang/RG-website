@@ -5,13 +5,14 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import OrangeFeature from '../components/OrangeFeature.astro';
 import site from '../content/site.json';
+import { joinPageAction, recruitmentDescription } from '../lib/season';
 ---
-<BaseLayout title="Join us | RoboGrinder at Virginia Tech" description="Applications for the 2026–2027 RoboGrinder season are closed. Come back next fall for recruitment.">
+<BaseLayout title="Join us | RoboGrinder at Virginia Tech" description={recruitmentDescription}>
   <a class="skip-link" href="#main">Skip to content</a>
   <SiteHeader active="Join" />
   <main id="main">
-    <OrangeFeature title="Your next chapter starts here." description="Thanks for your interest in RoboGrinder! Applications for the 2026–2027 season are closed, but we’d love to meet you next fall when recruitment opens again." image="/images/join-gobblerfest.webp" imageAlt="RoboGrinder members smiling with their robot at Gobblerfest" imagePosition="50% 30%">
-      <a class="button button-swipe button-dark" href={withBase('/#subteams')}>Explore our subteams<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+    <OrangeFeature title="Your next chapter starts here." description={recruitmentDescription} image="/images/join-gobblerfest.webp" imageAlt="RoboGrinder members smiling with their robot at Gobblerfest" imagePosition="50% 30%">
+      {joinPageAction.href ? <a class="button button-swipe button-dark" href={withBase(joinPageAction.href)}>{joinPageAction.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a> : <button class="button button-dark" type="button" disabled>{joinPageAction.label}</button>}
     </OrangeFeature>
     <section class="next-season">
       <div><h2>Stay on the grind.</h2><p>Follow our latest builds and competition updates, cheer us on during matches, and help support the team throughout the season.</p><div class="support-actions"><a class="button button-swipe button-dark" href={withBase('/sponsors/')}>Support the team<span class="material-icon" aria-hidden="true">chevron_right</span></a><a class="button button-swipe button-dark" href={withBase(site.links.linktree)} target="_blank" rel="noreferrer">Follow us<span class="material-icon" aria-hidden="true">chevron_right</span></a></div></div>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { withBase } from '../lib/urls';
+---
+
+<BaseLayout title="Page not found | RoboGrinder" description="This page is off the grid. Head back to RoboGrinder's homepage.">
+  <meta slot="head" name="robots" content="noindex" />
+  <a class="skip-link" href="#main">Skip to content</a>
+  <SiteHeader active="" />
+  <main id="main">
+    <section class="not-found" aria-labelledby="not-found-title">
+      <div class="error-number" aria-hidden="true">404</div>
+      <div class="error-copy">
+        <p class="error-label">Page not found</p>
+        <h1 id="not-found-title">Off the grid.</h1>
+        <p>We couldn’t find that page. The link may have changed, or the address may have a typo.</p>
+        <div class="error-actions">
+          <a class="button button-swipe button-dark" href={withBase('/')}>Back to home<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+          <a class="button button-swipe button-light" href={withBase('/contact/')}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .not-found { min-height: calc(100svh - var(--header-height)); display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(32px, 6vw, 88px); padding: 72px clamp(24px, 8vw, 124px); background: var(--orange); color: var(--ink); }
+  .error-number { font: 700 clamp(120px, 23vw, 340px)/1 var(--display); letter-spacing: -.06em; }
+  .error-copy { min-width: 0; max-width: 520px; }
+  .error-label { margin: 0 0 20px; font-size: var(--font-label-min); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  h1 { margin: 0 0 24px; font: 700 clamp(44px, 5vw, 72px)/1.02 var(--display); letter-spacing: -.04em; }
+  .error-copy > p:not(.error-label) { margin: 0 0 32px; font-size: var(--font-body-min); line-height: 1.7; }
+  .error-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+  .button-light { background: var(--paper); color: var(--ink); --hover-fill: var(--ink); --hover-ink: var(--paper); }
+  .button-dark { --hover-fill: var(--paper); --hover-ink: var(--ink); }
+  @media (max-width: 680px) {
+    .not-found { grid-template-columns: 1fr; gap: 32px; align-content: center; padding: 48px 23px; }
+    .error-number { font-size: clamp(120px, 34vw, 220px); }
+  }
+</style>

@@ -5,7 +5,7 @@ import ProfileIcon from './ProfileIcon.astro';
 const gobblerConnect = site.links.social.find((social) => social.name === 'GobblerConnect');
 const socialLinks = site.links.social.filter((social) => social.name !== 'GobblerConnect');
 const groups = [
-  { title: 'Team', links: [{ name: 'Our mission', url: '/#story' }, { name: 'Subteams', url: '/#subteams' }, { name: 'Robots', url: '/robots/' }, { name: 'Members', url: '/members/' }, { name: 'Gallery', url: '/gallery/' }, { name: 'Join us', url: site.recruitment.joinUrl }] },
+  { title: 'Team', links: [{ name: 'Our mission', url: '/#story' }, { name: 'Subteams', url: '/#subteams' }, { name: 'Robots', url: '/robots/' }, { name: 'Members', url: '/members/' }, { name: 'Gallery', url: '/gallery/' }, { name: site.recruitment.joinLabel, url: site.recruitment.joinUrl }] },
   { title: 'Community', links: [{ name: 'ARC Robotics', url: site.links.arc }, { name: 'Virginia Tech', url: 'https://www.vt.edu/' }] },
   { title: 'Connect', links: [{ name: 'Sponsor us', url: '/sponsors/' }, { name: 'Contact us', url: '/contact/' }, ...(gobblerConnect?.url ? [gobblerConnect] : []), { name: 'Linktree', url: site.links.linktree }] },
 ];
