@@ -150,7 +150,11 @@ const links = [
       clearTimeout(navigationTimeout);
       previousY = Math.max(0, window.scrollY);
     };
-    const navigateToSection = (hash: string) => {
+    headerShell.addEventListener('focusin', () => {
+      hidden = false;
+      updateHeader();
+    });
+    const navigateToSection = (hash: string, moveFocus = false) => {
       let target: HTMLElement | null;
       try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch { return false; }
       if (!target) return false;
@@ -160,6 +164,12 @@ const links = [
       hidden = false;
       updateHeader();
       measureHeader();
+      if (moveFocus) {
+        const hadTabindex = target.hasAttribute('tabindex');
+        if (!hadTabindex) target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+        if (!hadTabindex) target.addEventListener('blur', () => target?.removeAttribute('tabindex'), { once: true });
+      }
       target.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
       clearTimeout(navigationTimeout);
       navigationTimeout = setTimeout(resumeUserScroll, 2000);
@@ -170,7 +180,7 @@ const links = [
         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         const destination = new URL(link.href);
         if (destination.origin !== location.origin || destination.pathname !== location.pathname || !destination.hash) return;
-        if (navigateToSection(destination.hash)) {
+        if (navigateToSection(destination.hash, true)) {
           event.preventDefault();
           history.pushState(null, '', destination.href);
         }
@@ -188,7 +198,7 @@ const links = [
       const currentY = Math.max(0, window.scrollY);
       const delta = currentY - previousY;
       if (navigatingToSection) { previousY = currentY; return; }
-      if (currentY <= 0 || delta < 0) {
+      if (currentY <= 0 || delta < 0 || headerShell.querySelector(':focus-visible')) {
         hidden = false;
       } else if (delta > 0 && (!videoHero || currentY >= heroBottom() - headerShell.offsetHeight)) {
         hidden = true;
