@@ -56,7 +56,7 @@ const links = [
       animation?.cancel();
       summary.setAttribute('aria-expanded', String(open));
       if (details.classList.contains('mobile-menu')) {
-        const label = details.classList.contains('support-menu') ? 'Connect' : matchMedia('(max-width: 850px)').matches ? 'navigation' : 'About us';
+        const label = details.classList.contains('support-menu') ? 'Connect' : narrowScreen.matches ? 'navigation' : 'About us';
         summary.setAttribute('aria-label', `${open ? 'Close' : 'Open'} ${label} menu`);
         if (open) disclosures.forEach((set, other) => { if (other !== details && other.classList.contains('mobile-menu')) set(false); });
       }

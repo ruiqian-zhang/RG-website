@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import SponsorLogos from '../components/SponsorLogos.astro';
+import OurSponsors from '../components/OurSponsors.astro';
 import IndustryExperience from '../components/IndustryExperience.astro';
 import Achievements from '../components/Achievements.astro';
 import TeamNumbers from '../components/TeamNumbers.astro';
@@ -13,12 +13,13 @@ import sponsorship from '../content/sponsors.json';
 
 ---
 
-<BaseLayout>
+<BaseLayout sectionScroll>
   <a class="skip-link" href="#main">Skip to content</a>
   <SiteHeader active="Home" />
 
   <main id="main">
-    <section class="landing" id="top" aria-labelledby="hero-title">
+    <div id="top" class="scroll-origin" aria-hidden="true"></div>
+    <section class="landing" aria-labelledby="hero-title">
       <div class="hero-copy">
         <h1 id="hero-title">{site.headline}</h1>
         <p class="hero-intro">{site.intro}</p>
@@ -40,6 +41,7 @@ import sponsorship from '../content/sponsors.json';
       <button class="button button-swipe button-light video-toggle" type="button" aria-label="Pause video" aria-pressed="false"><span class="material-icon" aria-hidden="true">pause</span></button>
     </section>
 
+    <div class="mission-chapter">
     <section class="story section-shell" id="story" aria-labelledby="story-title">
       <div class="story-heading">
         <h2 id="story-title">{site.missionTitle}</h2>
@@ -52,6 +54,7 @@ import sponsorship from '../content/sponsors.json';
     </section>
 
     <TeamNumbers />
+    </div>
     <Achievements />
 
     <section class="subteams section-shell" id="subteams" aria-labelledby="subteams-title">
@@ -77,16 +80,7 @@ import sponsorship from '../content/sponsors.json';
 
     <IndustryExperience companies={placements.companies} title={placements.title} description={placements.description} />
 
-    <section class="supporters section-shell" aria-labelledby="supporters-title">
-      <div class="supporters-heading">
-        <h2 id="supporters-title">Our sponsors</h2>
-      </div>
-      <SponsorLogos partners={sponsorship.partners} />
-      <div class="sponsor-callout">
-        <h3>Interested in partnering with us?</h3>
-        <a class="button button-swipe button-dark" href="/sponsors/">Partner with us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
-      </div>
-    </section>
+    <OurSponsors partners={sponsorship.partners} />
 
     <section class="join" id="join" aria-labelledby="join-title">
       <div class="join-photo"><img src={site.joinImage} alt={site.joinImageAlt} loading="lazy" /></div>
@@ -129,14 +123,30 @@ import sponsorship from '../content/sponsors.json';
       const width = Math.max(hero.clientWidth, hero.clientHeight * 16 / 9);
       video.style.width = `${width}px`;
       video.style.height = `${width * 9 / 16}px`;
+      const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height'));
+      // Allow the entire landing content to remain reachable on short screens.
+      hero.style.setProperty('--hero-sticky-top', `${Math.min(headerHeight, innerHeight - hero.offsetHeight)}px`);
     };
+    const updateHeroInteraction = () => {
+      // Covered controls must not receive keyboard focus behind the next section.
+      const nextSection = hero.nextElementSibling;
+      const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height'));
+      hero.inert = !reducedMotion.matches && !!nextSection && nextSection.getBoundingClientRect().top <= headerHeight;
+    };
+    window.addEventListener('scroll', updateHeroInteraction, { passive: true });
+    window.addEventListener('resize', () => { sizeVideo(); updateHeroInteraction(); });
+    reducedMotion.addEventListener('change', updateHeroInteraction);
     new ResizeObserver(sizeVideo).observe(hero);
     sizeVideo();
+    updateHeroInteraction();
     updateToggle();
   }
 </script>
 
 <style>
+  .mission-chapter { position: relative; z-index: 1; display: grid; grid-template-rows: auto 1fr; min-height: calc(100svh - var(--header-height)); background: var(--paper); scroll-snap-align: start; scroll-margin-top: var(--header-height); }
+  .mission-chapter :global(.team-numbers) { display: flex; flex-direction: column; justify-content: center; }
+  .scroll-origin { height: 0; scroll-margin-top: var(--header-height); scroll-snap-align: start; }
   .landing { position: relative; display: flex; align-items: center; min-height: calc(100svh - var(--header-height)); isolation: isolate; overflow: hidden; padding: 100px clamp(24px, 8vw, 124px); background: var(--orange); color: var(--paper); }
   .hero-copy { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; max-width: 680px; padding: 20px 0 35px; }
   h1, h2, h3, p { margin-top: 0; }
@@ -175,9 +185,6 @@ import sponsorship from '../content/sponsors.json';
   .team-card p { margin: 0; color: var(--ink); font-size: var(--font-body-min); line-height: 1.6; }
   .subteams-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-top: 36px; }
   .discipline-note { margin: 0; font-size: max(var(--font-label-min), 10px); font-weight: 600; }
-  .supporters { padding-top: 84px; padding-bottom: 90px; background: var(--paper); }
-  .supporters-heading { margin-bottom: 40px; }
-  .supporters-heading h2 { max-width: 740px; margin: 0 auto; text-align: center; font-size: clamp(38px, 5vw, 62px); line-height: .98; letter-spacing: -.045em; }
   .join { position: relative; min-height: 512px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; background: var(--orange); color: var(--ink); }
   .join-photo { position: relative; min-height: 512px; clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%); }
   .join-photo img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: 62% center; filter: saturate(.7); }
@@ -186,8 +193,6 @@ import sponsorship from '../content/sponsors.json';
   .join-copy > p { max-width: 390px; margin-bottom: 27px; color: var(--ink); font-size: var(--font-body-min); line-height: 1.7; }
   .button-dark { background: var(--ink); color: var(--paper); }
   .join-cut { position: absolute; top: 0; right: 0; width: 30px; height: 30px; background: var(--orange); clip-path: polygon(100% 0, 100% 100%, 0 0); }
-  .sponsor-callout { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 24px; margin-top: 48px; }
-  .sponsor-callout h3 { margin: 0; font-size: clamp(24px, 2.5vw, 32px); line-height: 1.2; letter-spacing: -.025em; }
   @media (max-width: 950px) {
     .landing { min-height: calc(100svh - var(--header-height)); padding: 180px clamp(24px, 4vw, 38px) 80px; }
     .hero-copy { max-width: 620px; }
@@ -219,15 +224,11 @@ import sponsorship from '../content/sponsors.json';
     .subteams-head { display: block; margin-bottom: 35px; }
     .subteams h2 { margin-top: 0; font-size: clamp(42px, 11vw, 56px); }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
-    .supporters { padding: 72px 23px; }
-    .supporters-heading { margin-bottom: 32px; }
-    .supporters-heading h2 { font-size: clamp(38px, 10vw, 54px); }
     .join { grid-template-columns: 1fr; }
     .join-photo { min-height: 320px; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); }
     .join-copy { min-height: 420px; padding: 58px 23px 75px; }
     .join-copy h2 { max-width: 360px; font-size: clamp(48px, 12vw, 68px); }
     .join-copy > p { font-size: var(--font-body-min); }
-    .sponsor-callout { gap: 18px; margin-top: 36px; text-align: center; }
   }
   @media (max-width: 520px) {
     .team-grid { grid-template-columns: 1fr; }

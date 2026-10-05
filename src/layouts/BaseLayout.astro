@@ -1,10 +1,10 @@
 ---
 const siteTitle = 'RoboGrinder at Virginia Tech';
 const siteDescription = 'RoboGrinder brings students together to turn classroom knowledge into hands-on engineering experience through competitive robotics.';
-const { title = siteTitle, description = siteDescription } = Astro.props;
+const { title = siteTitle, description = siteDescription, sectionScroll = true } = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" class:list={{ 'section-scroll': sectionScroll }}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -89,6 +89,16 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
   .skip-link { position: fixed; z-index: 40; top: 8px; left: 8px; padding: 12px 16px; transform: translateY(-150%); background: var(--paper); color: var(--ink); }
   .skip-link:focus { transform: translateY(0); }
   img { display: block; max-width: 100%; }
+  html.section-scroll { scroll-snap-type: y proximity; }
+  .section-scroll main { position: relative; isolation: isolate; }
+  .section-scroll main > section { position: relative; z-index: 1; scroll-snap-align: start; scroll-margin-top: var(--header-height); }
+  .section-scroll .seasons > section, .section-scroll .member-roster { scroll-snap-align: start; scroll-margin-top: var(--header-height); }
+  .section-scroll main > .landing { position: sticky; top: var(--hero-sticky-top, var(--header-height)); z-index: 0; scroll-snap-align: none; }
+  .section-scroll footer { position: relative; z-index: 1; scroll-snap-align: end; }
+  @media (prefers-reduced-motion: reduce) {
+    html.section-scroll { scroll-snap-type: none; }
+    .section-scroll main > .landing { position: relative; top: auto; }
+  }
   button, a { -webkit-tap-highlight-color: transparent; }
   :is(.button, .header-cta) {
     --button-cut: 10px;

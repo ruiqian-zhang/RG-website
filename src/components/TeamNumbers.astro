@@ -1,18 +1,9 @@
 ---
-import members from '../content/members.json';
-import subteams from '../content/subteams.json';
-
-const memberCount = new Set(members.people.map((person) => person.name.trim().toLowerCase())).size;
-const numbers = [
-  { value: String(memberCount), label: 'Current members' },
-  { value: String(subteams.teams.length), label: 'Subteams' },
-  { value: '1', label: 'Shared mission' },
-  { value: 'Top 4', label: 'One of the most consistent teams in ARC' },
-];
+import { teamStats } from '../lib/teamStats';
 ---
 <section class="team-numbers" id="numbers" aria-labelledby="numbers-title">
   <h2 id="numbers-title">By the numbers</h2>
-  <dl>{numbers.map((number) => <div><dt>{number.label}</dt><dd>{number.value}</dd></div>)}</dl>
+  <dl>{teamStats.map((number) => <div><dt>{number.label}</dt><dd>{number.value}</dd></div>)}</dl>
 </section>
 <style>
   .team-numbers { padding: 64px clamp(24px, 8vw, 124px); background: var(--orange); color: var(--ink); scroll-margin-top: 76px; }

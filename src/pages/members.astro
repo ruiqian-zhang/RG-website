@@ -14,6 +14,7 @@ const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season
   <a class="skip-link" href="#main">Skip to content</a>
   <SiteHeader active="Members" />
   <main id="main">
+    <div class="member-roster">
     <header class="members-heading">
       <h1>{members.title}</h1>
       <p>{members.intro}</p>
@@ -32,6 +33,7 @@ const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season
           {person.email && <a class="icon-button button-swipe member-profile-button" href={`mailto:${person.email}`} aria-label={`Email ${person.name}`}><ProfileIcon name="Email" /></a>}
         </div>}
       </article>)}
+    </div>
     </div>
     <section class="archive" aria-label="Previous seasons and alumni">
       <details data-disclosure>
@@ -53,7 +55,8 @@ const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season
 </BaseLayout>
 
 <style>
-  main { padding: 72px clamp(24px, 8vw, 124px) 96px; }
+  main { padding: 0 clamp(24px, 8vw, 124px) 96px; }
+  .member-roster { padding-top: 72px; }
   .members-heading { max-width: 800px; margin: 0 0 48px; }
   h1 { margin: 0 0 24px; font: 700 clamp(48px, 6vw, 76px)/1 var(--display); letter-spacing: -.04em; }
   .members-heading p { margin: 0 0 16px; font-size: var(--font-body-min); line-height: 1.65; }
@@ -85,5 +88,5 @@ const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season
   @media (max-width: 1100px) { .member-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   @media (max-width: 800px) { .member-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; } }
   @media (max-width: 600px) { .archive-teams { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 420px) { main { padding: 48px 16px 64px; } .member-grid { gap: 32px 16px; } .member h2 { font-size: 20px; overflow-wrap: anywhere; } .member p { overflow-wrap: anywhere; } .archive-teams { grid-template-columns: 1fr; } }
+  @media (max-width: 420px) { main { padding: 0 16px 64px; } .member-roster { padding-top: 48px; } .member-grid { gap: 32px 16px; } .member h2 { font-size: 20px; overflow-wrap: anywhere; } .member p { overflow-wrap: anywhere; } .archive-teams { grid-template-columns: 1fr; } }
 </style>

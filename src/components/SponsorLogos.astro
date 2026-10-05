@@ -32,7 +32,7 @@ const groups = [
   .departmental { margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,.2); }
   .departmental h3 { margin: 0 0 28px; text-align: center; font: 700 24px/1.2 var(--display); }
   .departmental .sponsor-logos { max-width: 740px; margin-inline: auto; gap: 24px 40px; }
-  .departmental .sponsor-logo { flex: 0 1 220px; min-height: 100px; }
+  .departmental .sponsor-logo { flex: 0 1 calc((100% - 80px) / 3); max-width: 220px; min-height: 100px; }
   .departmental .sponsor-logo img { max-width: 220px; height: 80px; }
   .departmental .sponsor-logo svg { width: min(100%, 220px, calc(var(--sponsor-ratio) * 80px)); }
   @media (max-width: 680px) {
