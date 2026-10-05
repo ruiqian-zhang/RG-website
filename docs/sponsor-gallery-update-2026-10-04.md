@@ -45,3 +45,11 @@
 - Dropdown links and icons now change only their foreground color on hover/press. Menu trigger labels also turn orange on hover.
 - Desktop dropdowns have no internal scroll. Their animation uses opacity and translation rather than animated height, avoiding transient scrollbar flicker. Mobile scrolling remains available only for menus taller than the viewport.
 - Built views checked at desktop and mobile sizes. The desktop panel's content and client heights are both 296 pixels, with overflow hidden.
+
+## Lazy image loading and final mobile logo
+
+- All HTML images use native lazy loading, including hero, brand, anniversary, footer, and gallery preview images.
+- SVG image artwork defers its href until IntersectionObserver sees it within 300 pixels of the viewport. Unsupported browsers load it immediately; noscript image fallbacks keep logos available without JavaScript.
+- The last logo in an odd-count mobile grid spans the row while retaining one column's width and centers horizontally.
+- Production build passed. Initial homepage had zero SVG artwork requests assigned and 404 deferred images. At the industry section, 11 visible/nearby marquee images had loaded while 389 remained deferred. Sponsor artwork loaded when its section was reached.
+- At 375 pixels, the last logo center matches the grid center, every HTML image has lazy loading, and no horizontal overflow was observed.

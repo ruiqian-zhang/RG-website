@@ -15,9 +15,33 @@ const { title = 'RoboGrinder | Virginia Tech Robotics', description = 'Student-b
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
     <title>{title}</title>
     <slot name="head" />
+    <noscript><style is:inline>.lazy-artwork { display: none !important; }</style></noscript>
   </head>
   <body>
     <slot />
+    <script>
+      const artwork = document.querySelectorAll<SVGImageElement>('image[data-lazy-src]');
+      const loadArtwork = (image: SVGImageElement) => {
+        const src = image.dataset.lazySrc;
+        if (src) {
+          image.setAttribute('href', src);
+          delete image.dataset.lazySrc;
+        }
+      };
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              loadArtwork(entry.target as SVGImageElement);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '300px' });
+        artwork.forEach((image) => observer.observe(image));
+      } else {
+        artwork.forEach(loadArtwork);
+      }
+    </script>
   </body>
 </html>
 
