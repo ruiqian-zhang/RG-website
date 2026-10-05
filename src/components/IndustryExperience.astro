@@ -53,8 +53,8 @@ const rows = Array.from({ length: 3 }, (_, index) => {
     ))}
   </div>
   <div class="industry-actions">
-    <button class="button button-swipe button-light marquee-toggle" type="button" aria-pressed="false"><span class="material-icon" aria-hidden="true">pause</span><span class="toggle-label">Pause logos</span></button>
-    <a class="button button-swipe button-dark" href={withBase(site.joinLink)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+    <a class="button button-swipe button-dark" href={withBase(site.recruitment.joinUrl)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+    <button class="button button-swipe button-dark marquee-toggle" type="button" aria-label="Pause logos" aria-pressed="false"><span class="material-icon" aria-hidden="true">pause</span></button>
   </div>
 </section>
 
@@ -64,7 +64,7 @@ const rows = Array.from({ length: 3 }, (_, index) => {
   logoToggle?.addEventListener('click', () => {
     const paused = industry!.classList.toggle('logos-paused');
     logoToggle.setAttribute('aria-pressed', String(paused));
-    logoToggle.querySelector('.toggle-label')!.textContent = paused ? 'Play logos' : 'Pause logos';
+    logoToggle.setAttribute('aria-label', paused ? 'Play logos' : 'Pause logos');
     logoToggle.querySelector('.material-icon')!.textContent = paused ? 'play_arrow' : 'pause';
   });
   document.querySelectorAll<SVGImageElement>('.industry-logo image').forEach((image) => {
@@ -87,7 +87,8 @@ const rows = Array.from({ length: 3 }, (_, index) => {
   .industry-copy p { max-width: 740px; margin: 0 auto; color: var(--muted-ink); font-size: var(--font-body-min); line-height: 1.75; }
   .marquees { display: grid; gap: 24px; }
   .industry-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 40px; padding: 0 24px; }
-  .marquee-toggle { border: 1px solid var(--ink); background: var(--paper); color: var(--ink); --hover-fill: var(--ink); --hover-ink: var(--paper); cursor: pointer; }
+  .marquee-toggle { width: var(--button-height); min-height: var(--button-height); padding: 0; border: 0; background: var(--ink); color: var(--paper); --hover-fill: var(--orange); --hover-ink: var(--paper); cursor: pointer; }
+  .marquee-toggle .material-icon { font-size: 22px; }
   .logos-paused .marquee-track { animation-play-state: paused; }
   .marquee { position: relative; width: 100%; overflow: hidden; }
   .marquee::before, .marquee::after { position: absolute; z-index: 1; top: 0; bottom: 0; width: clamp(24px, 6vw, 90px); content: ''; pointer-events: none; }

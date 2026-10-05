@@ -2,7 +2,7 @@
 import site from '../content/site.json';
 const { partnership = false, labels = {} } = Astro.props;
 ---
-<form class:list={['contact-form', partnership && 'partnership-form']} id="contact-form" data-contact-email={site.contactEmail || ''} data-sponsor-email={site.sponsorEmail || ''}>
+<form class:list={['contact-form', partnership && 'partnership-form']} id="contact-form" data-contact-email={site.contact.email || ''} data-sponsor-email={site.contact.sponsorEmail || ''}>
   <div class="form-row">
     <label for="contact-name">{labels.nameLabel ?? 'Your name'}</label>
     <input id="contact-name" name="name" type="text" autocomplete="name" required />
@@ -52,9 +52,9 @@ const { partnership = false, labels = {} } = Astro.props;
 </script>
 <style>
   .contact-form { min-width: 0; color: var(--ink); }
-  .contact-form .button-dark { --hover-fill: var(--orange-action); --hover-ink: var(--paper); }
+  .contact-form .button-dark { --hover-fill: var(--orange); --hover-ink: var(--paper); }
   .partnership-form { border-top: 0; padding-top: 0; color: var(--paper); }
-  .partnership-form .button-light { background: var(--paper); color: var(--ink); --hover-fill: var(--orange-action); --hover-ink: var(--paper); }
+  .partnership-form .button-light { background: var(--paper); color: var(--ink); --hover-fill: var(--orange); --hover-ink: var(--paper); }
   .form-row { display: grid; gap: 8px; margin-bottom: 18px; }
   label { font-size: var(--font-ui-min); font-weight: 700; }
   input, select, textarea { width: 100%; min-height: 50px; padding: 12px 14px; border: 1px solid rgba(0,0,0,.55); border-radius: 0; background: var(--paper); color: var(--ink); font: 400 var(--font-body-min)/1.4 var(--body); }

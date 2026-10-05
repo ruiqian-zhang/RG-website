@@ -19,35 +19,70 @@ collections:
         file: src/content/site.json
         format: json
         fields:
-          - { label: Team name, name: teamName, widget: string }
-          - { label: University, name: university, widget: string }
-          - { label: Hero headline, name: headline, widget: text, hint: Use a new line to control the headline breaks. }
-          - { label: Hero introduction, name: intro, widget: text }
-          - { label: Hero YouTube video ID, name: heroVideoId, widget: string }
-          - { label: Founded, name: founded, widget: string }
-          - { label: Anniversary year, name: anniversaryYear, widget: string }
-          - { label: Mission heading, name: missionTitle, widget: string }
-          - { label: Mission, name: mission, widget: text }
-          - { label: Mission supporting text, name: missionContext, widget: text }
-          - { label: Team photo, name: teamImage, widget: image }
-          - { label: Team photo description, name: teamImageAlt, widget: string }
-          - { label: Join heading, name: joinTitle, widget: string }
-          - { label: Join copy, name: joinCopy, widget: text }
-          - { label: Join section photo, name: joinImage, widget: image }
-          - { label: Join photo description, name: joinImageAlt, widget: string }
-          - { label: Join link, name: joinLink, widget: string }
-          - { label: Recruiting is open, name: recruiting, widget: boolean, default: false, hint: 'On: navbar and hero say Join us. Off: both say Support us and link to Sponsors & Partners.' }
-          - { label: Join button text, name: joinLabel, widget: string }
-          - { label: ARC Robotics link, name: arcUrl, widget: string }
-          - { label: Linktree URL, name: linktreeUrl, widget: string }
-          - { label: General contact email, name: contactEmail, widget: string }
-          - { label: Sponsorship contact email, name: sponsorEmail, widget: string, required: false }
-          - label: Social links
-            name: socialLinks
-            widget: list
+          - label: Team details
+            name: team
+            widget: object
             fields:
-              - { label: Platform, name: name, widget: select, options: [Instagram, YouTube, X, Facebook, GobblerConnect, GitHub, LinkedIn] }
-              - { label: URL, name: url, widget: string, required: false, hint: Leave blank to show a disabled placeholder. }
+              - { label: Team name, name: name, widget: string }
+              - { label: University, name: university, widget: string }
+              - { label: Founded, name: founded, widget: string }
+              - { label: Anniversary year, name: anniversaryYear, widget: string }
+          - label: Recruiting season
+            name: recruitment
+            widget: object
+            fields:
+              - { label: Recruiting is open, name: open, widget: boolean, default: false, hint: 'On: navbar and hero use the Join action. Off: both use the Support action.' }
+              - { label: Join button text, name: joinLabel, widget: string }
+              - { label: Join link, name: joinUrl, widget: string }
+              - { label: Support button text, name: supportLabel, widget: string }
+              - { label: Support link, name: supportUrl, widget: string }
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Headline, name: headline, widget: text, hint: Use a new line to control the headline breaks. }
+              - { label: Introduction, name: intro, widget: text }
+              - { label: Video source, name: videoSource, widget: select, options: [{ label: YouTube, value: youtube }, { label: Uploaded file, value: file }], default: youtube }
+              - { label: YouTube video ID, name: videoId, widget: string, required: false, hint: Used when Video source is YouTube. }
+              - { label: Video file, name: videoFile, widget: file, required: false, hint: Used when Video source is Uploaded file. Upload an MP4 or WebM video. }
+              - { label: Hero photo, name: poster, widget: image, hint: Appears while the video loads or permanently when video is disabled. }
+              - { label: Enable video, name: videoEnabled, widget: boolean, default: true, hint: 'Off: keep the photo permanently, load no video, and hide the play/pause button.' }
+              - { label: Delay before video fade (milliseconds), name: videoRevealDelayMs, widget: number, value_type: int, min: 0, default: 2000, hint: '2000 waits two seconds after playback starts. 0 fades immediately. Ignored when video is disabled.' }
+          - label: Mission
+            name: mission
+            widget: object
+            fields:
+              - { label: Heading, name: title, widget: string }
+              - { label: Tagline, name: tagline, widget: text }
+              - { label: Supporting text, name: description, widget: text }
+              - { label: Photo, name: image, widget: image }
+              - { label: Photo description, name: imageAlt, widget: string }
+          - label: Join section
+            name: join
+            widget: object
+            fields:
+              - { label: Heading, name: title, widget: string }
+              - { label: Copy, name: description, widget: text }
+              - { label: Photo, name: image, widget: image }
+              - { label: Photo description, name: imageAlt, widget: string }
+          - label: Contact
+            name: contact
+            widget: object
+            fields:
+              - { label: General contact email, name: email, widget: string }
+              - { label: Sponsorship contact email, name: sponsorEmail, widget: string, required: false }
+          - label: Links
+            name: links
+            widget: object
+            fields:
+              - { label: ARC Robotics, name: arc, widget: string }
+              - { label: Linktree, name: linktree, widget: string }
+              - label: Social links
+                name: social
+                widget: list
+                fields:
+                  - { label: Platform, name: name, widget: select, options: [Instagram, YouTube, X, Facebook, GobblerConnect, GitHub, LinkedIn] }
+                  - { label: URL, name: url, widget: string, required: false, hint: Leave blank to show a disabled placeholder. }
 
   - name: robots
     label: Robots

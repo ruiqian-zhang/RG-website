@@ -53,7 +53,7 @@ The admin app is served from `public/admin/`. Before deploying it:
 3. Make sure the deployed branch matches the `branch` value (`main` by default).
 4. Visit `/admin/` on the deployed site to edit homepage copy, links, photos, industry marquee logos, subteam cards, and sponsor information. Industry logos use local image paths and retain original source URLs. Sponsor names, logo paths, and destination URLs are managed in `src/content/sponsors.json`.
 
-The Contact page opens a prefilled email draft to `contactEmail`; sponsorship inquiries use `sponsorEmail` when set.
+The Contact page opens a prefilled email draft to `contact.email`; sponsorship inquiries use `contact.sponsorEmail` when set.
 
 Text size tokens live in `src/layouts/BaseLayout.astro`: body copy is at least 16px, controls at least 15px, and supporting labels at least 13px on desktop (14px on small screens). Use these tokens for new content styles.
 

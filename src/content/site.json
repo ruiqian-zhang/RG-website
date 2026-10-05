@@ -1,56 +1,76 @@
 {
-  "teamName": "RoboGrinder",
-  "university": "Virginia Tech",
-  "headline": "Celebrating 10 years of \n RoboGrinder.",
-  "intro": "Bringing Virginia Tech students together through competitive robotics since 2016.",
-  "founded": "2016",
-  "missionTitle": "Our mission",
-  "mission": "Turn classroom knowledge into hands-on experience.",
-  "missionContext": "Students learn tools used in industry as they design parts, build circuits, write software, and test the team’s robots. Working together builds practical engineering, problem-solving, and teamwork skills for their future careers. Students from every major are welcome.",
-  "teamImage": "/images/arc-2026-team.jpg",
-  "teamImageAlt": "RoboGrinder students celebrating at a robotics competition with their robots",
-  "joinTitle": "Join RoboGrinder",
-  "joinCopy": "Students from every major are welcome. Join a subteam to develop practical skills and help build our next fleet.",
-  "joinImage": "/images/robot-competition-2018.jpg",
-  "joinImageAlt": "RoboGrinder member fine-tuning a competition robot",
-  "joinLink": "/join/",
-  "_note":  "Set recruting to true or false if applications are open or not",
-  "recruiting": false, 
-  "joinLabel": "Join us",
-  "contactEmail": "robogrindervt@gmail.com",
-  "sponsorEmail": "tina22@vt.edu",
-  "arcUrl": "https://www.arc-robotics.org/",
-  "anniversaryYear": "2026",
-  "socialLinks": [
-    {
-      "name": "Instagram",
-      "url": "https://instagram.com/vt_robogrinder"
-    },
-    {
-      "name": "GobblerConnect",
-      "url": "https://gobblerconnect.vt.edu/feeds?type=club&type_id=36067"
-    },
-    {
-      "name": "YouTube",
-      "url": "https://youtube.com/@vt_robogrinder"
-    },
-    {
-      "name": "LinkedIn",
-      "url": "https://linkedin.com/company/robogrinder"
-    },
-    {
-      "name": "GitHub",
-      "url": "https://github.com/RoboGrinder-at-Virginia-Tech"
-    },
-    {
-      "name": "X",
-      "url": "https://x.com/vt_robogrinder"
-    },
-    {
-      "name": "Facebook",
-      "url": "https://facebook.com/robogrinder"
-    }
-  ],
-  "heroVideoId": "gSamMUlUCaA",
-  "linktreeUrl": "https://linktr.ee/robogrinder"
+  "team": {
+    "name": "RoboGrinder",
+    "university": "Virginia Tech",
+    "founded": "2016",
+    "anniversaryYear": "2026"
+  },
+  "recruitment": {
+    "open": false,
+    "joinLabel": "Join us",
+    "joinUrl": "/join/",
+    "supportLabel": "Support us",
+    "supportUrl": "/sponsors/"
+  },
+  "hero": {
+    "headline": "Celebrating 10 years of \nRoboGrinder.",
+    "intro": "Bringing Virginia Tech students together through competitive robotics since 2016.",
+    "videoSource": "youtube",
+    "videoId": "gSamMUlUCaA",
+    "videoFile": "",
+    "poster": "/images/robot-competition-2019.jpg",
+    "videoEnabled": true,
+    "videoRevealDelayMs": 2000
+  },
+  "mission": {
+    "title": "Our mission",
+    "tagline": "Turn classroom knowledge into hands-on experience.",
+    "description": "Students learn tools used in industry as they design parts, build circuits, write software, and test the team’s robots. Working together builds practical engineering, problem-solving, and teamwork skills for their future careers. Students from every major are welcome.",
+    "image": "/images/arc-2026-team.jpg",
+    "imageAlt": "RoboGrinder students celebrating at a robotics competition with their robots"
+  },
+  "join": {
+    "title": "Join RoboGrinder",
+    "description": "Students from every major are welcome. Join a subteam to develop practical skills and help build our next fleet.",
+    "image": "/images/robot-competition-2018.jpg",
+    "imageAlt": "RoboGrinder member fine-tuning a competition robot"
+  },
+  "contact": {
+    "email": "robogrindervt@gmail.com",
+    "sponsorEmail": "tina22@vt.edu"
+  },
+  "links": {
+    "arc": "https://www.arc-robotics.org/",
+    "linktree": "https://linktr.ee/robogrinder",
+    "social": [
+      {
+        "name": "Instagram",
+        "url": "https://instagram.com/vt_robogrinder"
+      },
+      {
+        "name": "GobblerConnect",
+        "url": "https://gobblerconnect.vt.edu/feeds?type=club&type_id=36067"
+      },
+      {
+        "name": "YouTube",
+        "url": "https://youtube.com/@vt_robogrinder"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/company/robogrinder"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/RoboGrinder-at-Virginia-Tech"
+      },
+      {
+        "name": "X",
+        "url": "https://x.com/vt_robogrinder"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://facebook.com/robogrinder"
+      }
+    ]
+  }
 }

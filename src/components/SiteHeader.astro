@@ -25,13 +25,18 @@ const links = [
       <summary aria-label="Open About us menu"><span class="primary-label">About us</span><span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span><span class="material-icon burger-icon" aria-hidden="true">menu</span><span class="material-icon burger-close" aria-hidden="true">close</span></summary>
       <nav aria-label="Main navigation">
         {links.map((link) => <a class:list={[['Sponsors & Partners', 'Contact us'].includes(link.label) && 'mobile-only']} href={withBase(link.href)} aria-current={active === link.active && link.label !== 'Subteams' ? 'page' : undefined}>{link.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>)}
-        {site.recruiting && <a class="mobile-only" href={withBase(primaryAction.href)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>}
+        {site.recruitment.open && <a class="mobile-only" href={withBase(primaryAction.href)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>}
         <ConnectSocialLinks mobileOnly />
       </nav>
     </details>
     <details class="mobile-menu support-menu" data-disclosure>
       <summary aria-label="Open Connect menu">Connect<span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span></summary>
-      <nav aria-label="Connect"><a href={withBase('/contact/')} aria-current={active === 'Contact' ? 'page' : undefined}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a><ConnectSocialLinks /></nav>
+      <nav aria-label="Connect">
+        <a href={withBase(site.recruitment.joinUrl)} aria-current={active === 'Join' ? 'page' : undefined}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        <a href={withBase('/sponsors/')} aria-current={active === 'Sponsors' ? 'page' : undefined}>Sponsors &amp; Partners<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        <a href={withBase('/contact/')} aria-current={active === 'Contact' ? 'page' : undefined}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        <ConnectSocialLinks />
+      </nav>
     </details>
     <a class="header-cta button-swipe" href={withBase(primaryAction.href)} aria-current={active === primaryAction.page ? 'page' : undefined}>{primaryAction.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
     </div>
@@ -220,7 +225,7 @@ const links = [
   .brand { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; gap: 12px; color: var(--paper); text-decoration: none; flex: 0 0 auto; }
   .brand img { width: 36px; height: 36px; object-fit: contain; }
   .header-controls { display: flex; align-items: center; gap: 12px; margin-left: auto; }
-  .header-cta { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; background: var(--orange-action); color: #fff; --hover-fill: #fff; --hover-ink: var(--ink); font-size: var(--font-ui-min); font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .header-cta { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; background: var(--orange); color: #fff; --hover-fill: #fff; --hover-ink: var(--ink); font-size: var(--font-ui-min); font-weight: 700; text-decoration: none; white-space: nowrap; }
   .mobile-menu { position: relative; display: block; }
   .mobile-menu summary { min-width: 44px; height: 44px; padding: 0 16px; display: flex; gap: 10px; align-items: center; justify-content: center; list-style: none; cursor: pointer; color: var(--paper); font-size: var(--font-ui-min); font-weight: 600; white-space: nowrap; }
   .burger-icon, .burger-close { display: none; }
@@ -249,6 +254,10 @@ const links = [
     .primary-menu summary[aria-expanded="true"] .burger-close { display: inline-block; }
     .primary-menu nav .mobile-only { display: flex; }
     .mobile-menu summary .material-icon { font-size: 23px; }
+  }
+  @media (min-width: 851px) {
+    .brand img { width: 32px; height: 32px; }
+    .site-header { --font-ui-min: 14px; }
   }
   @media (max-width: 360px) {
     .mobile-menu summary { gap: 4px; }

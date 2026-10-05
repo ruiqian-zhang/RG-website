@@ -7,7 +7,7 @@ Open the CMS at `/admin/`, then **Sponsors → Sponsors page**. The same content
 - **Partnership benefits** and **Ways to support the team** control their cards and descriptions.
 - **Current partners** controls names, logos, websites, categories, and display order. These partners are also used on the homepage.
 - **Sponsorship form text** controls the visible labels, topic names, submit button, and helper text. Topic routing remains stable when labels change.
-- The form recipient addresses are configured under the site's general settings (`contactEmail` and `sponsorEmail` in `src/content/site.json`).
+- The form recipient addresses are configured under the site's general settings (`contact.email` and `contact.sponsorEmail` in `src/content/site.json`).
 
 Use a new line in **Team introduction heading** to control its line break.
 

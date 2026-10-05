@@ -4,9 +4,42 @@ Astro frontmatter (between `---` lines) holds imports, editable display settings
 
 ## Recruiting and competition seasons
 
-Set `recruiting` in `src/content/site.json` to `true` for recruiting season or `false` when recruiting is closed. In the CMS, use **Landing page → Homepage content → Recruiting is open**.
+Set `recruitment.open` in `src/content/site.json` to `true` for recruiting season or `false` when recruiting is closed. In the CMS, use **Landing page → Homepage content → Recruiting season → Recruiting is open**.
 
-The navbar and hero share `src/lib/season.ts`: `true` shows **Join us** linking to `joinLink`; `false` shows **Support us** linking to `/sponsors/`. The navbar has one seasonal primary button. Edit the Join page's application information in `src/pages/join.astro` when opening a new recruiting season.
+The navbar and hero share `src/lib/season.ts`: `true` uses `recruitment.joinLabel` and `recruitment.joinUrl`; `false` uses `recruitment.supportLabel` and `recruitment.supportUrl`. The navbar has one seasonal primary button. Edit the Join page's application information in `src/pages/join.astro` when opening a new recruiting season.
+
+## Site settings
+
+`src/content/site.json` is grouped by purpose. The CMS uses these same groups.
+
+| Group | What to edit |
+| --- | --- |
+| `team` | Name, university, founding year, anniversary year |
+| `recruitment` | Open/closed toggle, shared Join and Support button text and destinations |
+| `hero` | Headline, introduction, YouTube ID, loading photo, delay before fading into playback |
+| `mission` | Heading, tagline, description, photo, photo alt text |
+| `join` | Lower-page joining section copy, photo, photo alt text |
+| `contact` | General and sponsorship inboxes |
+| `links` | ARC, Linktree, and social destinations |
+
+Change `hero.poster` to a photo path under `/images/` or `/uploads/`. Control the background with:
+
+```json
+"videoEnabled": true,
+"videoSource": "youtube",
+"videoId": "gSamMUlUCaA",
+"videoFile": "",
+"videoRevealDelayMs": 2000
+```
+
+- `videoEnabled: true` loads video when the hero is visible. The photo stays visible while loading, then for `videoRevealDelayMs` milliseconds after playback starts before fading into video. Use `2000` for two seconds, `1500` for one and a half seconds, or `0` for an immediate fade.
+- `videoEnabled: false` keeps the photo permanently. No video iframe or play/pause button is rendered, and no YouTube API is loaded. The hold duration is ignored.
+- `videoSource: "youtube"` uses `videoId` and continuously loops that video.
+- `videoSource: "file"` uses `videoFile`, such as `/videos/hero.mp4` (place the file in `public/videos/`) or a CMS upload under `/uploads/`. MP4 and WebM files loop continuously using the browser's video player, with no YouTube connection. Both sources share the loading photo, millisecond delay, muted playback, and pause/play control. If the selected source is blank, the hero falls back to the photo with no playback button.
+
+Both settings are in **Landing page → Homepage content → Hero** in the CMS. The Join section and other informational Join links use the shared `recruitment.joinUrl`, even when the primary seasonal action switches to Support.
+
+JSON does not allow comments. Keep editing instructions here; keep `site.json` focused on values used by the site.
 
 ## Shared team numbers
 

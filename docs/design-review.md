@@ -18,6 +18,8 @@ Reviewed all seven pages at 375px and 1440px viewport widths, with an independen
 
 ## Remaining considerations
 
+- Follow-up preference: restored all action fills to the brand orange `#ed721e`. The marquee control now follows Join us, shows only a pause/play icon, and uses the same black-to-orange swipe. Its accessible label and pressed state remain available.
+
 - Reduced-motion wrapping was checked in source, but not through an operating-system preference change.
 - Some lower-page recruitment CTAs still lead to the Join page while the shared hero/navbar CTA says Support us. Decide whether informational recruitment links should remain available during competition season before changing those sections' messaging.
 - This focused review does not constitute a full screen-reader or WCAG conformance audit.

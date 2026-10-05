@@ -26,12 +26,12 @@ const numbers = teamNumbers.facts.map((fact) => ({
 {variant === 'home' ? <div class="mission-chapter">
   <section class="story section-shell" id="story" aria-labelledby="story-title">
       <div class="story-heading">
-        <h2 id="story-title">{site.missionTitle}</h2>
-        <p class="story-copy">{site.mission}</p>
-        <p class="story-context">{site.missionContext}</p>
+        <h2 id="story-title">{site.mission.title}</h2>
+        <p class="story-copy">{site.mission.tagline}</p>
+        <p class="story-context">{site.mission.description}</p>
       </div>
       <figure class="story-photo">
-        <img src={withBase(site.teamImage)} alt={site.teamImageAlt} loading="lazy" />
+        <img src={withBase(site.mission.image)} alt={site.mission.imageAlt} loading="lazy" />
       </figure>
     </section>
   <section class="team-numbers" id="numbers" aria-labelledby="numbers-title">
@@ -51,8 +51,9 @@ const numbers = teamNumbers.facts.map((fact) => ({
   .story-heading h2 { max-width: 515px; margin: 0 0 32px; font-size: clamp(40px, 5.1vw, 70px); line-height: .99; letter-spacing: -.055em; }
   .story-copy { margin-bottom: 24px; color: var(--ink); font-size: clamp(20px, 2vw, 26px); line-height: 1.5; }
   .story-context { margin: 0; color: var(--muted-ink); font-size: var(--font-body-min); line-height: 1.75; }
-  .story-photo { position: relative; min-height: 512px; margin: 0; overflow: hidden; background: var(--paper); clip-path: polygon(24px 0, 100% 0, 100% 100%, 0 100%, 0 24px); }
-  .story-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .story-photo { position: relative; min-width: 0; min-height: 512px; margin: 0; overflow: hidden; background: var(--paper); }
+  .story-photo::after { position: absolute; top: 0; left: 0; width: 24px; height: 24px; content: ''; background: var(--paper); clip-path: polygon(0 0, 100% 0, 0 100%); }
+  .story-photo img { position: absolute; inset: -1px; display: block; max-width: none; width: calc(100% + 2px); height: calc(100% + 2px); object-fit: cover; object-position: center; }
 
 
   .team-numbers { padding: 64px clamp(24px, 8vw, 124px); background: var(--orange); color: var(--ink); scroll-margin-top: var(--scroll-header-offset); }

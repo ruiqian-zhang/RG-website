@@ -6,7 +6,7 @@ The founding date is 2016, confirmed by the team: recruiting began in 2016 and t
 
 Edit results in src/content/achievements.json or the Achievements CMS collection. The timeline starts with the 2026 second-place result and displays competition seasons newest first. The 2025 timeline entry uses the user-identified first-place photo from San Diego. The ARC logo is the supplied Combined Logo Black.svg.
 
-The hero embeds YouTube video gSamMUlUCaA using the privacy-enhanced player. It plays muted and loops, behind an orange overlay, with a separate pause/play control. Reduced-motion preferences disable autoplay. Change heroVideoId in site.json or the CMS. All joining links use site.joinLink, now /join/, the recruitment status page.
+The hero embeds YouTube video gSamMUlUCaA using the privacy-enhanced player. It plays muted and loops, behind an orange overlay, with a separate pause/play control. Reduced-motion preferences disable autoplay. Change hero.videoId in site.json or the CMS. All joining links use site.recruitment.joinUrl, now /join/, the recruitment status page.
 
 Supplied photos were resized to a maximum width of 1600 pixels and exported as quality-84 WebP files in public/images. Original files remain unchanged. Subteam photos and their descriptions are editable in the CMS.
 

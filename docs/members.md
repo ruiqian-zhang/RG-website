@@ -8,4 +8,4 @@ Photos and `linkedin`, `github`, and `portfolio` URLs are optional. Blank photos
 
 The header has About us and Sponsors dropdowns and an orange Join us button. On mobile, About us contains all destinations. Dropdowns expand without changing colors. The anniversary years are hidden on screens 360px wide or narrower.
 
-Footer social destinations live in `src/content/site.json` under `socialLinks`, or in the CMS Social links list. A blank URL leaves that platform's borderless icon disabled until a destination is supplied.
+Footer social destinations live in `src/content/site.json` under `links.social`, or in the CMS Social links list. A blank URL leaves that platform's borderless icon disabled until a destination is supplied.

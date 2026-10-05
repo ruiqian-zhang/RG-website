@@ -1,10 +1,10 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
-const site = JSON.parse(await readFile(new URL('../src/content/site.json', import.meta.url), 'utf8'));
+const placements = JSON.parse(await readFile(new URL('../src/content/industry-placements.json', import.meta.url), 'utf8'));
 const sponsorsMode = process.argv.includes('--sponsors');
 const sponsors = sponsorsMode ? JSON.parse(await readFile(new URL('../src/content/sponsors.json', import.meta.url), 'utf8')) : undefined;
-const organizations = sponsorsMode ? sponsors.partners.map((partner) => ({ ...partner, slug: partner.logo })) : site.industryCompanies;
+const organizations = sponsorsMode ? sponsors.partners.map((partner) => ({ ...partner, slug: partner.logo })) : placements.companies;
 const frames = {};
 for (const company of organizations) {
   try {

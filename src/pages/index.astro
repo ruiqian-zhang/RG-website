@@ -13,34 +13,46 @@ import placements from '../content/industry-placements.json';
 import subteams from '../content/subteams.json';
 import sponsorship from '../content/sponsors.json';
 
+const localVideo = site.hero.videoSource === 'file';
+const videoEnabled = site.hero.videoEnabled && Boolean(localVideo ? site.hero.videoFile : site.hero.videoId);
 ---
 
 <BaseLayout>
+  <Fragment slot="head">
+    {videoEnabled && !localVideo && <>
+      <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+      <link rel="preconnect" href="https://www.youtube.com" />
+    </>}
+    <link rel="preload" as="image" href={withBase(site.hero.poster)} />
+  </Fragment>
   <a class="skip-link" href="#main">Skip to content</a>
   <SiteHeader active="Home" />
 
   <main id="main">
 
-    <section class="landing" id="top" aria-labelledby="hero-title">
+    <section class="landing" id="top" aria-labelledby="hero-title" data-video-reveal-delay={Math.max(0, site.hero.videoRevealDelayMs)}>
       <div class="hero-copy">
-        <h1 id="hero-title">{site.headline}</h1>
-        <p class="hero-intro">{site.intro}</p>
+        <h1 id="hero-title">{site.hero.headline}</h1>
+        <p class="hero-intro">{site.hero.intro}</p>
         <div class="hero-actions">
           <a class="button button-swipe button-light" href={withBase(primaryAction.href)}>{primaryAction.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
         </div>
       </div>
       <div class="hero-background" aria-hidden="true">
-        <iframe class="hero-video" tabindex="-1"
-          src={`https://www.youtube-nocookie.com/embed/${site.heroVideoId}?autoplay=0&mute=1&loop=1&playlist=${site.heroVideoId}&playsinline=1&rel=0&controls=0&disablekb=1&enablejsapi=1`}
-          title="RoboGrinder background footage" allow="autoplay; encrypted-media"></iframe>
+        <img class="hero-poster" src={withBase(site.hero.poster)} alt="" fetchpriority="high" />
+        {videoEnabled && (localVideo ?
+          <video class="hero-video hero-video-file" data-src={withBase(site.hero.videoFile)} muted loop playsinline preload="none" tabindex="-1" /> :
+          <iframe class="hero-video" tabindex="-1"
+          data-src={`https://www.youtube-nocookie.com/embed/${site.hero.videoId}?autoplay=1&mute=1&loop=1&playlist=${site.hero.videoId}&playsinline=1&rel=0&controls=0&disablekb=1&enablejsapi=1`}
+          title="RoboGrinder background footage" allow="autoplay; encrypted-media"></iframe>)}
       </div>
-      <div class="anniversary-banner" aria-label={`Celebrating 10 years, ${site.founded} to ${site.anniversaryYear}`}>
+      <div class="anniversary-banner" aria-label={`Celebrating 10 years, ${site.team.founded} to ${site.team.anniversaryYear}`}>
         <img src={withBase('/images/rg-white.png')} alt="" width="48" height="48" loading="lazy" />
         <span class="banner-label">CELEBRATING</span>
         <strong>10</strong><span class="banner-band">YEARS</span>
-        <span class="banner-dates">{site.founded}<br />{site.anniversaryYear}</span>
+        <span class="banner-dates">{site.team.founded}<br />{site.team.anniversaryYear}</span>
       </div>
-      <button class="button button-swipe button-light video-toggle" type="button" aria-label="Pause video" aria-pressed="false"><span class="material-icon" aria-hidden="true">pause</span></button>
+      {videoEnabled && <button class="button button-swipe button-light video-toggle" type="button" aria-label="Pause video" aria-pressed="false"><span class="material-icon" aria-hidden="true">pause</span></button>}
     </section>
 
     <TeamOverview />
@@ -70,11 +82,11 @@ import sponsorship from '../content/sponsors.json';
     <OurSponsors partners={sponsorship.partners} showCta={true} />
 
     <section class="join" id="join" aria-labelledby="join-title">
-      <div class="join-photo"><img src={withBase(site.joinImage)} alt={site.joinImageAlt} loading="lazy" /></div>
+      <div class="join-photo"><img src={withBase(site.join.image)} alt={site.join.imageAlt} loading="lazy" /></div>
       <div class="join-copy">
-        <h2 id="join-title">{site.joinTitle}</h2>
-        <p>{site.joinCopy}</p>
-        <a class="button button-swipe button-dark" href={withBase(site.joinLink)}>{site.joinLabel}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        <h2 id="join-title">{site.join.title}</h2>
+        <p>{site.join.description}</p>
+        <a class="button button-swipe button-dark" href={withBase(site.recruitment.joinUrl)}>{site.recruitment.joinLabel}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
       </div>
       <span class="join-cut" aria-hidden="true"></span>
     </section>
@@ -84,16 +96,73 @@ import sponsorship from '../content/sponsors.json';
 </BaseLayout>
 
 <script>
-  const video = document.querySelector<HTMLIFrameElement>('.hero-video');
+  const video = document.querySelector<HTMLIFrameElement | HTMLVideoElement>('.hero-video');
   const hero = document.querySelector<HTMLElement>('.landing');
   const toggle = document.querySelector<HTMLButtonElement>('.video-toggle');
   if (video && hero && toggle) {
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     let paused = reducedMotion.matches;
-    const source = new URL(video.src);
-    source.searchParams.set('origin', location.origin);
-    source.searchParams.set('autoplay', paused ? '0' : '1');
-    video.src = source.toString();
+    let started = false;
+    let revealScheduled = false;
+    let revealTimer: number | undefined;
+    const revealVideo = () => {
+      if (revealScheduled) return;
+      revealScheduled = true;
+      revealTimer = window.setTimeout(() => hero.classList.add('video-playing'), Number(hero.dataset.videoRevealDelay) || 0);
+    };
+    const playFile = () => {
+      if (!(video instanceof HTMLVideoElement)) return;
+      video.play().catch(() => { paused = true; updateToggle(); });
+    };
+    if (video instanceof HTMLVideoElement) {
+      video.addEventListener('playing', revealVideo);
+      video.addEventListener('error', () => {
+        window.clearTimeout(revealTimer);
+        hero.classList.remove('video-playing');
+        toggle.hidden = true;
+      });
+    }
+    type HeroPlayer = { playVideo: () => void; pauseVideo: () => void; mute: () => void };
+    let player: HeroPlayer | undefined;
+    const youtubeWindow = window as Window & {
+      YT?: { Player: new (frame: HTMLIFrameElement, options: { events: { onReady: () => void; onStateChange: (event: { data: number }) => void } }) => HeroPlayer };
+      onYouTubeIframeAPIReady?: () => void;
+    };
+    const startVideo = () => {
+      if (started) return;
+      started = true;
+      if (video instanceof HTMLVideoElement) {
+        video.muted = true;
+        video.src = video.dataset.src!;
+        playFile();
+        return;
+      }
+      const source = new URL(video.dataset.src!);
+      source.searchParams.set('origin', location.origin);
+      video.src = source.toString();
+      const connectPlayer = () => {
+        if (!youtubeWindow.YT?.Player) return;
+        player = new youtubeWindow.YT.Player(video, {
+          events: {
+            onReady: () => {
+              player?.mute();
+              if (paused) player?.pauseVideo(); else player?.playVideo();
+            },
+            onStateChange: ({ data }) => {
+              if (data === 1) revealVideo();
+            },
+          },
+        });
+      };
+      if (youtubeWindow.YT?.Player) connectPlayer();
+      else {
+        youtubeWindow.onYouTubeIframeAPIReady = connectPlayer;
+        const api = document.createElement('script');
+        api.src = 'https://www.youtube.com/iframe_api';
+        api.async = true;
+        document.head.append(api);
+      }
+    };
     const updateToggle = () => {
       toggle.querySelector('.material-icon')!.textContent = paused ? 'play_arrow' : 'pause';
       toggle.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
@@ -101,18 +170,46 @@ import sponsorship from '../content/sponsors.json';
     };
     const setPlayback = (pause: boolean) => {
       paused = pause;
-      video.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: paused ? 'pauseVideo' : 'playVideo', args: [] }), 'https://www.youtube-nocookie.com');
+      if (!paused) startVideo();
+      if (video instanceof HTMLVideoElement) {
+        if (paused) video.pause(); else playFile();
+      } else {
+        if (paused) player?.pauseVideo(); else player?.playVideo();
+      }
       updateToggle();
     };
     toggle.addEventListener('click', () => setPlayback(!paused));
     reducedMotion.addEventListener('change', (event) => { if (event.matches) setPlayback(true); });
+    const heroVisibility = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !paused) { startVideo(); heroVisibility.disconnect(); }
+    });
+    heroVisibility.observe(hero);
+    // Keep the control inside the visible hero, including short mobile screens.
+    const positionToggle = () => {
+      const viewport = window.visualViewport;
+      const visibleBottom = viewport ? viewport.offsetTop + viewport.height : window.innerHeight;
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      toggle.style.bottom = `${22 + Math.max(0, heroBottom - visibleBottom)}px`;
+    };
     const sizeVideo = () => {
+      positionToggle();
+      if (video instanceof HTMLVideoElement) return;
       const width = Math.max(hero.clientWidth, hero.clientHeight * 16 / 9);
       video.style.width = `${width}px`;
       video.style.height = `${width * 9 / 16}px`;
     };
 
     window.addEventListener('resize', sizeVideo);
+    window.visualViewport?.addEventListener('resize', positionToggle);
+    window.visualViewport?.addEventListener('scroll', positionToggle);
+    let positionFrame = 0;
+    window.addEventListener('scroll', () => {
+      if (positionFrame) return;
+      positionFrame = requestAnimationFrame(() => {
+        positionFrame = 0;
+        positionToggle();
+      });
+    }, { passive: true });
 
     new ResizeObserver(sizeVideo).observe(hero);
     sizeVideo();
@@ -130,19 +227,23 @@ import sponsorship from '../content/sponsors.json';
   .landing h1 { max-width: 650px; margin: 0 0 24px; font-size: clamp(52px, 6vw, 88px); font-weight: 700; line-height: 1.02; letter-spacing: -.055em; white-space: pre-line; }
   .hero-intro { max-width: 440px; margin-bottom: 30px; color: var(--paper); font-size: var(--font-body-min); line-height: 1.7; }
   .hero-actions { display: flex; align-items: center; gap: 25px; flex-wrap: wrap; }
-  .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 12px; padding: 0 18px; font-size: max(var(--font-ui-min), 11px); font-weight: 700; text-decoration: none; }
+  .button { display: inline-flex; min-height: var(--button-height); align-items: center; justify-content: center; gap: var(--button-gap); padding: 0 var(--button-padding); font-size: max(var(--font-ui-min), 11px); font-weight: 700; text-decoration: none; }
   .button .material-icon { font-size: 18px; }
   .button-light { background: var(--paper); color: var(--ink); }
   .hero-background { position: absolute; inset: 0; z-index: -2; overflow: hidden; background: #000000; pointer-events: none; }
   .hero-background::after { position: absolute; inset: 0; content: ''; background: linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.70) 50%, rgba(0,0,0,.30) 100%), linear-gradient(rgba(237,114,30,.24), rgba(237,114,30,.24)); }
-  .hero-video { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 0; }
+  .hero-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-video { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 0; opacity: 0; transition: opacity 300ms ease; }
+  .video-playing .hero-video { opacity: 1; }
+  .hero-video-file { inset: 0; width: 100%; height: 100%; transform: none; object-fit: cover; }
+  .video-toggle[hidden] { display: none; }
   .anniversary-banner { position: absolute; top: 0; right: clamp(24px, 8vw, 124px); width: 126px; height: 246px; padding: 22px 10px 30px; display: flex; flex-direction: column; align-items: center; background: var(--ink); color: var(--paper); clip-path: polygon(0 0,100% 0,100% 88%,50% 100%,0 88%); }
   .anniversary-banner img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 14px; }
   .banner-label { font-size: 10px; letter-spacing: .08em; font-weight: 700; }
   .anniversary-banner strong { font: 700 64px/.95 var(--display); margin: 4px 0 8px; }
   .banner-band { background: var(--paper); color: var(--ink); width: calc(100% + 20px); text-align: center; padding: 5px; font: 700 16px/1 var(--display); }
   .banner-dates { margin-top: 10px; font: 700 14px/1.25 var(--display); letter-spacing: .05em; text-align: center; }
-  .video-toggle { position: absolute; right: 24px; bottom: 22px; width: 52px; min-height: 52px; border: 0; cursor: pointer; }
+  .video-toggle { position: absolute; right: 24px; bottom: 22px; width: var(--button-height); min-height: var(--button-height); border: 0; cursor: pointer; }
   .section-shell { padding-left: clamp(24px, 8vw, 124px); padding-right: clamp(24px, 8vw, 124px); }
   .subteams { padding-top: 64px; padding-bottom: 64px; background: var(--orange); color: var(--ink); }
   .subteams-head { margin-bottom: 32px; }
@@ -154,8 +255,9 @@ import sponsorship from '../content/sponsors.json';
   .team-card p { margin: 0; color: var(--ink); font-size: var(--font-body-min); line-height: 1.6; }
   .subteams-actions { display: flex; align-items: center; justify-content: center; }
   .join { position: relative; min-height: 512px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; background: var(--orange); color: var(--ink); }
-  .join-photo { position: relative; min-height: 512px; clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%); }
-  .join-photo img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: 62% center; filter: saturate(.7); }
+  .join-photo { position: relative; min-width: 0; min-height: 512px; overflow: hidden; }
+  .join-photo::after { position: absolute; top: 0; right: 0; width: 24px; height: 24px; content: ''; background: var(--orange); clip-path: polygon(0 0, 100% 0, 100% 100%); }
+  .join-photo img { display: block; max-width: none; width: calc(100% + 2px); height: calc(100% + 2px); position: absolute; inset: -1px; object-fit: cover; object-position: 62% center; filter: saturate(.7); }
   .join-copy { position: relative; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 75px clamp(24px, 8vw, 110px) 85px clamp(35px, 7vw, 105px); }
   .join-copy h2 { max-width: 430px; margin: 0 0 20px; font-size: clamp(42px, 5vw, 69px); line-height: .93; letter-spacing: -.05em; }
   .join-copy > p { max-width: 390px; margin-bottom: 27px; color: var(--ink); font-size: var(--font-body-min); line-height: 1.7; }
@@ -187,7 +289,8 @@ import sponsorship from '../content/sponsors.json';
     .subteams h2 { margin-top: 0; font-size: clamp(42px, 11vw, 56px); }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
     .join { grid-template-columns: 1fr; }
-    .join-photo { min-height: 0; aspect-ratio: 16 / 9; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); }
+    .join-photo { min-height: 0; aspect-ratio: 16 / 9; }
+    .join-photo::after { width: 18px; height: 18px; }
     .join-copy { min-height: 0; padding: 32px 23px; }
     .join-copy h2 { max-width: 360px; font-size: clamp(48px, 12vw, 68px); }
     .join-copy > p { font-size: var(--font-body-min); }
