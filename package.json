@@ -5,10 +5,15 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "cms": "concurrently --kill-others --names website,cms \"astro dev --host 127.0.0.1 --port 4322\" \"node scripts/cms-server.mjs\"",
     "build": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {
     "astro": "^6.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5",
+    "decap-server": "^3.11.3"
   }
 }

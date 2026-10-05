@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import OrangeFeature from '../components/OrangeFeature.astro';
+import robots from '../content/robots.json';
+import { withBase } from '../lib/urls';
+---
+<BaseLayout title={robots.pageTitle} description={robots.pageDescription}>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <SiteHeader active="Robots" />
+  <main id="main">
+    <OrangeFeature title={robots.headline} description={robots.intro} image={robots.image} imageAlt={robots.imageAlt} imagePosition="center">
+      <a class="button button-swipe button-dark" href="#fleet">{robots.buttonLabel}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+    </OrangeFeature>
+    <section class="fleet section-shell" id="fleet" aria-labelledby="fleet-title">
+      <header><h2 id="fleet-title">{robots.fleetTitle}</h2><p>{robots.fleetIntro}</p></header>
+      <div class="robot-list">
+        {robots.robots.map((robot) => <article class="robot" id={robot.name === 'Engineer' ? 'engineer-title' : undefined}>
+          <div class:list={['robot-render', { 'placeholder-render': robot.image === '/images/rg-gray-square.png' }]}><img src={withBase(robot.image)} alt={robot.imageAlt} width="1080" height="1080" loading="lazy" /></div>
+          <div class="robot-copy">
+            <h3>{robot.name}</h3>
+            <p>{robot.description}</p>
+            <ul class="highlights">{robot.highlights.map((highlight) => <li>{highlight}</li>)}</ul>
+          </div>
+        </article>)}
+      </div>
+    </section>
+    <section class="robot-cta section-shell" aria-labelledby="robot-cta-title">
+      <h2 id="robot-cta-title">{robots.ctaTitle}</h2>
+      <p>{robots.ctaDescription}</p>
+      <div class="cta-actions">
+        <a class="button button-swipe button-light" style="background: var(--paper);" href={withBase('/members/')}>{robots.teamButtonLabel}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        <a class="button button-swipe button-light" style="background: var(--paper);" href={withBase('/sponsors/')}>{robots.sponsorButtonLabel}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+<style>
+  .section-shell { padding: 80px clamp(24px, 8vw, 124px); }
+  .fleet { background: var(--paper); scroll-margin-top: var(--header-height); }
+  header { max-width: 760px; margin-bottom: 48px; }
+  h2 { margin: 0 0 24px; font: 700 clamp(36px, 4.5vw, 58px)/1.05 var(--display); letter-spacing: -.035em; text-wrap: balance; }
+  p { margin: 0; font-size: var(--font-body-min); line-height: 1.65; }
+  .robot { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 48px 0; border-top: 1px solid var(--line); }
+  .robot:last-child { padding-bottom: 0; }
+  .robot-render { display: grid; place-items: center; min-width: 0; }
+  .robot-render img { display: block; width: 100%; max-width: 520px; height: auto; aspect-ratio: 1; object-fit: contain; }
+  .placeholder-render { aspect-ratio: 1; }
+  .placeholder-render img { width: 50%; max-width: 260px; }
+  .robot { scroll-margin-top: calc(var(--header-height) + 24px); }
+  .robot:nth-child(even) .robot-render { order: 2; }
+  .robot-copy { min-width: 0; }
+  h3 { margin: 0 0 24px; font: 700 clamp(32px, 4vw, 48px)/1.05 var(--display); letter-spacing: -.025em; }
+  .highlights { display: flex; flex-wrap: wrap; gap: 12px 24px; padding: 0; margin: 28px 0 0; list-style: none; }
+  .highlights li { padding-left: 16px; position: relative; font-size: var(--font-ui-min); line-height: 1.5; }
+  .highlights li::before { position: absolute; left: 0; top: .5em; width: 6px; height: 6px; content: ''; background: var(--orange); }
+  .robot-cta { background: var(--orange); text-align: center; }
+  .robot-cta > p { max-width: 660px; margin-inline: auto; }
+  .cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 24px; margin-top: 32px; }
+  @media (max-width: 900px) { .robot { gap: 32px; } }
+  @media (max-width: 680px) {
+    .section-shell { padding: 56px 23px; }
+    header { margin-bottom: 32px; }
+    .robot { grid-template-columns: 1fr; }
+    .robot { gap: 24px; padding-top: 32px; padding-bottom: 40px; }
+    .robot:nth-child(even) .robot-render { order: 0; }
+    .robot-render img { max-width: 400px; }
+    .placeholder-render img { max-width: 200px; }
+    .highlights { margin-top: 24px; }
+  }
+</style>

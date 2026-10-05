@@ -40,6 +40,12 @@ GitHub Pages serves static files. The contact form uses the visitor's email app.
 
 ## Content management
 
+### Local editor (no OAuth setup)
+
+Run `npm run cms`, then open `http://127.0.0.1:4322/admin/index.html`. This starts the website on port 4322 and Decap's local content server on port 8081, bound to your computer. Choose a collection, edit fields, and save/publish. The local CMS writes the JSON files and uploads directly to this checkout; it does not publish to GitHub automatically.
+
+Review the changes in GitHub Desktop or with `git diff`, then commit and push to `main` to publish through GitHub Pages. Press Ctrl+C in the terminal to stop both servers. After cloning on another computer, run `npm ci` first. Online CMS login still needs OAuth; local editing does not.
+
 The admin app is served from `public/admin/`. Before deploying it:
 
 1. Set `backend.repo` in `public/admin/config.yml` to the GitHub owner and repository for this site.

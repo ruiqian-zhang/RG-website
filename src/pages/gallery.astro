@@ -14,13 +14,16 @@ import gallery from '../content/gallery.json';
       <a class="button button-swipe button-dark" href="#seasons">Explore the photos<span class="material-icon" aria-hidden="true">chevron_right</span></a>
     </OrangeFeature>
     <div class="seasons" id="seasons">
-      {gallery.seasons.map((season) => <section class="season">
-        <header><h2>{season.title}</h2><p>{season.description}</p></header>
+      {gallery.seasons.map((season) => <details class="season" data-disclosure>
+        <summary><h2>{season.title}</h2><span class="material-icon season-arrow" aria-hidden="true">expand_more</span></summary>
+        <div class="disclosure-panel">
+        <p class="season-description">{season.description}</p>
         <div class="photo-grid">{season.photos.map((photo) => <figure>
           <button class="photo-preview" type="button" data-image={withBase(photo.image)} data-caption={photo.caption} aria-label={`View photo: ${photo.caption}`} aria-haspopup="dialog"><img src={withBase(photo.image)} alt={photo.caption} loading="lazy" width="1600" height="1067" /></button>
           <figcaption>{photo.caption}</figcaption>
         </figure>)}</div>
-      </section>)}
+        </div>
+      </details>)}
     </div>
     <dialog class="photo-lightbox" aria-label="Photo preview" aria-describedby="preview-caption">
       <button class="preview-close" type="button" aria-label="Close photo preview" autofocus><span class="material-icon" aria-hidden="true">close</span></button>
@@ -58,12 +61,15 @@ import gallery from '../content/gallery.json';
 </script>
 </BaseLayout>
 <style>
-  .seasons { padding: 0 clamp(24px, 8vw, 124px) 80px; scroll-margin-top: var(--header-height); }
-  .season { padding-top: 80px; }
-  .season + .season { margin-top: 80px; padding-top: 64px; border-top: 1px solid rgba(0,0,0,.2); }
-  header { margin-bottom: 36px; }
-  h2 { margin: 0 0 16px; font: 700 clamp(32px, 3.5vw, 48px)/1.1 var(--display); letter-spacing: -.03em; }
-  header p { margin: 0; font-size: var(--font-body-min); line-height: 1.6; }
+  .seasons { padding: 64px clamp(24px, 8vw, 124px) 80px; scroll-margin-top: var(--header-height); }
+  .season { border-bottom: 1px solid var(--line); }
+  summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 80px; padding: 24px 0; }
+  h2 { margin: 0; font: 700 clamp(24px, 3vw, 36px)/1.2 var(--display); letter-spacing: -.03em; }
+  .season-arrow { flex-shrink: 0; transition: rotate 300ms ease; }
+  summary[aria-expanded="true"] > .season-arrow { rotate: 180deg; }
+  summary:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+  .disclosure-panel { padding-bottom: 36px; }
+  .season-description { margin: 0 0 36px; font-size: var(--font-body-min); line-height: 1.6; }
   .photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 36px 28px; }
   figure { margin: 0; }
   .photo-preview { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
@@ -75,5 +81,5 @@ import gallery from '../content/gallery.json';
   .preview-image { display: block; width: 100%; height: auto; max-height: calc(100dvh - 200px); object-fit: contain; }
   figcaption { margin-top: 14px; font-size: var(--font-label-min); line-height: 1.5; }
   @media (max-width: 950px) { .photo-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
-  @media (max-width: 520px) { .seasons { padding: 0 23px 56px; } .season { padding-top: 56px; } .photo-grid { grid-template-columns: 1fr; gap: 28px; } .season + .season { margin-top: 56px; padding-top: 48px; } .photo-lightbox { width: calc(100vw - 24px); padding: 16px; } }
+  @media (max-width: 520px) { .seasons { padding: 32px 23px 56px; } summary { gap: 16px; min-height: 72px; padding: 20px 0; } .photo-grid { grid-template-columns: 1fr; gap: 28px; } .photo-lightbox { width: calc(100vw - 24px); padding: 16px; } }
 </style>

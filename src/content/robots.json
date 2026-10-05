@@ -1,0 +1,61 @@
+{
+  "pageTitle": "Robots | RoboGrinder at Virginia Tech",
+  "pageDescription": "Meet RoboGrinder's Infantry, Sentry, Hero, and Engineer robots, designed and built by Virginia Tech students.",
+  "headline": "Our robots.",
+  "intro": "From agile ground units to autonomous systems, our robots bring mechanical design, electronics, embedded controls, and computer vision together on the competition field.",
+  "image": "/images/rmul-2025-fleet.webp",
+  "imageAlt": "Three RoboGrinder competition robots on the arena floor",
+  "buttonLabel": "Meet the robots",
+  "fleetTitle": "Designed to compete.",
+  "fleetIntro": "Every robot has a role. Explore our 2025-2026 designs and the engineering behind each one.",
+  "robots": [
+    {
+      "name": "Infantry",
+      "description": "Infantry robots are agile ground units that lead the offensive line. Equipped with 17 mm projectile launchers, they take on opposing robots in fast-moving encounters.",
+      "image": "/images/robots/infantry-2026.png",
+      "imageAlt": "CAD render of RoboGrinder's 2026 Infantry robot",
+      "highlights": [
+        "17 mm projectiles",
+        "Agile chassis",
+        "Offensive role"
+      ]
+    },
+    {
+      "name": "Sentry",
+      "description": "Sentry is a fully autonomous unit that operates without a human driver. Onboard SLAM, NAV2, LiDAR, and computer-vision tracking work together to navigate the field and engage opposing robots.",
+      "image": "/images/robots/sentry-2026.png",
+      "imageAlt": "CAD render of RoboGrinder's 2026 Sentry robot with its tall sensor mast",
+      "highlights": [
+        "Autonomous navigation",
+        "LiDAR & SLAM",
+        "Computer-vision tracking"
+      ]
+    },
+    {
+      "name": "Hero",
+      "description": "Hero is a heavy assault unit that combines a high-torque chassis with a launcher for 42 mm, golf-ball-sized projectiles. It is designed to deliver heavy damage to opposing robots and fortifications.",
+      "image": "/images/robots/hero-2026.png",
+      "imageAlt": "CAD render of RoboGrinder's 2026 Hero robot with its large projectile launcher",
+      "highlights": [
+        "42 mm projectiles",
+        "High-torque chassis",
+        "Heavy assault role"
+      ]
+    },
+    {
+      "name": "Engineer",
+      "description": "Engineer is a non-combat utility unit that supports the fleet with custom grabbing mechanisms that collect resource minerals and revive eliminated teammates. These mechanisms make it the fleet's most mechanically complex robot.",
+      "image": "/images/rg-gray-square.png",
+      "imageAlt": "Gray RoboGrinder logo placeholder for the Engineer robot render",
+      "highlights": [
+        "Resource collection",
+        "Teammate revival",
+        "Custom grabbing mechanisms"
+      ]
+    }
+  ],
+  "ctaTitle": "Help build what comes next.",
+  "ctaDescription": "Our robots are built by students working together across five engineering subteams. Meet the people behind the machines or support their next season.",
+  "teamButtonLabel": "Meet the team",
+  "sponsorButtonLabel": "Sponsor us"
+}

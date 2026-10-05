@@ -1,3 +1,5 @@
+local_backend: true
+
 backend:
   name: github
   repo: ruiqian-zhang/RG-website
@@ -46,6 +48,38 @@ collections:
               - { label: Platform, name: name, widget: select, options: [Instagram, YouTube, X, Facebook, GobblerConnect, GitHub, LinkedIn] }
               - { label: URL, name: url, widget: string, required: false, hint: Leave blank to show a disabled placeholder. }
 
+  - name: robots
+    label: Robots
+    files:
+      - name: robot-page
+        label: Robots page
+        file: src/content/robots.json
+        format: json
+        fields:
+          - { label: Browser title, name: pageTitle, widget: string }
+          - { label: Page description, name: pageDescription, widget: text }
+          - { label: Hero heading, name: headline, widget: string }
+          - { label: Hero introduction, name: intro, widget: text }
+          - { label: Hero photo, name: image, widget: image }
+          - { label: Hero photo description, name: imageAlt, widget: string }
+          - { label: Explore button text, name: buttonLabel, widget: string }
+          - { label: Fleet heading, name: fleetTitle, widget: string }
+          - { label: Fleet introduction, name: fleetIntro, widget: text }
+          - label: Featured robots
+            name: robots
+            widget: list
+            summary: '{{fields.name}}'
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Render, name: image, widget: image }
+              - { label: Render description, name: imageAlt, widget: string }
+              - { label: Highlights, name: highlights, widget: list, field: { label: Highlight, name: highlight, widget: string } }
+          - { label: Closing heading, name: ctaTitle, widget: string }
+          - { label: Closing description, name: ctaDescription, widget: text }
+          - { label: Team button text, name: teamButtonLabel, widget: string }
+          - { label: Sponsor button text, name: sponsorButtonLabel, widget: string }
+
   - name: gallery
     label: Gallery
     files:
@@ -58,7 +92,7 @@ collections:
             name: seasons
             widget: list
             fields:
-              - { label: Title, name: title, widget: string }
+              - { label: Title, name: title, widget: string, default: '2026-2027 season', hint: 'Use YYYY-YYYY season, for example 2026-2027 season.' }
               - { label: Description, name: description, widget: text }
               - label: Photos
                 name: photos
