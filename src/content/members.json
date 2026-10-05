@@ -44,16 +44,6 @@
       "portfolio": ""
     },
     {
-      "name": "David Dai",
-      "subteam": "Electronics",
-      "role": "",
-      "major": "Electrical Engineering",
-      "photo": "",
-      "linkedin": "",
-      "github": "",
-      "portfolio": ""
-    },
-    {
       "name": "Ethan O'Brian",
       "subteam": "Mechanical",
       "role": "",
@@ -136,7 +126,7 @@
     {
       "name": "Patrick Knowles",
       "subteam": "Mechanical",
-      "role": "",
+      "role": "Mechanical Project Lead",
       "major": "Mechanical Engineering",
       "photo": "",
       "linkedin": "",
@@ -156,7 +146,7 @@
     {
       "name": "Rui Ma",
       "subteam": "Software & Computer Vision",
-      "role": "Software & Computer Vision Lead",
+      "role": "Software & Computer Vision Technical Advisor",
       "major": "Computer Engineering",
       "photo": "",
       "linkedin": "",
@@ -169,8 +159,9 @@
       "role": "",
       "major": "Electrical Engineering",
       "photo": "",
-      "linkedin": "",
-      "github": "",
+      "linkedin": "https://www.linkedin.com/in/ruiqianzhang",
+      "email": "rhema@vt.edu",
+      "github": "https://github.com/ruiqian-zhang",
       "portfolio": ""
     },
     {
@@ -196,7 +187,7 @@
     {
       "name": "Tina Pan",
       "subteam": "Operations",
-      "role": "Vice President",
+      "role": "Vice President & Operations Branch Lead",
       "major": "Computer Science",
       "photo": "",
       "linkedin": "",

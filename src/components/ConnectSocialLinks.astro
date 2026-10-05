@@ -1,0 +1,26 @@
+---
+import site from '../content/site.json';
+import ProfileIcon from './ProfileIcon.astro';
+const { mobileOnly = false } = Astro.props;
+const gobbler = site.socialLinks.find((link) => link.name === 'GobblerConnect');
+const socials = site.socialLinks.filter((link) => link.name !== 'GobblerConnect');
+---
+<div class:list={['connect-extras', mobileOnly && 'mobile-only']}>
+  {gobbler && <a class="menu-link" href={gobbler.url} target="_blank" rel="noreferrer">GobblerConnect<span class="material-icon" aria-hidden="true">open_in_new</span></a>}
+  <div class="social-group" role="group" aria-label="Social media">
+    <p>Social media</p>
+    <div class="social-links">{socials.map((link) => <a class="icon-button" href={link.url} target="_blank" rel="noreferrer" aria-label={link.name} title={link.name}><ProfileIcon name={link.name} /></a>)}</div>
+    <a class="menu-link" href={site.linktreeUrl} target="_blank" rel="noreferrer">All social links<span class="material-icon" aria-hidden="true">open_in_new</span></a>
+  </div>
+</div>
+<style>
+  .mobile-only { display: none; }
+  .menu-link { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--menu-link-color, var(--paper)); font-size: var(--font-ui-min); text-decoration: none; border-bottom: 1px solid rgba(240,240,240,.15); }
+  .social-group { padding-top: 18px; }
+  .social-group p { margin: 0 0 10px; font-size: var(--font-label-min); font-weight: 700; }
+  .social-links { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; }
+  .social-links .icon-button { width: 100%; min-width: 44px; }
+  .social-group > .menu-link { border-bottom: 0; }
+  @media (max-width: 850px) { .mobile-only { display: block; } }
+  @media (max-width: 360px) { .social-links { grid-template-columns: repeat(3, 1fr); } }
+</style>

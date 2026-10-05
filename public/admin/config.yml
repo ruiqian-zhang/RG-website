@@ -82,6 +82,7 @@ collections:
             fields:
               - { label: Title, name: title, widget: string }
               - { label: Description, name: description, widget: text }
+              - { label: Icon, name: icon, widget: select, options: [description, forum, groups, star_outline], default: description }
           - { label: Headline, name: headline, widget: string }
           - { label: Introduction, name: intro, widget: text }
           - { label: Hero image, name: image, widget: image }
@@ -98,6 +99,7 @@ collections:
             required: false
             fields:
               - { label: Organization name, name: name, widget: string }
+              - { label: Group, name: category, widget: select, options: [{ label: Sponsor, value: sponsor }, { label: Departmental supporter, value: departmental }], default: sponsor }
               - { label: Logo, name: logo, widget: image }
               - { label: Website, name: url, widget: string, required: false }
 
@@ -124,6 +126,7 @@ collections:
               - { label: LinkedIn URL, name: linkedin, widget: string, required: false }
               - { label: GitHub URL, name: github, widget: string, required: false }
               - { label: Portfolio URL, name: portfolio, widget: string, required: false }
+              - { label: Public email address, name: email, widget: string, required: false }
           - label: Previous recorded seasons
             name: seasons
             widget: list

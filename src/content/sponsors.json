@@ -1,11 +1,12 @@
 {
   "headline": "Partner with RoboGrinder",
-  "intro": "Connect your company with Virginia Tech students who turn classroom knowledge into working systems. Together, we build practical experience and the next generation of engineers.",
+  "intro": "Companies, local businesses, families, and friends help our students design, build, and compete. Support RoboGrinder with funding, equipment, or expertise to keep our robots and our team moving through the season.",
   "packetUrl": "/packets/robogrinder-partnership-2026-2027.pdf",
   "benefits": [
-    { "title": "Meet students ready for industry", "description": "Our members work through design reviews, manufacturing, software integration, and testing. Get to know students with practical experience for internships and early-career roles." },
-    { "title": "Build a relationship with the team", "description": "Share engineering experience through mentorship, technical conversations, and feedback. Help students understand the challenges your company solves." },
-    { "title": "Put your contribution in view", "description": "Discuss recognition through our website, team media, and competition presence. We can agree on opportunities that fit your contribution and goals." }
+    { "title": "Resume drops", "icon": "description", "description": "Receive student resumes for internship and full-time recruiting at qualifying tiers." },
+    { "title": "Meet the team", "icon": "forum", "description": "Share career opportunities and engineering experience through sponsor sessions included in your tier." },
+    { "title": "Lab tours & outreach", "icon": "groups", "description": "See our projects in the lab and connect at team events, with opportunities based on your tier." },
+    { "title": "Sponsor recognition", "icon": "star_outline", "description": "Get recognition on our robots, website, or team media as included in your sponsorship tier." }
   ],
   "image": "/images/arc-2026-team.jpg",
   "imageAlt": "RoboGrinder students and robots at a robotics competition",
@@ -25,19 +26,34 @@
   ],
   "partners": [
     {
+      "name": "Virginia Tech AUVSI — Association for Unmanned Vehicle Systems International",
+      "category": "departmental",
+      "logo": "/images/partners/auvsi.png",
+      "url": "https://auvsivt.wixsite.com/home"
+    },
+    {
+      "name": "Undergraduate Student Senate",
+      "category": "departmental",
+      "logo": "/images/partners/undergraduate-student-senate.png",
+      "url": "https://uss.vt.edu/index.html"
+    },
+    {
+      "name": "Student Engineers' Council at Virginia Tech",
+      "category": "departmental",
+      "logo": "/images/partners/sec.png",
+      "url": "https://www.sec.vt.edu/"
+    },
+    {
       "name": "Bradley Department of Electrical and Computer Engineering",
+      "category": "departmental",
       "logo": "/images/partners/ece.svg",
       "url": "https://ece.vt.edu/"
     },
     {
       "name": "Department of Mechanical Engineering at Virginia Tech",
+      "category": "departmental",
       "logo": "/images/partners/mechanical-engineering.svg",
       "url": "https://me.vt.edu/"
-    },
-    {
-      "name": "Student Engineers' Council at Virginia Tech",
-      "logo": "/images/partners/sec.png",
-      "url": "https://www.sec.vt.edu/"
     },
     {
       "name": "SOLIDWORKS",

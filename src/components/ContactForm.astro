@@ -12,7 +12,7 @@ const { partnership = false } = Astro.props;
     <input id="contact-email" name="email" type="email" autocomplete="email" required />
   </div>
   {partnership && <div class="form-row">
-    <label for="contact-company">Company or organization</label>
+    <label for="contact-company">Business or organization (optional)</label>
     <input id="contact-company" name="company" type="text" autocomplete="organization" />
   </div>}
   <div class="form-row">
@@ -44,16 +44,16 @@ const { partnership = false } = Astro.props;
         return;
       }
       const subject = encodeURIComponent(`RoboGrinder inquiry: ${data.get('topic')}`);
-      const company = data.get('company') ? `Company: ${data.get('company')}\n` : '';
+      const company = data.get('company') ? `Organization: ${data.get('company')}\n` : '';
       const body = encodeURIComponent(`Name: ${data.get('name')}\nReply to: ${data.get('email')}\n${company}Topic: ${data.get('topic')}\n\n${data.get('message')}`);
       window.location.href = `mailto:${inbox}?subject=${subject}&body=${body}`;
     });
   });
 </script>
 <style>
-  .contact-form { min-width: 0; padding-top: 28px; border-top: 1px solid rgba(0,0,0,.3); color: var(--ink); }
+  .contact-form { min-width: 0; color: var(--ink); }
   .contact-form .button-dark { --hover-fill: var(--orange); --hover-ink: var(--paper); }
-  .partnership-form { border-color: rgba(240,240,240,.3); color: var(--paper); }
+  .partnership-form { border-top: 0; padding-top: 0; color: var(--paper); }
   .partnership-form .button-light { background: var(--paper); color: var(--ink); --hover-fill: var(--orange); --hover-ink: var(--paper); }
   .form-row { display: grid; gap: 8px; margin-bottom: 18px; }
   label { font-size: var(--font-ui-min); font-weight: 700; }

@@ -45,6 +45,12 @@ const { title = 'RoboGrinder | Virginia Tech Robotics', description = 'Student-b
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; min-width: 0; font-size: var(--font-body-min); }
   a { color: inherit; }
+  .mobile-menu nav a { transition: color 200ms ease; }
+  .mobile-menu nav a:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
+  @media (hover: hover) and (pointer: fine) {
+    .mobile-menu nav a:hover { --menu-link-color: var(--orange); color: var(--orange); }
+  }
+  .mobile-menu nav a:active { --menu-link-color: var(--orange); color: var(--orange); }
   h1, h2, h3 { text-wrap: balance; }
   section[id], h2[id] { scroll-margin-top: var(--header-height); }
   .skip-link { position: fixed; z-index: 40; top: 8px; left: 8px; padding: 12px 16px; transform: translateY(-150%); background: var(--paper); color: var(--ink); }
@@ -69,15 +75,17 @@ const { title = 'RoboGrinder | Virginia Tech Robotics', description = 'Student-b
   @media (hover: hover) and (pointer: fine) {
     .button-swipe:not(:disabled):hover { color: var(--hover-ink); }
     .button-swipe:not(:disabled):hover::before { transform: scaleX(1); }
-    .member-links .icon-button:hover { color: var(--orange); }
   }
   .icon-button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: inherit; text-decoration: none; cursor: pointer; }
   .icon-button:disabled { cursor: default; opacity: .65; }
-  .member-links .icon-button { --hover-fill: var(--ink); --hover-ink: var(--paper); }
   [data-disclosure] > summary { cursor: pointer; list-style: none; }
   [data-disclosure] > summary::-webkit-details-marker { display: none; }
   .disclosure-panel { overflow: hidden; }
-  ::selection { color: var(--paper); background: var(--ink); }
+  ::selection { color: #fff; background: var(--orange); }
+  :is(.orange-feature, .subteams, .team-numbers, .join, .support, .header-cta)::selection,
+  :is(.orange-feature, .subteams, .team-numbers, .join, .support, .header-cta) ::selection { color: #fff; background: var(--ink); }
+  :is(.orange-feature, .subteams, .team-numbers, .join, .support) .button-dark::selection,
+  :is(.orange-feature, .subteams, .team-numbers, .join, .support) .button-dark ::selection { color: #fff; background: var(--orange); }
   :focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
   :is(.button, .header-cta, .icon-button):focus-visible { outline-offset: -4px; }
   .button-dark:focus-visible { outline-color: var(--paper); }
@@ -89,7 +97,6 @@ const { title = 'RoboGrinder | Virginia Tech Robotics', description = 'Student-b
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-    .marquee-track { animation-duration: var(--marquee-duration) !important; animation-iteration-count: infinite !important; }
-    .industry:not(.marquees-playing) .marquee-track { animation-play-state: paused !important; }
+    .marquee-track { animation: none !important; }
   }
 </style>

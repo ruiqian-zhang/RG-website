@@ -1,5 +1,6 @@
 ---
 import site from '../content/site.json';
+import ConnectSocialLinks from './ConnectSocialLinks.astro';
 const { active = 'Home' } = Astro.props;
 const links = [
   { label: 'Achievements', href: '/#achievements', active: 'Achievements' },
@@ -22,11 +23,12 @@ const links = [
       <nav aria-label="Main navigation">
         {links.map((link) => <a class:list={[['Sponsors & Partners', 'Contact us'].includes(link.label) && 'mobile-only']} href={link.href} aria-current={active === link.active && link.label !== 'Subteams' ? 'page' : undefined}>{link.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>)}
         <a class="mobile-only" href={site.joinLink}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        <ConnectSocialLinks mobileOnly />
       </nav>
     </details>
     <details class="mobile-menu support-menu" data-disclosure>
       <summary aria-label="Open Connect menu">Connect<span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span></summary>
-      <nav aria-label="Connect"><a href="/sponsors/" aria-current={active === 'Sponsors' ? 'page' : undefined}>Sponsors &amp; Partners<span class="material-icon" aria-hidden="true">chevron_right</span></a><a href="/contact/" aria-current={active === 'Contact' ? 'page' : undefined}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a></nav>
+      <nav aria-label="Connect"><a href="/sponsors/" aria-current={active === 'Sponsors' ? 'page' : undefined}>Sponsors &amp; Partners<span class="material-icon" aria-hidden="true">chevron_right</span></a><a href="/contact/" aria-current={active === 'Contact' ? 'page' : undefined}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a><ConnectSocialLinks /></nav>
     </details>
     <a class="header-cta button-swipe" href={site.joinLink}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
     </div>
@@ -60,8 +62,12 @@ const links = [
       }
       details.open = true;
       const height = panel.scrollHeight;
+      const menu = details.classList.contains('mobile-menu');
+      const frames = menu
+        ? (open ? [{ opacity: 0, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'translateY(0)' }] : [{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(-6px)' }])
+        : (open ? [{ height: '0px', opacity: 0 }, { height: `${height}px`, opacity: 1 }] : [{ height: `${height}px`, opacity: 1 }, { height: '0px', opacity: 0 }]);
       animation = panel.animate(
-        open ? [{ height: '0px', opacity: 0 }, { height: `${height}px`, opacity: 1 }] : [{ height: `${height}px`, opacity: 1 }, { height: '0px', opacity: 0 }],
+        frames,
         { duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300, easing: 'ease', fill: 'both' }
       );
       const current = animation;
@@ -93,6 +99,8 @@ const links = [
   .mobile-menu summary { min-width: 48px; height: 48px; padding: 0 16px; display: flex; gap: 10px; align-items: center; justify-content: center; list-style: none; cursor: pointer; color: var(--paper); font-size: var(--font-ui-min); font-weight: 600; white-space: nowrap; }
   .burger-icon, .burger-close { display: none; }
   .dropdown-arrow { transition: rotate 300ms ease; }
+  .mobile-menu summary { transition: color 200ms ease; }
+  @media (hover: hover) and (pointer: fine) { .mobile-menu summary:hover { color: var(--orange); } }
   [aria-expanded="true"] .dropdown-arrow { rotate: 180deg; }
   .primary-menu nav .mobile-only { display: none; }
   .mobile-menu .menu-close { display: none; }
@@ -101,11 +109,12 @@ const links = [
   .mobile-menu nav a[aria-current="page"] { color: var(--orange); }
   .mobile-menu summary::-webkit-details-marker { display: none; }
   .mobile-menu nav { position: absolute; top: calc(100% + 14px); right: 0; width: min(320px, calc(100vw - 32px)); padding: 0 20px; overflow: hidden; background: var(--ink); border: 1px solid rgba(240,240,240,.25); box-shadow: 0 16px 28px rgba(0,0,0,.18); }
-  .mobile-menu nav a { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--paper); font-size: var(--font-ui-min); text-decoration: none; border-bottom: 1px solid rgba(240,240,240,.15); }
+  .mobile-menu nav a { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--menu-link-color, var(--paper)); font-size: var(--font-ui-min); text-decoration: none; border-bottom: 1px solid rgba(240,240,240,.15); }
   .mobile-menu nav a:last-child { border-bottom: 0; }
   @media (max-width: 850px) {
-    .site-header { height: 70px; padding: 0 22px; gap: 12px; }
+    .site-header { height: 70px; padding: 0 24px; gap: 12px; }
     .mobile-menu { position: relative; display: block; }
+    .mobile-menu nav { max-height: calc(100dvh - 90px); overflow-y: auto; }
     .mobile-menu summary { min-width: 44px; height: 44px; padding: 0; }
     .support-menu, .header-cta, .brand-copy, .primary-label, .primary-menu .dropdown-arrow { display: none; }
     .primary-menu .burger-icon { display: inline-block; }
@@ -118,7 +127,7 @@ const links = [
     .mobile-menu summary { gap: 4px; }
   }
   @media (max-width: 520px) {
-    .site-header { padding: 0 15px; }
+    .site-header { padding: 0 24px; }
     .brand { gap: 8px; }
     .brand img { width: 35px; height: 35px; }
   }

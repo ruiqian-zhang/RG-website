@@ -16,13 +16,45 @@ import gallery from '../content/gallery.json';
       {gallery.seasons.map((season) => <section class="season">
         <header><h2>{season.title}</h2><p>{season.description}</p></header>
         <div class="photo-grid">{season.photos.map((photo) => <figure>
-          <a href={photo.image} target="_blank" rel="noreferrer" aria-label={`View photo: ${photo.caption}`}><img src={photo.image} alt={photo.caption} loading="lazy" width="1600" height="1067" /></a>
+          <button class="photo-preview" type="button" data-image={photo.image} data-caption={photo.caption} aria-label={`View photo: ${photo.caption}`} aria-haspopup="dialog"><img src={photo.image} alt={photo.caption} loading="lazy" width="1600" height="1067" /></button>
           <figcaption>{photo.caption}</figcaption>
         </figure>)}</div>
       </section>)}
     </div>
+    <dialog class="photo-lightbox" aria-label="Photo preview" aria-describedby="preview-caption">
+      <button class="preview-close" type="button" aria-label="Close photo preview" autofocus><span class="material-icon" aria-hidden="true">close</span></button>
+      <figure><img class="preview-image" alt="" /><figcaption id="preview-caption"></figcaption></figure>
+    </dialog>
   </main>
   <SiteFooter />
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('.photo-lightbox');
+  const image = dialog?.querySelector<HTMLImageElement>('.preview-image');
+  const caption = dialog?.querySelector<HTMLElement>('figcaption');
+  let opener: HTMLButtonElement | null = null;
+  let previousOverflow = '';
+  document.querySelectorAll<HTMLButtonElement>('.photo-preview').forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!dialog || !image || !caption || !button.dataset.image) return;
+      opener = button;
+      image.src = button.dataset.image;
+      image.alt = button.dataset.caption || '';
+      caption.textContent = image.alt;
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      dialog.showModal();
+    });
+  });
+  dialog?.querySelector('.preview-close')?.addEventListener('click', () => dialog.close());
+  dialog?.addEventListener('click', (event) => {
+    const bounds = dialog.getBoundingClientRect();
+    if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
+  });
+  dialog?.addEventListener('close', () => {
+    document.body.style.overflow = previousOverflow;
+    opener?.focus({ preventScroll: true });
+  });
+</script>
 </BaseLayout>
 <style>
   .seasons { padding: 80px clamp(24px, 8vw, 124px); scroll-margin-top: var(--header-height); }
@@ -32,9 +64,14 @@ import gallery from '../content/gallery.json';
   header p { margin: 0; font-size: var(--font-body-min); line-height: 1.6; }
   .photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 36px 28px; }
   figure { margin: 0; }
-  figure a { display: block; }
-  img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%); }
+  .photo-preview { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+  .photo-preview:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+  .photo-grid img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%); }
+  .photo-lightbox { width: min(1100px, calc(100vw - 48px)); max-width: none; max-height: calc(100dvh - 48px); padding: 24px; border: 1px solid rgba(255,255,255,.2); background: var(--ink); color: var(--paper); }
+  .photo-lightbox::backdrop { background: rgba(0,0,0,.88); }
+  .preview-close { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 0 16px auto; border: 0; background: var(--orange); color: #fff; cursor: pointer; }
+  .preview-image { display: block; width: 100%; height: auto; max-height: calc(100dvh - 200px); object-fit: contain; }
   figcaption { margin-top: 14px; font-size: var(--font-label-min); line-height: 1.5; }
   @media (max-width: 950px) { .photo-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
-  @media (max-width: 520px) { .seasons { padding: 56px 23px; } .photo-grid { grid-template-columns: 1fr; gap: 28px; } .season + .season { margin-top: 56px; padding-top: 48px; } }
+  @media (max-width: 520px) { .seasons { padding: 56px 23px; } .photo-grid { grid-template-columns: 1fr; gap: 28px; } .season + .season { margin-top: 56px; padding-top: 48px; } .photo-lightbox { width: calc(100vw - 24px); padding: 16px; } }
 </style>

@@ -13,17 +13,19 @@ import site from '../content/site.json';
       <a class="button button-swipe button-dark" href="/#subteams">Explore our subteams<span class="material-icon" aria-hidden="true">chevron_right</span></a>
     </OrangeFeature>
     <section class="next-season">
-      <div><h2>Stay on the grind.</h2><p>Applications are closed, but you can still support the team. Help with funding, equipment, or expertise, and follow our builds throughout the season.</p><div class="support-actions"><a class="button button-swipe button-dark" href="/sponsors/">Support the team<span class="material-icon" aria-hidden="true">chevron_right</span></a><a class="button button-swipe button-dark" href={site.linktreeUrl} target="_blank" rel="noreferrer">Linktree<span class="material-icon" aria-hidden="true">chevron_right</span></a></div></div>
+      <div><h2>Stay on the grind.</h2><p>Follow our latest builds and competition updates, cheer us on during matches, and help support the team throughout the season.</p><div class="support-actions"><a class="button button-swipe button-dark" href="/sponsors/">Support the team<span class="material-icon" aria-hidden="true">chevron_right</span></a><a class="button button-swipe button-dark" href={site.linktreeUrl} target="_blank" rel="noreferrer">Linktree<span class="material-icon" aria-hidden="true">chevron_right</span></a></div></div>
       <img src="/images/interest-meeting-software.webp" alt="RoboGrinder students sharing ideas around a laptop at an interest meeting" loading="lazy" width="1600" height="1067" />
     </section>
   </main>
   <SiteFooter />
 </BaseLayout>
 <style>
-  .support-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+  .support-actions { display: grid; grid-template-columns: repeat(2, max-content); align-items: start; gap: 20px 24px; }
+  .support-actions > .button { margin: 0; }
   .next-season { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; padding: 80px clamp(24px, 8vw, 124px); }
   h2 { margin: 0 0 24px; font: 700 clamp(32px, 4vw, 48px)/1.05 var(--display); }
   p { margin: 0 0 28px; font-size: var(--font-body-min); line-height: 1.6; }
   img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; clip-path: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px); }
+  @media (max-width: 1100px) { .support-actions { grid-template-columns: max-content; } }
   @media (max-width: 680px) { .next-season { grid-template-columns: 1fr; padding: 56px 23px; gap: 36px; } }
 </style>

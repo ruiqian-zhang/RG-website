@@ -27,8 +27,9 @@ const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season
         {person.role && <p class="member-role">{person.role}</p>}
         <p>{person.subteam}</p>
         {person.major && <p class="member-major">Major: {person.major}</p>}
-        {(person.linkedin || person.github || person.portfolio) && <div class="member-links" aria-label={`${person.name} profiles`}>
-          {[{ name: 'LinkedIn', url: person.linkedin }, { name: 'GitHub', url: person.github }, { name: 'Portfolio', url: person.portfolio }].filter((link) => link.url).map((link) => <a class="icon-button" href={link.url} target="_blank" rel="noreferrer" aria-label={`${person.name}: ${link.name}`}><ProfileIcon name={link.name} /></a>)}
+        {(person.linkedin || person.github || person.portfolio || person.email) && <div class="member-links" aria-label={`${person.name} profiles and contact`}>
+          {[{ name: 'LinkedIn', url: person.linkedin }, { name: 'GitHub', url: person.github }, { name: 'Portfolio', url: person.portfolio }].filter((link) => link.url).map((link) => <a class="icon-button button-swipe member-profile-button" href={link.url} target="_blank" rel="noreferrer" aria-label={`${person.name}: ${link.name}`}><ProfileIcon name={link.name} /></a>)}
+          {person.email && <a class="icon-button button-swipe member-profile-button" href={`mailto:${person.email}`} aria-label={`Email ${person.name}`}><ProfileIcon name="Email" /></a>}
         </div>}
       </article>)}
     </div>
@@ -67,7 +68,9 @@ const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season
   .member .member-major { font-size: var(--font-label-min); color: var(--muted-ink); }
   .archive-note { color: var(--muted-ink); line-height: 1.6; }
   .alumni { border-top: 1px solid var(--line); }
-  .member-links { display: flex; gap: 8px; margin: 0 0 12px; }
+  .member-links { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .member-links .member-profile-button { background: #fff; color: var(--ink); --hover-fill: var(--orange); --hover-ink: #fff; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
+  @media (hover: hover) and (pointer: fine) { .member-links .member-profile-button:hover { color: #fff; } }
   .archive { margin-top: 72px; border-top: 1px solid var(--line); }
   .archive summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 16px 0; font: 700 24px/1.2 var(--display); }
   .archive-arrow { transition: rotate 300ms ease; }

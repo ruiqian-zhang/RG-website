@@ -80,3 +80,9 @@ Overall design assessment: B+ → A−. These are qualitative judgments, not aut
 - The build passed. Performance timing and field Core Web Vitals were not benchmarked in this design review.
 
 Source fixes are in IndustryExperience.astro, SiteHeader.astro, and BaseLayout.astro. This workspace has no Git repository, so no atomic commits were created.
+
+## Subsequent requested revisions
+
+The global marquee pause button was subsequently removed at the user's request. Desktop hover now pauses only the row under the pointer. Browser checks confirmed `[paused, running, running]` on the first row and `[running, paused, running]` on the second. Reduced motion disables automatic marquee animation.
+
+Join's support message now focuses on following competition updates and cheering for the team, without repeating the application status. Its buttons use a grid with a 24px desktop gap and stack on narrow screens; a 375px check found no overflow. Selection uses white text on orange, or white text on black within orange sections. The confirmed 2026–2027 roster now includes Tina's combined Vice President / Operations Branch Lead role, Rui as Software & Computer Vision Technical Advisor, and Patrick as Mechanical Project Lead. Other requested lead and advisor assignments were already present.
