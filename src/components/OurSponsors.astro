@@ -1,14 +1,20 @@
 ---
 import SponsorLogos from './SponsorLogos.astro';
-const { partners, id = 'supporters' } = Astro.props;
+const { partners, id = 'supporters', showCta = false } = Astro.props;
 const headingId = `${id}-title`;
 ---
 <section class="partners section-shell" id={id} aria-labelledby={headingId}>
   <h2 id={headingId}>Our sponsors</h2>
   <SponsorLogos partners={partners} />
+  {showCta && <div class="partner-cta">
+    <h3>Interested in partnering with us?</h3>
+    <a class="button button-swipe button-dark" href="/sponsors/">Sponsor us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+  </div>}
 </section>
 <style>
   .partners { padding: 80px clamp(24px, 8vw, 124px); background: var(--paper); color: var(--ink); scroll-margin-top: var(--header-height); }
   h2 { margin: 0 0 40px; text-align: center; font: 700 clamp(36px, 4.5vw, 58px)/1.05 var(--display); letter-spacing: -.035em; text-wrap: balance; }
+  .partner-cta { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; margin-top: 48px; text-align: center; }
+  .partner-cta h3 { margin: 0; font: 700 clamp(24px, 2.5vw, 32px)/1.2 var(--display); text-wrap: balance; }
   @media (max-width: 540px) { .partners { padding: 56px 23px; } h2 { margin-bottom: 44px; } }
 </style>
