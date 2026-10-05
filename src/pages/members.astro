@@ -23,7 +23,7 @@ const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season
     </header>
     <div class="member-grid">
       {people.map((person) => <article class="member">
-        {person.photo ? <img src={person.photo} alt={`Portrait of ${person.name}`} width="320" height="400" loading="lazy" /> : <div class="portrait-placeholder" role="img" aria-label={`Photo pending for ${person.name}`}><img class="placeholder-logo" src="/images/rg-gray-square.png" alt="" loading="lazy" width="1080" height="1080" style="display:block;width:64%;height:64%;max-width:none;aspect-ratio:1;object-fit:contain;object-position:center;background:transparent;clip-path:none;justify-self:center;align-self:center;" /></div>}
+        {person.photo ? <img src={person.photo} alt={`Portrait of ${person.name}`} width="320" height="400" loading="lazy" /> : <div class="portrait-placeholder" aria-label={`Photo pending for ${person.name}`}><span aria-hidden="true">{person.name.split(' ').map((part) => part[0]).filter(Boolean).slice(0, 2).join('')}</span></div>}
         <h2>{person.name}</h2>
         {person.role && <p class="member-role">{person.role}</p>}
         <p>{person.subteam}</p>
@@ -65,7 +65,6 @@ const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season
   .member { min-width: 0; }
   .member img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #ddd; clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px); }
   .portrait-placeholder { display: grid; place-items: center; width: 100%; aspect-ratio: 4 / 5; background: #e0e0e0; color: rgba(0,0,0,.45); font: 700 clamp(40px, 6vw, 72px)/1 var(--display); clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px); }
-  .portrait-placeholder .placeholder-logo { display: block; width: 64%; height: 64%; max-width: none; aspect-ratio: 1; object-fit: contain; object-position: center; background: transparent; clip-path: none; justify-self: center; align-self: center; }
   h2 { margin: 20px 0 8px; font: 700 clamp(22px, 2vw, 28px)/1.2 var(--display); }
   .member p { margin: 0 0 12px; font-size: var(--font-body-min); line-height: 1.5; }
   .member .member-role { font-weight: 600; }

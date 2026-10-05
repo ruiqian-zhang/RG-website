@@ -1,7 +1,5 @@
 ---
-const siteTitle = 'RoboGrinder at Virginia Tech';
-const siteDescription = 'RoboGrinder brings students together to turn classroom knowledge into hands-on engineering experience through competitive robotics.';
-const { title = siteTitle, description = siteDescription } = Astro.props;
+const { title = 'RoboGrinder | Virginia Tech Robotics', description = 'Student-built competitive robotics at Virginia Tech. Founded in 2016.' } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -10,14 +8,7 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f0f0f0" />
     <meta name="description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={siteTitle} />
-    <meta property="og:title" content={siteTitle} />
-    <meta property="og:description" content={siteDescription} />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={siteTitle} />
-    <meta name="twitter:description" content={siteDescription} />
-    <link rel="icon" type="image/png" href="/images/rg-orange.png" />
+    <link rel="icon" type="image/png" href="/images/rg-black.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
