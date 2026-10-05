@@ -86,7 +86,7 @@ const rows = Array.from({ length: 3 }, (_, index) => {
   h2 { margin: 0 0 24px; font: 700 clamp(40px, 5vw, 64px)/1.08 var(--display); letter-spacing: -.035em; text-wrap: balance; }
   .industry-copy p { max-width: 740px; margin: 0 auto; color: var(--muted-ink); font-size: var(--font-body-min); line-height: 1.75; }
   .marquees { display: grid; gap: 24px; }
-  .industry-actions { display: flex; justify-content: center; gap: 16px; margin-top: 40px; padding: 0 24px; }
+  .industry-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 40px; padding: 0 24px; }
   .marquee-toggle { border: 1px solid var(--ink); background: var(--paper); color: var(--ink); --hover-fill: var(--ink); --hover-ink: var(--paper); cursor: pointer; }
   .logos-paused .marquee-track { animation-play-state: paused; }
   .marquee { position: relative; width: 100%; overflow: hidden; }

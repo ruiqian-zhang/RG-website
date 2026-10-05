@@ -127,14 +127,14 @@ import sponsorship from '../content/sponsors.json';
   .hero-copy { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; max-width: 680px; padding: 20px 0 35px; }
   h1, h2, h3, p { margin-top: 0; }
   h1, h2, h3 { font-family: var(--display); }
-  .landing h1 { max-width: 650px; margin: 0 0 24px; font-size: clamp(52px, 6vw, 88px); font-weight: 700; line-height: .94; letter-spacing: -.055em; white-space: pre-line; }
+  .landing h1 { max-width: 650px; margin: 0 0 24px; font-size: clamp(52px, 6vw, 88px); font-weight: 700; line-height: 1.02; letter-spacing: -.055em; white-space: pre-line; }
   .hero-intro { max-width: 440px; margin-bottom: 30px; color: var(--paper); font-size: var(--font-body-min); line-height: 1.7; }
   .hero-actions { display: flex; align-items: center; gap: 25px; flex-wrap: wrap; }
   .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 12px; padding: 0 18px; font-size: max(var(--font-ui-min), 11px); font-weight: 700; text-decoration: none; }
   .button .material-icon { font-size: 18px; }
   .button-light { background: var(--paper); color: var(--ink); }
   .hero-background { position: absolute; inset: 0; z-index: -2; overflow: hidden; background: #000000; pointer-events: none; }
-  .hero-background::after { position: absolute; inset: 0; content: ''; background: linear-gradient(90deg, rgba(0,0,0,.64), rgba(0,0,0,.22)), linear-gradient(rgba(237,114,30,.24), rgba(237,114,30,.24)); }
+  .hero-background::after { position: absolute; inset: 0; content: ''; background: linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.70) 50%, rgba(0,0,0,.30) 100%), linear-gradient(rgba(237,114,30,.24), rgba(237,114,30,.24)); }
   .hero-video { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 0; }
   .anniversary-banner { position: absolute; top: 0; right: clamp(24px, 8vw, 124px); width: 126px; height: 246px; padding: 22px 10px 30px; display: flex; flex-direction: column; align-items: center; background: var(--ink); color: var(--paper); clip-path: polygon(0 0,100% 0,100% 88%,50% 100%,0 88%); }
   .anniversary-banner img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 14px; }
