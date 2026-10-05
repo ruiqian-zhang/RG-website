@@ -3,32 +3,27 @@
     {
       "name": "Mechanical",
       "summary": "Turn concepts into mechanisms, frames, and drive systems built to perform under pressure.",
-      "image": "/images/rmul-2025-fleet.webp",
-      "imageAlt": "RoboGrinder competition robots in the arena"
+      "icon": "settings"
     },
     {
       "name": "Electronics",
       "summary": "Design the power, sensing, and circuit systems that make every robot move with purpose.",
-      "image": "/images/rmul-2025-robot-maintenance.webp",
-      "imageAlt": "RoboGrinder members maintaining a robot at competition"
+      "icon": "bolt"
     },
     {
       "name": "Embedded Controls",
       "summary": "Connect hardware and software through reliable firmware, controls, and real-time systems.",
-      "image": "/images/arc-2026-52.webp",
-      "imageAlt": "Members checking robots and controls before a match"
+      "icon": "memory"
     },
     {
       "name": "Software & Computer Vision",
       "summary": "Build autonomous behavior, perception, and tools that help the fleet compete as one.",
-      "image": "/images/interest-meeting-software.webp",
-      "imageAlt": "Students collaborating around a laptop at a RoboGrinder interest meeting"
+      "icon": "code"
     },
     {
       "name": "Operations",
       "summary": "Keep the team moving through strategy, logistics, outreach, and the details behind the build.",
-      "image": "/images/rmul-2025-interview.webp",
-      "imageAlt": "RoboGrinder members taking part in a competition interview"
+      "icon": "groups"
     }
   ]
 }

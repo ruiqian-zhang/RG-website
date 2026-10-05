@@ -6,8 +6,9 @@ import SiteFooter from '../components/SiteFooter.astro';
 import OurSponsors from '../components/OurSponsors.astro';
 import IndustryExperience from '../components/IndustryExperience.astro';
 import Achievements from '../components/Achievements.astro';
-import TeamNumbers from '../components/TeamNumbers.astro';
+import TeamOverview from '../components/TeamOverview.astro';
 import site from '../content/site.json';
+import { primaryAction } from '../lib/season';
 import placements from '../content/industry-placements.json';
 import subteams from '../content/subteams.json';
 import sponsorship from '../content/sponsors.json';
@@ -25,7 +26,7 @@ import sponsorship from '../content/sponsors.json';
         <h1 id="hero-title">{site.headline}</h1>
         <p class="hero-intro">{site.intro}</p>
         <div class="hero-actions">
-          <a class="button button-swipe button-light" href={withBase(site.joinLink)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+          <a class="button button-swipe button-light" href={withBase(primaryAction.href)}>{primaryAction.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
         </div>
       </div>
       <div class="hero-background" aria-hidden="true">
@@ -42,20 +43,7 @@ import sponsorship from '../content/sponsors.json';
       <button class="button button-swipe button-light video-toggle" type="button" aria-label="Pause video" aria-pressed="false"><span class="material-icon" aria-hidden="true">pause</span></button>
     </section>
 
-    <div class="mission-chapter">
-    <section class="story section-shell" id="story" aria-labelledby="story-title">
-      <div class="story-heading">
-        <h2 id="story-title">{site.missionTitle}</h2>
-        <p class="story-copy">{site.mission}</p>
-        <p class="story-context">{site.missionContext}</p>
-      </div>
-      <figure class="story-photo">
-        <img src={withBase(site.teamImage)} alt={site.teamImageAlt} loading="lazy" />
-      </figure>
-    </section>
-
-    <TeamNumbers />
-    </div>
+    <TeamOverview />
     <Achievements />
 
     <section class="subteams section-shell" id="subteams" aria-labelledby="subteams-title">
@@ -67,15 +55,13 @@ import sponsorship from '../content/sponsors.json';
       <div class="team-grid">
         {subteams.teams.map((team) => (
           <article class="team-card">
-            <img src={withBase(team.image)} alt={team.imageAlt} loading="lazy" width="1600" height="1000" />
-            <h3>{team.name}</h3>
-            <p>{team.summary}</p>
+            <span class="team-icon material-icon" aria-hidden="true">{team.icon}</span>
+            <div><h3>{team.name}</h3><p>{team.summary}</p></div>
           </article>
         ))}
-      </div>
-      <div class="subteams-actions">
-        <p class="discipline-note">Students from every major are welcome.</p>
-        <a class="button button-swipe button-dark" href={withBase('/members/')}>Meet the team<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        <div class="subteams-actions">
+          <a class="button button-swipe button-dark" href={withBase('/members/')}>Meet the team<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        </div>
       </div>
     </section>
 
@@ -136,8 +122,6 @@ import sponsorship from '../content/sponsors.json';
 </script>
 
 <style>
-  .mission-chapter { background: var(--paper); }
-  .mission-chapter :global(.team-numbers) { display: flex; flex-direction: column; justify-content: center; }
 
   .landing { position: relative; display: flex; align-items: center; min-height: calc(100svh - var(--header-height)); isolation: isolate; overflow: hidden; padding: 100px clamp(24px, 8vw, 124px); background: var(--orange); color: var(--paper); }
   .hero-copy { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; max-width: 680px; padding: 20px 0 35px; }
@@ -160,23 +144,15 @@ import sponsorship from '../content/sponsors.json';
   .banner-dates { margin-top: 10px; font: 700 14px/1.25 var(--display); letter-spacing: .05em; text-align: center; }
   .video-toggle { position: absolute; right: 24px; bottom: 22px; width: 52px; min-height: 52px; border: 0; cursor: pointer; }
   .section-shell { padding-left: clamp(24px, 8vw, 124px); padding-right: clamp(24px, 8vw, 124px); }
-  .story { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 0; padding: 0; background: var(--paper); }
-  .story-heading { align-self: center; padding: 80px clamp(24px, 6vw, 90px) 80px clamp(24px, 8vw, 124px); }
-  .story-heading h2 { max-width: 515px; margin: 0 0 32px; font-size: clamp(40px, 5.1vw, 70px); line-height: .99; letter-spacing: -.055em; }
-  .story-copy { margin-bottom: 24px; color: var(--ink); font-size: clamp(20px, 2vw, 26px); line-height: 1.5; }
-  .story-context { margin: 0; color: var(--muted-ink); font-size: var(--font-body-min); line-height: 1.75; }
-  .story-photo { position: relative; min-height: 512px; margin: 0; overflow: hidden; background: var(--paper); clip-path: polygon(24px 0, 100% 0, 100% 100%, 0 100%, 0 24px); }
-  .story-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-  .subteams { padding-top: 111px; padding-bottom: 112px; background: var(--orange); color: var(--ink); }
-  .subteams-head { display: flex; align-items: end; justify-content: space-between; gap: 50px; margin-bottom: 49px; }
+  .subteams { padding-top: 64px; padding-bottom: 64px; background: var(--orange); color: var(--ink); }
+  .subteams-head { margin-bottom: 32px; }
   .subteams h2 { margin: 0; font-size: clamp(42px, 5vw, 64px); line-height: 1.08; letter-spacing: -.06em; }
-  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 28px; }
-  .team-card { min-width: 0; }
-  .team-card img { width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; display: block; margin-bottom: 22px; clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); }
-  .team-card h3 { margin: 0 0 14px; font-size: clamp(18px, 1.75vw, 25px); line-height: 1.05; letter-spacing: -.035em; }
+  .team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; }
+  .team-card { min-width: 0; display: grid; grid-template-columns: 32px minmax(0, 1fr); align-items: start; gap: 14px; }
+  .team-icon { font-size: 32px; line-height: 1; }
+  .team-card h3 { margin: 0 0 10px; font-size: clamp(20px, 1.75vw, 25px); line-height: 1.15; letter-spacing: -.035em; }
   .team-card p { margin: 0; color: var(--ink); font-size: var(--font-body-min); line-height: 1.6; }
-  .subteams-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-top: 36px; }
-  .discipline-note { margin: 0; font-size: max(var(--font-label-min), 10px); font-weight: 600; }
+  .subteams-actions { display: flex; align-items: center; justify-content: center; }
   .join { position: relative; min-height: 512px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; background: var(--orange); color: var(--ink); }
   .join-photo { position: relative; min-height: 512px; clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%); }
   .join-photo img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: 62% center; filter: saturate(.7); }
@@ -195,8 +171,7 @@ import sponsorship from '../content/sponsors.json';
     .banner-band { width: calc(100% + 16px); }
     .banner-dates { font-size: 12px; margin-top: 8px; }
     .landing h1 { font-size: clamp(52px, 6.8vw, 68px); }
-    .story-heading { padding: 64px 32px; }
-    .team-grid { grid-template-columns: repeat(3, 1fr); }
+    .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .join-copy { padding-left: 45px; }
   }
   @media (max-width: 680px) {
@@ -207,13 +182,8 @@ import sponsorship from '../content/sponsors.json';
     .hero-actions { gap: 16px; }
     .button { min-height: 48px; padding: 0 14px; font-size: var(--font-ui-min); }
     .section-shell { padding-left: 23px; padding-right: 23px; }
-    .story { grid-template-columns: 1fr; gap: 0; padding: 0; }
-    .story-heading { padding: 64px 23px 48px; }
-    .story-heading h2 { max-width: 420px; margin: 0 0 24px; font-size: clamp(42px, 11vw, 62px); }
-    .story-copy { margin-bottom: 24px; font-size: 22px; }
-    .story-photo { min-height: 0; aspect-ratio: 1.5 / 1; }
-    .subteams { padding-top: 80px; padding-bottom: 78px; }
-    .subteams-head { display: block; margin-bottom: 35px; }
+    .subteams { padding-top: 48px; padding-bottom: 48px; }
+    .subteams-head { margin-bottom: 28px; }
     .subteams h2 { margin-top: 0; font-size: clamp(42px, 11vw, 56px); }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
     .join { grid-template-columns: 1fr; }
@@ -224,6 +194,5 @@ import sponsorship from '../content/sponsors.json';
   }
   @media (max-width: 520px) {
     .team-grid { grid-template-columns: 1fr; }
-    .team-card, .team-card + .team-card, .team-card:nth-child(4) { min-height: 0; border-left: 0; padding: 24px 0; }
   }
 </style>

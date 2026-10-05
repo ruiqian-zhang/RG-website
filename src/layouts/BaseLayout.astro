@@ -88,7 +88,8 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
 <style is:global>
   :root {
     color-scheme: light;
-    --header-height: 76px;
+    --header-height: 64px;
+    --scroll-header-offset: var(--measured-header-height, var(--header-height));
     --orange: #ed721e;
     --ink: #000000;
     --paper: #f0f0f0;
@@ -117,8 +118,10 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
     .mobile-menu nav a:hover { --menu-link-color: var(--orange); color: var(--orange); }
   }
   .mobile-menu nav a:active { --menu-link-color: var(--orange); color: var(--orange); }
-  h1, h2, h3 { text-wrap: balance; }
-  section[id], h2[id] { scroll-margin-top: var(--header-height); }
+  /* Headings keep the display face even when sections move between components. */
+  h1, h2, h3, h4, h5, h6 { font-family: var(--display); text-wrap: balance; }
+  :root.header-is-hidden { --scroll-header-offset: 0px; }
+  section[id], h2[id] { scroll-margin-top: var(--scroll-header-offset); }
   .skip-link { position: fixed; z-index: 40; top: 8px; left: 8px; padding: 12px 16px; transform: translateY(-150%); background: var(--paper); color: var(--ink); }
   .skip-link:focus { transform: translateY(0); }
   img { display: block; max-width: 100%; }
@@ -166,7 +169,7 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
   .button-dark:focus-visible { outline-color: var(--paper); }
   .header-shell :focus-visible, .site-footer :focus-visible { outline-color: var(--orange); }
   .material-icon { font-family: 'Material Icons Round'; font-weight: normal; font-style: normal; font-size: 22px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; }
-  @media (max-width: 850px) { :root { --header-height: 70px; } }
+  @media (max-width: 850px) { :root { --header-height: 60px; } }
   @media (max-width: 680px) {
     :root { --font-body-min: 16px; --font-ui-min: 15px; --font-label-min: 14px; }
   }

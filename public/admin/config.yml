@@ -36,6 +36,7 @@ collections:
           - { label: Join section photo, name: joinImage, widget: image }
           - { label: Join photo description, name: joinImageAlt, widget: string }
           - { label: Join link, name: joinLink, widget: string }
+          - { label: Recruiting is open, name: recruiting, widget: boolean, default: false, hint: 'On: navbar and hero say Join us. Off: both say Support us and link to Sponsors & Partners.' }
           - { label: Join button text, name: joinLabel, widget: string }
           - { label: ARC Robotics link, name: arcUrl, widget: string }
           - { label: Linktree URL, name: linktreeUrl, widget: string }
@@ -101,6 +102,25 @@ collections:
                   - { label: Image, name: image, widget: image }
                   - { label: Caption and image description, name: caption, widget: string }
 
+  - name: team-numbers
+    label: Team numbers (all pages)
+    files:
+      - name: numbers
+        label: Shared team numbers
+        file: src/content/team-numbers.json
+        format: json
+        fields:
+          - { label: Homepage numbers heading, name: title, widget: string }
+          - label: Team numbers
+            name: facts
+            widget: list
+            summary: '{{fields.label}}'
+            hint: Shared by the homepage and Sponsors & Partners. Automatic counts follow the roster and subteams.
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Value source, name: source, widget: select, options: [{ label: Manual, value: manual }, { label: Current member count, value: members }, { label: Subteam count, value: subteams }], default: manual }
+              - { label: Manual value, name: value, widget: string, required: false, hint: Used when Value source is Manual. Supports numbers or text such as Top 4. }
+
   - name: sponsors
     label: Sponsors
     files:
@@ -116,15 +136,6 @@ collections:
           - { label: Packet button text, name: packetLabel, widget: string }
           - { label: Team introduction heading, name: whoTitle, widget: text, hint: Use a new line to split the heading. }
           - { label: Team introduction, name: whoDescription, widget: text }
-          - label: Team numbers
-            name: facts
-            widget: list
-            summary: '{{fields.label}}'
-            hint: Choose Manual to use your own value. Automatic sources stay synced with the roster or subteams. Drag entries to reorder them.
-            fields:
-              - { label: Label, name: label, widget: string }
-              - { label: Value source, name: source, widget: select, options: [{ label: Manual, value: manual }, { label: Current member count, value: members }, { label: Subteam count, value: subteams }], default: manual }
-              - { label: Manual value, name: value, widget: string, required: false, hint: Used when Value source is Manual. Supports numbers or text such as Top 4. }
           - { label: Benefits heading, name: benefitsTitle, widget: string }
           - { label: Benefits introduction, name: benefitsIntro, widget: text }
           - { label: Text before tier link, name: benefitsPacketBefore, widget: string }
@@ -248,8 +259,7 @@ collections:
             fields:
               - { label: Name, name: name, widget: string }
               - { label: Description, name: summary, widget: text }
-              - { label: Photo, name: image, widget: image }
-              - { label: Photo description, name: imageAlt, widget: string }
+              - { label: Icon, name: icon, widget: select, options: [settings, bolt, memory, code, groups], default: settings }
 
   - name: achievements
     label: Achievements

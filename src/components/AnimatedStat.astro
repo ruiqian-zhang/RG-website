@@ -2,10 +2,10 @@
 interface Props { value: string | number }
 const { value } = Astro.props;
 const text = String(value);
-const match = text.match(/^(Top\s+)?(\d+)$/i);
+const match = text.match(/^(#)?(\d+)$/i);
 const end = match ? Number(match[2]) : undefined;
 const prefix = match?.[1] || '';
-const start = prefix ? Math.max(9, end ?? 9) : 0;
+const start = prefix ? Math.max(20, end ?? 20) : 0;
 const reserve = prefix && start > (end ?? 0) ? `${prefix}${start}` : text;
 ---
 <span class="stat-value" aria-label={text} data-stat-end={end} data-stat-start={start} data-stat-prefix={prefix}>

@@ -59,9 +59,13 @@ Text size tokens live in `src/layouts/BaseLayout.astro`: body copy is at least 1
 
 Swipe fills are opt-in: add `button-swipe` only to a control intended to use that effect. Footer links and social icons have no hover effects. Member profile icons render only when a destination URL is supplied.
 
-The careers, research, and graduate study section alphabetizes placement organizations and splits them into three consecutive groups for continuously moving logo rows. Logo names are available to screen readers. Reduced-motion preferences slow the ticker. Track organizations, university eligibility, and source links in [docs/placements.md](docs/placements.md); download configured logo originals with `node scripts/sync-placement-logos.mjs`. Both the homepage and Sponsors page reuse `SponsorLogos.astro` for large, borderless logo links. The shared footer groups team, community, and contact links, with configurable social destinations. The anniversary ribbon switches between off-white over orange sections and orange over light sections.
+The careers, research, and graduate study section alphabetizes placement organizations and splits them into three consecutive groups for continuously moving logo rows. Logo names are available to screen readers. Reduced-motion preferences slow the ticker. Track organizations, university eligibility, and source links in [docs/placements.md](docs/placements.md); download configured logo originals with `node scripts/sync-placement-logos.mjs`. Both the homepage and Sponsors page reuse `OurSponsors.astro` for large, borderless logo links. The shared footer groups team, community, and contact links, with configurable social destinations. The anniversary ribbon switches between off-white over orange sections and orange over light sections.
 
 Photos are stored in `public/images/`; CMS uploads go to `public/uploads/`. Keep filenames descriptive and add alt text when changing image fields.
+
+## Editing in code
+
+Start with [the code editing guide](docs/code-editing.md) for the section-to-file map. Shared team numbers live in `src/content/team-numbers.json`; change them once to update the homepage and Sponsors & Partners. The featured introduction, numbers, and both layouts live together in `src/components/TeamOverview.astro`.
 
 ## Project structure
 

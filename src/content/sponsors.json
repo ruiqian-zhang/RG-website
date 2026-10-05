@@ -89,28 +89,6 @@
   "packetLabel": "View sponsorship packet",
   "whoTitle": "Student led.\nIndustry focused.",
   "whoDescription": "We’re a student-led engineering team at Virginia Tech, bringing students together since 2016. Members take ideas through design, build, and testing, learning to deliver as a team.",
-  "facts": [
-    {
-      "label": "Current members",
-      "source": "members",
-      "value": ""
-    },
-    {
-      "label": "Shared mission",
-      "source": "manual",
-      "value": "1"
-    },
-    {
-      "label": "Subteams working together",
-      "source": "subteams",
-      "value": ""
-    },
-    {
-      "label": "Most consistent ARC teams",
-      "source": "manual",
-      "value": "Top 4"
-    }
-  ],
   "benefitsTitle": "What sponsors get",
   "benefitsIntro": "These benefits are available at eligible company donation tiers. Resume drops, events, and recognition depend on your sponsorship level.",
   "benefitsPacketLabel": "sponsorship packet",

@@ -1,18 +1,32 @@
 ---
 import achievements from '../content/achievements.json';
-import AchievementTimeline from './AchievementTimeline.astro';
+// EDIT DISPLAY: number of seasons shown before Earlier results.
+const visibleSeasons = 4;
 const records = [...achievements.records].sort((a, b) => Number(b.year) - Number(a.year));
 ---
 <section class="achievements" id="achievements" aria-labelledby="achievements-title">
   <h2 id="achievements-title">{achievements.title}</h2>
-  <AchievementTimeline records={records.slice(0, 4)} />
-  <details class="earlier-results" data-disclosure>
-    <summary>Earlier results <span class="material-icon" aria-hidden="true">expand_more</span></summary>
-    <div class="disclosure-panel"><AchievementTimeline records={records.slice(4)} /></div>
-  </details>
+  {[records.slice(0, visibleSeasons), records.slice(visibleSeasons)].filter((group) => group.length).map((records, index) => {
+    const Group = index === 0 ? 'div' : 'details';
+    return <Group class:list={[index > 0 && 'earlier-results']} data-disclosure={index > 0 ? true : undefined}>
+      {index > 0 && <summary>Earlier results <span class="material-icon" aria-hidden="true">expand_more</span></summary>}
+      <div class:list={[index > 0 && 'disclosure-panel']}>
+        <ol class="timeline">
+  {records.map((record) => <li class="timeline-entry">
+    <h3>{record.year}</h3>
+    <div class="milestone">
+      <div class="awards">{record.results.map((result) => <p class="award"><span class="material-icon" aria-hidden="true">emoji_events</span><strong>{result}</strong></p>)}</div>
+      <p class="competition">{record.competition}</p>
+      {record.bulletPoints?.length > 0 && <ul class="additional-results">{record.bulletPoints.map((point) => <li>{point}</li>)}</ul>}
+    </div>
+  </li>)}
+</ol>
+      </div>
+    </Group>;
+  })}
 </section>
 <style>
-  .achievements { padding: 80px clamp(24px, 8vw, 124px); background: var(--paper); scroll-margin-top: var(--header-height); }
+  .achievements { padding: 80px clamp(24px, 8vw, 124px); background: var(--paper); scroll-margin-top: var(--scroll-header-offset); }
   h2 { margin: 0 0 40px; font: 700 clamp(38px, 5vw, 64px)/1.05 var(--display); letter-spacing: -.045em; }
   .earlier-results { margin-top: 28px; border-top: 1px solid var(--line); }
   summary { display: flex; align-items: center; justify-content: space-between; min-height: 60px; font: 700 20px/1.2 var(--display); }
@@ -20,4 +34,29 @@ const records = [...achievements.records].sort((a, b) => Number(b.year) - Number
   summary[aria-expanded="true"] .material-icon { rotate: 180deg; }
   .disclosure-panel { padding-top: 16px; }
   @media (max-width: 520px) { .achievements { padding: 64px 23px; } }
+
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline-entry { position: relative; display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 40px; padding: 0 0 24px; }
+  .timeline-entry::before { position: absolute; top: 10px; bottom: -10px; left: 96px; width: 1px; background: var(--line); content: ''; }
+  .timeline-entry::after { position: absolute; top: 10px; left: 92px; width: 9px; height: 9px; background: var(--orange); content: ''; }
+  .timeline-entry:last-child { padding-bottom: 0; }
+  .timeline-entry:last-child::before { display: none; }
+  h3 { margin: 0; font: 700 28px/1.15 var(--display); }
+  .milestone { min-width: 0; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+  .timeline-entry:last-child .milestone { border-bottom: 0; padding-bottom: 0; }
+  .awards { display: grid; gap: 12px; margin-bottom: 8px; }
+  .award { display: flex; align-items: flex-start; gap: 12px; margin: 0; }
+  .award .material-icon { flex: 0 0 auto; font-size: 24px; margin-top: 2px; }
+  .award strong { font: 700 clamp(22px, 2.3vw, 30px)/1.15 var(--display); }
+  .competition { margin: 0 0 0 36px; font-size: var(--font-label-min); line-height: 1.5; color: var(--muted-ink); }
+  .additional-results { margin: 12px 0 0 36px; padding-left: 18px; font-size: var(--font-label-min); line-height: 1.65; }
+  @media (max-width: 520px) {
+    .timeline-entry { grid-template-columns: 58px minmax(0, 1fr); gap: 24px; }
+    .timeline-entry::before { left: 68px; }
+    .timeline-entry::after { left: 64px; }
+    h3 { font-size: 22px; }
+    .award { gap: 8px; }
+    .award .material-icon { font-size: 20px; }
+    .competition, .additional-results { margin-left: 28px; }
+  }
 </style>

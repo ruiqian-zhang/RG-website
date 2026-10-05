@@ -1,6 +1,7 @@
 ---
 import { withBase } from '../lib/urls';
 import site from '../content/site.json';
+import { primaryAction } from '../lib/season';
 import ConnectSocialLinks from './ConnectSocialLinks.astro';
 const { active = 'Home' } = Astro.props;
 const links = [
@@ -24,15 +25,15 @@ const links = [
       <summary aria-label="Open About us menu"><span class="primary-label">About us</span><span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span><span class="material-icon burger-icon" aria-hidden="true">menu</span><span class="material-icon burger-close" aria-hidden="true">close</span></summary>
       <nav aria-label="Main navigation">
         {links.map((link) => <a class:list={[['Sponsors & Partners', 'Contact us'].includes(link.label) && 'mobile-only']} href={withBase(link.href)} aria-current={active === link.active && link.label !== 'Subteams' ? 'page' : undefined}>{link.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>)}
-        <a class="mobile-only" href={withBase(site.joinLink)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+        {site.recruiting && <a class="mobile-only" href={withBase(primaryAction.href)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>}
         <ConnectSocialLinks mobileOnly />
       </nav>
     </details>
     <details class="mobile-menu support-menu" data-disclosure>
       <summary aria-label="Open Connect menu">Connect<span class="material-icon dropdown-arrow" aria-hidden="true">expand_more</span></summary>
-      <nav aria-label="Connect"><a href={withBase('/sponsors/')} aria-current={active === 'Sponsors' ? 'page' : undefined}>Sponsors &amp; Partners<span class="material-icon" aria-hidden="true">chevron_right</span></a><a href={withBase('/contact/')} aria-current={active === 'Contact' ? 'page' : undefined}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a><ConnectSocialLinks /></nav>
+      <nav aria-label="Connect"><a href={withBase('/contact/')} aria-current={active === 'Contact' ? 'page' : undefined}>Contact us<span class="material-icon" aria-hidden="true">chevron_right</span></a><ConnectSocialLinks /></nav>
     </details>
-    <a class="header-cta button-swipe" href={withBase(site.joinLink)}>Join us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
+    <a class="header-cta button-swipe" href={withBase(primaryAction.href)} aria-current={active === primaryAction.page ? 'page' : undefined}>{primaryAction.label}<span class="material-icon" aria-hidden="true">chevron_right</span></a>
     </div>
   </header>
 </div>
@@ -129,20 +130,73 @@ const links = [
   if (headerShell) {
     let previousY = Math.max(0, window.scrollY);
     const heroBottom = () => videoHero ? videoHero.getBoundingClientRect().bottom + window.scrollY : 0;
-    let hidden = previousY > 0 && (!videoHero || previousY >= heroBottom());
-    headerShell.classList.toggle('header-hidden', hidden);
+    let hidden = !location.hash && previousY > 0 && (!videoHero || previousY >= heroBottom() - headerShell.offsetHeight);
+    let navigatingToSection = false;
+    let navigationTimeout: ReturnType<typeof setTimeout> | undefined;
+    const updateHeader = () => {
+      headerShell.classList.toggle('header-hidden', hidden);
+      document.documentElement.classList.toggle('header-is-hidden', hidden);
+    };
+    updateHeader();
+    // Keep anchor offsets accurate after breakpoint or layout changes.
+    const measureHeader = () => {
+      document.documentElement.style.setProperty('--measured-header-height', `${headerShell.offsetHeight}px`);
+    };
+    measureHeader();
+    const headerSize = new ResizeObserver(measureHeader);
+    headerSize.observe(headerShell);
+    const resumeUserScroll = () => {
+      navigatingToSection = false;
+      clearTimeout(navigationTimeout);
+      previousY = Math.max(0, window.scrollY);
+    };
+    const navigateToSection = (hash: string) => {
+      let target: HTMLElement | null;
+      try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch { return false; }
+      if (!target) return false;
+      // Hold the navbar visible during the jump so its offset cannot change
+      // halfway through smooth scrolling, whether moving up or down the page.
+      navigatingToSection = true;
+      hidden = false;
+      updateHeader();
+      measureHeader();
+      target.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+      clearTimeout(navigationTimeout);
+      navigationTimeout = setTimeout(resumeUserScroll, 2000);
+      return true;
+    };
+    document.querySelectorAll<HTMLAnchorElement>('.mobile-menu nav a').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const destination = new URL(link.href);
+        if (destination.origin !== location.origin || destination.pathname !== location.pathname || !destination.hash) return;
+        if (navigateToSection(destination.hash)) {
+          event.preventDefault();
+          history.pushState(null, '', destination.href);
+        }
+      });
+    });
+    window.addEventListener('scrollend', () => { if (navigatingToSection) resumeUserScroll(); });
+    window.addEventListener('hashchange', () => { if (location.hash) navigateToSection(location.hash); });
+    if (location.hash) requestAnimationFrame(() => navigateToSection(location.hash));
+    window.addEventListener('wheel', resumeUserScroll, { passive: true });
+    window.addEventListener('touchmove', resumeUserScroll, { passive: true });
+    window.addEventListener('keydown', (event) => {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) resumeUserScroll();
+    });
     window.addEventListener('scroll', () => {
       const currentY = Math.max(0, window.scrollY);
       const delta = currentY - previousY;
+      if (navigatingToSection) { previousY = currentY; return; }
       if (currentY <= 0 || delta < 0) {
         hidden = false;
-      } else if (delta > 0 && (!videoHero || currentY >= heroBottom())) {
+      } else if (delta > 0 && (!videoHero || currentY >= heroBottom() - headerShell.offsetHeight)) {
         hidden = true;
       }
       if (hidden) {
         document.querySelectorAll<HTMLDetailsElement>('.mobile-menu[open]').forEach((menu) => disclosures.get(menu)?.(false));
       }
-      headerShell.classList.toggle('header-hidden', hidden);
+      updateHeader();
       previousY = currentY;
     }, { passive: true });
   }
@@ -152,13 +206,13 @@ const links = [
   .header-shell { position: sticky; top: 0; z-index: 20; background: #000000; transition: transform 240ms ease; }
   .header-shell.header-hidden { transform: translateY(-100%); }
   @media (prefers-reduced-motion: reduce) { .header-shell { transition: none; } }
-  .site-header { position: relative; height: 76px; display: flex; align-items: center; gap: 28px; justify-content: space-between; padding: 0 clamp(24px, 6vw, 92px); background: #000000; color: var(--paper); }
+  .site-header { position: relative; height: var(--header-height); display: flex; align-items: center; gap: 28px; justify-content: space-between; padding: 0 clamp(24px, 6vw, 92px); background: #000000; color: var(--paper); }
   .brand { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; gap: 12px; color: var(--paper); text-decoration: none; flex: 0 0 auto; }
-  .brand img { width: 42px; height: 42px; object-fit: contain; }
+  .brand img { width: 36px; height: 36px; object-fit: contain; }
   .header-controls { display: flex; align-items: center; gap: 12px; margin-left: auto; }
-  .header-cta { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; background: var(--orange); color: var(--paper); font-size: var(--font-ui-min); font-weight: 700; text-decoration: none; }
+  .header-cta { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; background: var(--orange); color: #fff; --hover-fill: #fff; --hover-ink: var(--ink); font-size: var(--font-ui-min); font-weight: 700; text-decoration: none; white-space: nowrap; }
   .mobile-menu { position: relative; display: block; }
-  .mobile-menu summary { min-width: 48px; height: 48px; padding: 0 16px; display: flex; gap: 10px; align-items: center; justify-content: center; list-style: none; cursor: pointer; color: var(--paper); font-size: var(--font-ui-min); font-weight: 600; white-space: nowrap; }
+  .mobile-menu summary { min-width: 44px; height: 44px; padding: 0 16px; display: flex; gap: 10px; align-items: center; justify-content: center; list-style: none; cursor: pointer; color: var(--paper); font-size: var(--font-ui-min); font-weight: 600; white-space: nowrap; }
   .burger-icon, .burger-close { display: none; }
   .dropdown-arrow { transition: rotate 300ms ease; }
   .mobile-menu summary { transition: color 200ms ease; }
@@ -170,15 +224,14 @@ const links = [
   .mobile-menu[open] .menu-close { display: inline-block; }
   .mobile-menu nav a[aria-current="page"] { color: var(--orange); }
   .mobile-menu summary::-webkit-details-marker { display: none; }
-  .mobile-menu { --menu-dropdown-offset: 14px; }
+  .mobile-menu { --menu-dropdown-offset: calc((var(--header-height) - 44px) / 2); }
   .mobile-menu nav { position: absolute; top: calc(100% + var(--menu-dropdown-offset)); right: 0; width: min(320px, calc(100vw - 32px)); padding: 0 20px; overflow: hidden; background: var(--ink); border: 1px solid rgba(240,240,240,.25); box-shadow: 0 16px 28px rgba(0,0,0,.18); }
   .mobile-menu nav a { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--menu-link-color, var(--paper)); font-size: var(--font-ui-min); text-decoration: none; border-bottom: 1px solid rgba(240,240,240,.15); }
   .mobile-menu nav a:last-child { border-bottom: 0; }
   @media (max-width: 850px) {
-    .site-header { height: 70px; padding: 0 24px; gap: 12px; }
+    .site-header { padding: 0 24px; gap: 12px; }
     .mobile-menu { position: relative; display: block; }
-    .mobile-menu { --menu-dropdown-offset: 13px; }
-    .mobile-menu nav { max-height: calc(100dvh - 90px); overflow-y: auto; }
+    .mobile-menu nav { max-height: calc(100dvh - var(--header-height) - 20px); overflow-y: auto; }
     .mobile-menu summary { min-width: 44px; height: 44px; padding: 0; }
     .support-menu, .header-cta, .brand-copy, .primary-label, .primary-menu .dropdown-arrow { display: none; }
     .primary-menu .burger-icon { display: inline-block; }

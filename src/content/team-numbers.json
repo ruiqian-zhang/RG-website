@@ -1,0 +1,10 @@
+{
+  "title": "By the numbers",
+  "facts": [
+    { "label": "Active members", "source": "members", "value": "" },
+    { "label": "Average competition placement*", "source": "manual", "value": "#2" },
+    { "label": "Subteams", "source": "subteams", "value": "" },
+    { "label": "Years of grinding", "source": "manual", "value": "10" }
+
+  ]
+}

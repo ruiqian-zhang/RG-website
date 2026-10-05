@@ -1,0 +1,90 @@
+---
+// EDIT CONTENT: team-numbers.json changes labels, values and order on BOTH pages.
+// Automatic counts come from members.json and subteams.json; choose manual to override.
+// EDIT COPY: site.json holds the home introduction; sponsors.json holds sponsor copy.
+// EDIT LAYOUT: the home and sponsors styles are together below.
+import { withBase } from '../lib/urls';
+import AnimatedStat from './AnimatedStat.astro';
+import teamNumbers from '../content/team-numbers.json';
+import members from '../content/members.json';
+import subteams from '../content/subteams.json';
+import site from '../content/site.json';
+import sponsorship from '../content/sponsors.json';
+
+interface Props { variant?: 'home' | 'sponsors' }
+const { variant = 'home' } = Astro.props;
+const counts = {
+  members: new Set(members.people.map((person) => person.name.trim().toLowerCase())).size,
+  subteams: subteams.teams.length,
+};
+const numbers = teamNumbers.facts.map((fact) => ({
+  label: fact.label,
+  value: fact.source === 'members' ? counts.members : fact.source === 'subteams' ? counts.subteams : fact.value,
+}));
+---
+
+{variant === 'home' ? <div class="mission-chapter">
+  <section class="story section-shell" id="story" aria-labelledby="story-title">
+      <div class="story-heading">
+        <h2 id="story-title">{site.missionTitle}</h2>
+        <p class="story-copy">{site.mission}</p>
+        <p class="story-context">{site.missionContext}</p>
+      </div>
+      <figure class="story-photo">
+        <img src={withBase(site.teamImage)} alt={site.teamImageAlt} loading="lazy" />
+      </figure>
+    </section>
+  <section class="team-numbers" id="numbers" aria-labelledby="numbers-title">
+  <h2 id="numbers-title">{teamNumbers.title}</h2>
+  <dl>{numbers.map((number) => <div><dt>{number.label}</dt><dd><AnimatedStat value={number.value} /></dd></div>)}</dl>
+</section>
+</div> : <section class="who section-shell" aria-labelledby="who-title">
+  <div><h2 id="who-title">{sponsorship.whoTitle}</h2><p>{sponsorship.whoDescription}</p></div>
+  <dl class="team-facts">{numbers.map((number) => <div><dt>{number.label}</dt><dd><AnimatedStat value={number.value} /></dd></div>)}</dl>
+</section>}
+
+<style>
+  /* HOME: featured team introduction and orange numbers strip */
+  .mission-chapter { background: var(--paper); }
+  .story { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 0; padding: 0; background: var(--paper); }
+  .story-heading { align-self: center; padding: 80px clamp(24px, 6vw, 90px) 80px clamp(24px, 8vw, 124px); }
+  .story-heading h2 { max-width: 515px; margin: 0 0 32px; font-size: clamp(40px, 5.1vw, 70px); line-height: .99; letter-spacing: -.055em; }
+  .story-copy { margin-bottom: 24px; color: var(--ink); font-size: clamp(20px, 2vw, 26px); line-height: 1.5; }
+  .story-context { margin: 0; color: var(--muted-ink); font-size: var(--font-body-min); line-height: 1.75; }
+  .story-photo { position: relative; min-height: 512px; margin: 0; overflow: hidden; background: var(--paper); clip-path: polygon(24px 0, 100% 0, 100% 100%, 0 100%, 0 24px); }
+  .story-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+
+  .team-numbers { padding: 64px clamp(24px, 8vw, 124px); background: var(--orange); color: var(--ink); scroll-margin-top: var(--scroll-header-offset); }
+  .team-numbers h2 { margin: 0 0 36px; font: 700 clamp(28px, 3vw, 40px)/1.1 var(--display); }
+  .team-numbers dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin: 0; }
+  .team-numbers dl > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 16px; }
+  .team-numbers dt { font-size: var(--font-body-min); line-height: 1.5; color: var(--ink); }
+  .team-numbers dd { margin: 0; font: 700 clamp(54px, 7vw, 96px)/1 var(--display); color: var(--ink); }
+  @media (max-width: 750px) { .team-numbers dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; } }
+  @media (max-width: 420px) { .team-numbers { padding: 48px 23px; } .team-numbers dd { font-size: 56px; } }
+
+  .story-heading p { margin-top: 0; }
+  .team-numbers { display: flex; flex-direction: column; justify-content: center; }
+
+  /* SPONSORS: introduction alongside a compact two-column numbers grid */
+  .who { padding: 80px clamp(24px, 8vw, 124px); display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; align-content: center; }
+  .who h2 { margin: 0 0 24px; font: 700 clamp(36px, 4.5vw, 58px)/1.05 var(--display); letter-spacing: -.035em; text-wrap: balance; white-space: pre-line; }
+  .who p { max-width: 520px; margin: 0; font-size: var(--font-body-min); line-height: 1.65; }
+
+  .team-facts { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 32px; }
+  .team-facts > div { display: flex; flex-direction: column-reverse; align-items: flex-start; justify-content: flex-end; gap: 16px; }
+  .team-facts dt { font-size: var(--font-body-min); line-height: 1.5; }
+  .team-facts dd { margin: 0; white-space: nowrap; font: 700 clamp(44px, 4.8vw, 64px)/1 var(--display); font-variant-numeric: tabular-nums; }
+  @media (max-width: 1000px) { .who { gap: 40px; } }
+  @media (max-width: 950px) { .story-heading { padding: 64px 32px; } }
+  @media (max-width: 800px) { .who { grid-template-columns: 1fr; } .team-facts { max-width: 560px; } .team-facts dd { font-size: clamp(44px, 8vw, 64px); } }
+  @media (max-width: 680px) {
+    .story { grid-template-columns: 1fr; gap: 0; padding: 0; }
+    .story-heading { padding: 64px 23px 48px; }
+    .story-heading h2 { max-width: 420px; margin: 0 0 24px; font-size: clamp(42px, 11vw, 62px); }
+    .story-copy { margin-bottom: 24px; font-size: 22px; }
+    .story-photo { min-height: 0; aspect-ratio: 1.5 / 1; }
+  }
+  @media (max-width: 540px) { .who { padding: 56px 23px; } .team-facts { gap: 32px 24px; } .team-facts dd { font-size: clamp(42px, 13vw, 48px); } .team-facts dt { font-size: 16px; } }
+</style>
