@@ -29,6 +29,21 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
   <body>
     <slot />
     <script>
+      const isImageTarget = (target: EventTarget | null) => target instanceof Element
+        ? target.closest('img, svg image, svg.lazy-artwork')
+        : null;
+      const canSaveImage = (image: Element) => /^\/gallery\/?$/.test(window.location.pathname)
+        && image.matches('[data-allow-image-save]')
+        && Boolean(image.closest('dialog[open]'));
+      document.querySelectorAll<HTMLImageElement>('img:not([data-allow-image-save])').forEach((image) => {
+        image.draggable = false;
+      });
+      for (const eventName of ['contextmenu', 'dragstart']) {
+        document.addEventListener(eventName, (event) => {
+          const image = isImageTarget(event.target);
+          if (image && !canSaveImage(image)) event.preventDefault();
+        });
+      }
       const artwork = document.querySelectorAll<SVGImageElement>('image[data-lazy-src]');
       const loadArtwork = (image: SVGImageElement) => {
         const src = image.dataset.lazySrc;
@@ -77,6 +92,8 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
   }
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; min-width: 0; font-size: var(--font-body-min); }
+  img, svg.lazy-artwork { -webkit-touch-callout: none; -webkit-user-drag: none; user-select: none; }
+  dialog[open] img[data-allow-image-save] { -webkit-touch-callout: default; -webkit-user-drag: auto; user-select: auto; }
   a { color: inherit; }
   .mobile-menu nav a { transition: color 200ms ease; }
   .mobile-menu nav a:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }

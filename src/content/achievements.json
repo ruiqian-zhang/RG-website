@@ -53,9 +53,11 @@
       "year": "2019",
       "competition": "RoboMaster University League",
       "results": [
+        "2nd Prize in the Final Tournament"
+      ],
+      "bulletPoints": [
         "2nd team in the International Group",
         "1st team in North America",
-        "2nd Prize in the Final Tournament",
         "Global top 32 university teams"
       ]
     },
@@ -71,7 +73,9 @@
       "year": "2017",
       "competition": "RoboMaster University League",
       "results": [
-        "3rd Prize in the Final Tournament",
+        "3rd Prize in the Final Tournament"
+      ],
+      "bulletPoints": [
         "Our first competition season"
       ]
     }

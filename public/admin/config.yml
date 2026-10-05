@@ -191,7 +191,8 @@ collections:
               - { label: Competition, name: competition, widget: string }
               - { label: Photo, name: image, widget: image, required: false }
               - { label: Photo description, name: imageAlt, widget: string, required: false }
-              - { label: Results, name: results, widget: list, field: { label: Result, name: result, widget: string } }
+              - { label: Prominent awards, name: results, widget: list, field: { label: Award, name: result, widget: string } }
+              - { label: Supporting bullet points, name: bulletPoints, widget: list, required: false, field: { label: Bullet point, name: point, widget: string } }
 
   - name: industry-placements
     label: Industry placements

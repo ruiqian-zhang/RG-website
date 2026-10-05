@@ -5,9 +5,9 @@ const { records } = Astro.props;
   {records.map((record) => <li class="timeline-entry">
     <h3>{record.year}</h3>
     <div class="milestone">
-      <p class="award"><span class="material-icon" aria-hidden="true">emoji_events</span><strong>{record.results[0]}</strong></p>
+      <div class="awards">{record.results.map((result) => <p class="award"><span class="material-icon" aria-hidden="true">emoji_events</span><strong>{result}</strong></p>)}</div>
       <p class="competition">{record.competition}</p>
-      {record.results.length > 1 && <ul class="additional-results">{record.results.slice(1).map((result) => <li>{result}</li>)}</ul>}
+      {record.bulletPoints?.length > 0 && <ul class="additional-results">{record.bulletPoints.map((point) => <li>{point}</li>)}</ul>}
     </div>
   </li>)}
 </ol>
@@ -21,7 +21,8 @@ const { records } = Astro.props;
   h3 { margin: 0; font: 700 28px/1.15 var(--display); }
   .milestone { min-width: 0; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
   .timeline-entry:last-child .milestone { border-bottom: 0; padding-bottom: 0; }
-  .award { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 8px; }
+  .awards { display: grid; gap: 12px; margin-bottom: 8px; }
+  .award { display: flex; align-items: flex-start; gap: 12px; margin: 0; }
   .award .material-icon { flex: 0 0 auto; font-size: 24px; margin-top: 2px; }
   .award strong { font: 700 clamp(22px, 2.3vw, 30px)/1.15 var(--display); }
   .competition { margin: 0 0 0 36px; font-size: var(--font-label-min); line-height: 1.5; color: var(--muted-ink); }
