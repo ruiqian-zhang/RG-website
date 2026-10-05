@@ -16,7 +16,7 @@ const groups = [
   <div class="sponsor-logos">
   {group.partners.map((partner) => (
     <a class="sponsor-logo" href={withBase(partner.url || '/contact/')} target={partner.url ? '_blank' : undefined} rel={partner.url ? 'noreferrer' : undefined} aria-label={`Visit ${partner.name}`}>
-      {frames[partner.logo] && partner.logo !== '/images/partners/sec.png' ? <><svg class="lazy-artwork" viewBox={frames[partner.logo].viewBox} aria-hidden="true" style={`--sponsor-ratio: ${frames[partner.logo].ratio}`}><image data-lazy-src={withBase(partner.logo)} width={frames[partner.logo].width} height={frames[partner.logo].height} preserveAspectRatio="xMidYMid meet" /></svg><noscript><img src={withBase(partner.logo)} alt="" loading="lazy" /></noscript></> : <img src={withBase(partner.logo)} alt="" loading="lazy" />}
+      {frames[partner.logo] && partner.logo !== '/images/partners/sec.png' ? <><svg class="lazy-artwork" viewBox={frames[partner.logo].viewBox} aria-hidden="true" style={`--sponsor-ratio: ${frames[partner.logo].ratio}`}><image href={withBase(partner.logo)} xlink:href={withBase(partner.logo)} width={frames[partner.logo].width} height={frames[partner.logo].height} preserveAspectRatio="xMidYMid meet" /></svg><noscript><img src={withBase(partner.logo)} alt="" loading="lazy" /></noscript></> : <img src={withBase(partner.logo)} alt="" loading="lazy" />}
     </a>
   ))}
 </div>
@@ -36,6 +36,9 @@ const groups = [
   .departmental .sponsor-logo { flex: 0 1 calc((100% - 80px) / 3); max-width: 220px; min-height: 100px; }
   .departmental .sponsor-logo img { max-width: 220px; height: 80px; }
   .departmental .sponsor-logo svg { width: min(100%, 220px, calc(var(--sponsor-ratio) * 80px)); }
+  @media (max-width: 1024px) {
+    .sponsor-logo { flex-basis: calc((100% - 32px) / 2); }
+  }
   @media (max-width: 680px) {
     .departmental .sponsor-logos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 24px; }
     .departmental .sponsor-logo { width: 100%; min-height: 90px; }

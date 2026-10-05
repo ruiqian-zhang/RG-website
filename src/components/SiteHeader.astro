@@ -50,12 +50,19 @@ const links = [
     const summary = details.querySelector<HTMLElement>(':scope > summary')!;
     const panel = details.querySelector<HTMLElement>(':scope > nav, :scope > .disclosure-panel')!;
     let animation: Animation | undefined;
+    let contentAnimation: Animation | undefined;
     let expanded = details.open;
     summary.setAttribute('aria-expanded', String(expanded));
     const setExpanded = (open: boolean) => {
       if (expanded === open) return;
+      const menu = details.classList.contains('mobile-menu');
+      const currentHeight = menu ? panel.getBoundingClientRect().height : details.getBoundingClientRect().height;
+      const renderedOpacity = Number.parseFloat(getComputedStyle(panel).opacity);
+      const currentOpacity = animation || contentAnimation || expanded ? renderedOpacity : 0;
+      const currentTransform = getComputedStyle(panel).transform;
       expanded = open;
       animation?.cancel();
+      contentAnimation?.cancel();
       summary.setAttribute('aria-expanded', String(open));
       if (details.classList.contains('mobile-menu')) {
         const label = details.classList.contains('support-menu') ? 'Connect' : narrowScreen.matches ? 'navigation' : 'About us';
@@ -63,17 +70,46 @@ const links = [
         if (open) disclosures.forEach((set, other) => { if (other !== details && other.classList.contains('mobile-menu')) set(false); });
       }
       details.open = true;
-      const height = panel.scrollHeight;
-      const menu = details.classList.contains('mobile-menu');
-      const frames = menu
-        ? (open ? [{ opacity: 0, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'translateY(0)' }] : [{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(-6px)' }])
-        : (open ? [{ height: '0px', opacity: 0 }, { height: `${height}px`, opacity: 1 }] : [{ height: `${height}px`, opacity: 1 }, { height: '0px', opacity: 0 }]);
-      animation = panel.animate(
-        frames,
-        { duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300, easing: 'ease', fill: 'both' }
-      );
+      if (menu) {
+        panel.style.overflow = 'hidden';
+        panel.style.opacity = String(Number.isFinite(currentOpacity) ? currentOpacity : open ? 0 : 1);
+        panel.style.transform = currentTransform === 'none' ? (open ? 'translateY(-6px)' : 'translateY(0)') : currentTransform;
+        const frames = open
+          ? [{ opacity: Number.isFinite(currentOpacity) ? currentOpacity : 0, transform: currentTransform === 'none' ? 'translateY(-6px)' : currentTransform }, { opacity: 1, transform: 'translateY(0)' }]
+          : [{ opacity: Number.isFinite(currentOpacity) ? currentOpacity : 1, transform: currentTransform === 'none' ? 'translateY(0)' : currentTransform }, { opacity: 0, transform: 'translateY(-6px)' }];
+        animation = panel.animate(frames, { duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300, easing: 'ease-in-out', fill: 'both' });
+      } else {
+        details.style.overflow = 'hidden';
+        details.style.removeProperty('height');
+        const expandedHeight = details.getBoundingClientRect().height;
+        const borders = Number.parseFloat(getComputedStyle(details).borderTopWidth) + Number.parseFloat(getComputedStyle(details).borderBottomWidth);
+        const collapsedHeight = summary.getBoundingClientRect().height + borders;
+        details.style.height = `${currentHeight}px`;
+        const frames = open
+          ? [{ height: `${currentHeight}px` }, { height: `${expandedHeight}px` }]
+          : [{ height: `${currentHeight}px` }, { height: `${collapsedHeight}px` }];
+        animation = details.animate(frames, { duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 500, easing: 'ease-in-out', fill: 'both' });
+        panel.style.opacity = String(Number.isFinite(currentOpacity) ? currentOpacity : open ? 0 : 1);
+        contentAnimation = panel.animate(
+          [{ opacity: Number.isFinite(currentOpacity) ? currentOpacity : open ? 0 : 1 }, { opacity: open ? 1 : 0 }],
+          { duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 500, easing: 'ease-in-out', fill: 'both' }
+        );
+      }
       const current = animation;
-      animation.onfinish = () => { if (animation === current) { details.open = open; current.cancel(); animation = undefined; } };
+      animation.onfinish = () => {
+        if (animation === current) {
+          details.open = open;
+          current.cancel();
+          contentAnimation?.cancel();
+          contentAnimation = undefined;
+          details.style.removeProperty('height');
+          details.style.removeProperty('overflow');
+          panel.style.removeProperty('opacity');
+          panel.style.removeProperty('transform');
+          panel.style.removeProperty('overflow');
+          animation = undefined;
+        }
+      };
     };
     disclosures.set(details, setExpanded);
     summary.addEventListener('click', (event) => { event.preventDefault(); setExpanded(!expanded); });
@@ -91,8 +127,8 @@ const links = [
 </script>
 
 <style>
-  .header-shell { position: sticky; top: 0; z-index: 20; }
-  .site-header { position: relative; height: 76px; display: flex; align-items: center; gap: 28px; justify-content: space-between; padding: 0 clamp(24px, 6vw, 92px); background: var(--ink); color: var(--paper); }
+  .header-shell { position: sticky; top: 0; z-index: 20; background: #000000; }
+  .site-header { position: relative; height: 76px; display: flex; align-items: center; gap: 28px; justify-content: space-between; padding: 0 clamp(24px, 6vw, 92px); background: #000000; color: var(--paper); }
   .brand { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; gap: 12px; color: var(--paper); text-decoration: none; flex: 0 0 auto; }
   .brand img { width: 42px; height: 42px; object-fit: contain; }
   .header-controls { display: flex; align-items: center; gap: 12px; margin-left: auto; }

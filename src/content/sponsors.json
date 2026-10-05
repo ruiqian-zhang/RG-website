@@ -42,24 +42,6 @@
   ],
   "partners": [
     {
-      "name": "Virginia Tech AUVSI — Association for Unmanned Vehicle Systems International",
-      "category": "departmental",
-      "logo": "/images/partners/auvsi.png",
-      "url": "https://auvsivt.wixsite.com/home"
-    },
-    {
-      "name": "Undergraduate Student Senate",
-      "category": "departmental",
-      "logo": "/images/partners/undergraduate-student-senate-small.png",
-      "url": "https://uss.vt.edu/index.html"
-    },
-    {
-      "name": "Student Engineers' Council at Virginia Tech",
-      "category": "departmental",
-      "logo": "/images/partners/sec.png",
-      "url": "https://www.sec.vt.edu/"
-    },
-    {
       "name": "Bradley Department of Electrical and Computer Engineering",
       "category": "departmental",
       "logo": "/images/partners/ece.svg",
@@ -70,6 +52,24 @@
       "category": "departmental",
       "logo": "/images/partners/mechanical-engineering.svg",
       "url": "https://me.vt.edu/"
+    },
+    {
+      "name": "Student Engineers' Council at Virginia Tech",
+      "category": "departmental",
+      "logo": "/images/partners/sec.png",
+      "url": "https://www.sec.vt.edu/"
+    },
+    {
+      "name": "Undergraduate Student Senate",
+      "category": "departmental",
+      "logo": "/images/partners/undergraduate-student-senate-small.png",
+      "url": "https://uss.vt.edu/index.html"
+    },
+    {
+      "name": "Virginia Tech AUVSI — Association for Unmanned Vehicle Systems International",
+      "category": "departmental",
+      "logo": "/images/partners/auvsi.png",
+      "url": "https://auvsivt.wixsite.com/home"
     },
     {
       "name": "SOLIDWORKS",

@@ -26,9 +26,27 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
     <title>{title}</title>
     <slot name="head" />
     <noscript><style is:inline>.lazy-artwork { display: none !important; }</style></noscript>
+    <script is:inline>
+      try {
+        if (!sessionStorage.getItem('robogrinder-site-loaded')) {
+          sessionStorage.setItem('robogrinder-site-loaded', 'true');
+          document.documentElement.classList.add('show-site-loader');
+          document.documentElement.dataset.siteLoaderStartedAt = String(performance.now());
+        }
+      } catch {}
+    </script>
   </head>
   <body>
+    <div class="site-loader" aria-hidden="true">
+      <div class="site-loader-brand">
+        <img src={withBase('/images/rg-white.png')} alt="" width="64" height="64" />
+        <span>RoboGrinder</span>
+      </div>
+      <p class="site-loader-label" role="status">Loading the site</p>
+      <div class="site-loader-track"><span></span></div>
+    </div>
     <slot />
+    <div class="ios-bottom-blur" aria-hidden="true"></div>
     <script>
       const isImageTarget = (target: EventTarget | null) => target instanceof Element
         ? target.closest('img, svg image, svg.lazy-artwork')
@@ -45,26 +63,24 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
           if (image && !canSaveImage(image)) event.preventDefault();
         });
       }
-      const artwork = document.querySelectorAll<SVGImageElement>('image[data-lazy-src]');
-      const loadArtwork = (image: SVGImageElement) => {
-        const src = image.dataset.lazySrc;
-        if (src) {
-          image.setAttribute('href', src);
-          delete image.dataset.lazySrc;
-        }
-      };
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              loadArtwork(entry.target as SVGImageElement);
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { rootMargin: '300px' });
-        artwork.forEach((image) => observer.observe(image));
-      } else {
-        artwork.forEach(loadArtwork);
+      const siteLoader = document.querySelector<HTMLElement>('.site-loader');
+      if (siteLoader && document.documentElement.classList.contains('show-site-loader')) {
+        let dismissed = false;
+        const dismissLoader = () => {
+          if (dismissed) return;
+          dismissed = true;
+          const elapsed = performance.now() - Number(document.documentElement.dataset.siteLoaderStartedAt || performance.now());
+          window.setTimeout(() => {
+            siteLoader.classList.add('site-loader-hidden');
+            window.setTimeout(() => {
+              siteLoader.remove();
+              document.documentElement.classList.remove('show-site-loader');
+            }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 220);
+          }, Math.max(0, 650 - elapsed));
+        };
+        window.addEventListener('load', dismissLoader, { once: true });
+        window.setTimeout(dismissLoader, 6000);
+        if (document.readyState === 'complete') dismissLoader();
       }
     </script>
   </body>
@@ -86,13 +102,13 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
     --body: 'Inter', sans-serif;
     font-family: var(--body);
     color: var(--ink);
-    background: var(--paper);
+    background: #000000;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
   }
   *, *::before, *::after { box-sizing: border-box; }
-  body { margin: 0; min-width: 0; font-size: var(--font-body-min); }
+  body { margin: 0; min-width: 0; font-size: var(--font-body-min); background: var(--paper); }
   img, svg.lazy-artwork { -webkit-touch-callout: none; -webkit-user-drag: none; user-select: none; }
   dialog[open] img[data-allow-image-save] { -webkit-touch-callout: default; -webkit-user-drag: auto; user-select: auto; }
   a { color: inherit; }
@@ -132,6 +148,19 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
   [data-disclosure] > summary { cursor: pointer; list-style: none; }
   [data-disclosure] > summary::-webkit-details-marker { display: none; }
   .disclosure-panel { overflow: hidden; }
+  .site-loader { position: fixed; z-index: 100; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: #000; color: var(--paper); opacity: 1; transition: opacity 220ms ease-out; pointer-events: auto; }
+  .show-site-loader .site-loader { display: flex; }
+  .site-loader-hidden { opacity: 0; pointer-events: none; }
+  .site-loader-brand { display: flex; flex-direction: column; align-items: center; gap: 10px; font: 700 clamp(26px, 5vw, 38px)/1.1 var(--display); letter-spacing: -.04em; }
+  .site-loader-brand img { width: 64px; height: 64px; object-fit: contain; }
+  .site-loader-label { margin: 0; color: rgba(240,240,240,.72); font-size: var(--font-label-min); letter-spacing: .12em; text-transform: uppercase; }
+  .site-loader-track { width: min(220px, 56vw); height: 3px; overflow: hidden; background: rgba(240,240,240,.2); }
+  .site-loader-track span { display: block; width: 40%; height: 100%; background: var(--orange); transform-origin: left; animation: site-loader-progress 900ms ease-in-out infinite alternate; }
+  @keyframes site-loader-progress { from { transform: translateX(-100%) scaleX(.55); } to { transform: translateX(250%) scaleX(1); } }
+  .ios-bottom-blur { display: none; }
+  @supports (-webkit-touch-callout: none) and (-webkit-backdrop-filter: blur(1px)) {
+    .ios-bottom-blur { position: fixed; z-index: 19; right: 0; bottom: 0; left: 0; display: block; height: calc(28px + env(safe-area-inset-bottom)); pointer-events: none; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 70%); mask-image: linear-gradient(to bottom, transparent, #000 70%); }
+  }
   ::selection { color: #fff; background: var(--orange); }
   :is(.orange-feature, .subteams, .team-numbers, .join, .support, .header-cta)::selection,
   :is(.orange-feature, .subteams, .team-numbers, .join, .support, .header-cta) ::selection { color: #fff; background: var(--ink); }
@@ -148,6 +177,7 @@ const { title = siteTitle, description = siteDescription } = Astro.props;
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .site-loader-track span { animation: none; transform: scaleX(1); }
     .marquee-track { animation: none !important; }
   }
 </style>

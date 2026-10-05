@@ -5,7 +5,7 @@ const text = String(value);
 const match = text.match(/^(Top\s+)?(\d+)$/i);
 const end = match ? Number(match[2]) : undefined;
 const prefix = match?.[1] || '';
-const start = prefix ? Math.max(30, end ?? 30) : 0;
+const start = prefix ? Math.max(9, end ?? 9) : 0;
 const reserve = prefix && start > (end ?? 0) ? `${prefix}${start}` : text;
 ---
 <span class="stat-value" aria-label={text} data-stat-end={end} data-stat-start={start} data-stat-prefix={prefix}>

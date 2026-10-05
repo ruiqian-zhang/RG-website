@@ -41,7 +41,7 @@ const rows = Array.from({ length: 3 }, (_, index) => {
                   const label = !duplicate && logoIndex < row.length ? company.name : undefined;
                   return <li class="industry-logo" data-brand={company.slug} style={`--logo-ratio: ${frame?.ratio ?? 2.5}`}>
                     <svg class="lazy-artwork" viewBox={frame?.viewBox ?? '0 0 1000 400'} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'}>
-                      <image data-lazy-src={withBase(company.logo)} width={frame?.width ?? 1000} height={frame?.height ?? 400} preserveAspectRatio="xMidYMid meet" />
+                      <image href={withBase(company.logo)} xlink:href={withBase(company.logo)} width={frame?.width ?? 1000} height={frame?.height ?? 400} preserveAspectRatio="xMidYMid meet" />
                     </svg>
                     <noscript><img src={withBase(company.logo)} alt={label || ''} loading="lazy" style="width:100%;height:100%;object-fit:contain;filter:grayscale(1)" /></noscript>
                   </li>;
