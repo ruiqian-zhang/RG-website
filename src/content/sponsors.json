@@ -3,10 +3,26 @@
   "intro": "Companies, local businesses, families, and friends help our students design, build, and compete. Support RoboGrinder with funding, equipment, or expertise to keep our robots and our team moving through the season.",
   "packetUrl": "/packets/robogrinder-partnership-2026-2027.pdf",
   "benefits": [
-    { "title": "Resume drops", "icon": "description", "description": "Receive student resumes for internship and full-time recruiting at qualifying tiers." },
-    { "title": "Meet the team", "icon": "forum", "description": "Share career opportunities and engineering experience through sponsor sessions included in your tier." },
-    { "title": "Lab tours & outreach", "icon": "groups", "description": "See our projects in the lab and connect at team events, with opportunities based on your tier." },
-    { "title": "Sponsor recognition", "icon": "star_outline", "description": "Get recognition on our robots, website, or team media as included in your sponsorship tier." }
+    {
+      "title": "Resume drops",
+      "icon": "description",
+      "description": "Receive student resumes for internship and full-time recruiting at qualifying tiers."
+    },
+    {
+      "title": "Meet the team",
+      "icon": "forum",
+      "description": "Share career opportunities and engineering experience through sponsor sessions included in your tier."
+    },
+    {
+      "title": "Lab tours & outreach",
+      "icon": "groups",
+      "description": "See our projects in the lab and connect at team events, with opportunities based on your tier."
+    },
+    {
+      "title": "Sponsor recognition",
+      "icon": "star_outline",
+      "description": "Get recognition on our robots, website, or team media as included in your sponsorship tier."
+    }
   ],
   "image": "/images/arc-2026-team.jpg",
   "imageAlt": "RoboGrinder students and robots at a robotics competition",
@@ -65,5 +81,59 @@
       "logo": "/images/partners/polymaker.png",
       "url": "https://polymaker.com/"
     }
-  ]
+  ],
+  "pageTitle": "Partnerships | RoboGrinder at Virginia Tech",
+  "pageDescription": "Partner with Virginia Tech's student-led RoboGrinder team. Connect with emerging engineering talent, share expertise, and help students build practical experience.",
+  "conversationLabel": "Start a conversation",
+  "conversationUrl": "#connect",
+  "packetLabel": "View sponsorship packet",
+  "whoTitle": "Student led.\nIndustry focused.",
+  "whoDescription": "We’re a student-led engineering team at Virginia Tech, bringing students together since 2016. Members take ideas through design, build, and testing, learning to deliver as a team.",
+  "facts": [
+    {
+      "label": "Current members",
+      "source": "members",
+      "value": ""
+    },
+    {
+      "label": "Shared mission",
+      "source": "manual",
+      "value": "1"
+    },
+    {
+      "label": "Subteams working together",
+      "source": "subteams",
+      "value": ""
+    },
+    {
+      "label": "Most consistent ARC teams",
+      "source": "manual",
+      "value": "Top 4"
+    }
+  ],
+  "benefitsTitle": "What sponsors get",
+  "benefitsIntro": "These benefits are available at eligible company donation tiers. Resume drops, events, and recognition depend on your sponsorship level.",
+  "benefitsPacketLabel": "sponsorship packet",
+  "benefitsPacketBefore": "See the",
+  "benefitsPacketAfter": "for tier details.",
+  "supportTitle": "Help the team build and compete.",
+  "supportIntro": "From business sponsorships to support from family and friends, every contribution helps. Funding, equipment, and expertise cover the work in our lab and the costs of getting to competitions.",
+  "partnersTitle": "Our sponsors",
+  "departmentalTitle": "Departmental supporters",
+  "connectTitle": "Interested in supporting us?",
+  "connectIntro": "Tell us how you’d like to help. Whether you represent a business or want to contribute personally, we’d like to hear from you.",
+  "form": {
+    "nameLabel": "Your name",
+    "emailLabel": "Email address",
+    "companyLabel": "Business or organization (optional)",
+    "topicLabel": "What can we help with?",
+    "topicPlaceholder": "Select a topic",
+    "joiningLabel": "Joining RoboGrinder",
+    "sponsorshipLabel": "Sponsorship & partnerships",
+    "collaborationLabel": "Collaboration",
+    "otherLabel": "Something else",
+    "messageLabel": "Your message",
+    "submitLabel": "Send message",
+    "statusText": "Your email app will open with the message ready to send."
+  }
 }

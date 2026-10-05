@@ -1,6 +1,6 @@
 ---
 import frames from '../content/sponsor-artwork-frames.json';
-const { partners } = Astro.props;
+const { partners, departmentalTitle = 'Departmental supporters' } = Astro.props;
 const paperChannels = Array.from({ length: 256 }, (_, value) => Math.min(value, 240) / 255).join(' ');
 const groups = [
   { departmental: false, partners: partners.filter((partner) => partner.category !== 'departmental' && partner.logo) },
@@ -11,7 +11,7 @@ const groups = [
 <svg class="logo-color-definition" width="0" height="0" aria-hidden="true"><defs><filter id="auvsi-paper" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="discrete" tableValues={paperChannels} /><feFuncG type="discrete" tableValues={paperChannels} /><feFuncB type="discrete" tableValues={paperChannels} /></feComponentTransfer></filter></defs></svg>
 
 {groups.filter((group) => group.partners.length).map((group) => <div class:list={['sponsor-group', group.departmental && 'departmental']}>
-  {group.departmental && <h3>Departmental supporters</h3>}
+  {group.departmental && <h3>{departmentalTitle}</h3>}
   <div class="sponsor-logos">
   {group.partners.map((partner) => (
     <a class="sponsor-logo" href={partner.url || '/contact/'} target={partner.url ? '_blank' : undefined} rel={partner.url ? 'noreferrer' : undefined} aria-label={`Visit ${partner.name}`}>

@@ -1,11 +1,11 @@
 ---
 import SponsorLogos from './SponsorLogos.astro';
-const { partners, id = 'supporters', showCta = false } = Astro.props;
+const { partners, id = 'supporters', showCta = false, title = 'Our sponsors', departmentalTitle = 'Departmental supporters' } = Astro.props;
 const headingId = `${id}-title`;
 ---
 <section class="partners section-shell" id={id} aria-labelledby={headingId}>
-  <h2 id={headingId}>Our sponsors</h2>
-  <SponsorLogos partners={partners} />
+  <h2 id={headingId}>{title}</h2>
+  <SponsorLogos partners={partners} departmentalTitle={departmentalTitle} />
   {showCta && <div class="partner-cta">
     <h3>Interested in partnering with us?</h3>
     <a class="button button-swipe button-dark" href="/sponsors/">Sponsor us<span class="material-icon" aria-hidden="true">chevron_right</span></a>
