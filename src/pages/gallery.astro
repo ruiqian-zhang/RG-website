@@ -8,7 +8,7 @@ import gallery from '../content/gallery.json';
 const photoOrder: Record<string, number> = { team: 0, competition: 1, miscellaneous: 2 };
 const seasons = gallery.seasons.map((season) => ({
   ...season,
-  photos: [...season.photos].sort((a, b) => (photoOrder[a.category] ?? 2) - (photoOrder[b.category] ?? 2)),
+  photos: ('manualPhotoOrder' in season && season.manualPhotoOrder) ? [...season.photos] : [...season.photos].sort((a, b) => (photoOrder[a.category] ?? 2) - (photoOrder[b.category] ?? 2)),
 }));
 ---
 <BaseLayout title="Gallery | RoboGrinder at Virginia Tech" description="Competition and season photos from RoboGrinder at Virginia Tech.">

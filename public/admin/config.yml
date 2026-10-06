@@ -135,6 +135,7 @@ collections:
             fields:
               - { label: Title, name: title, widget: string, default: '2026-2027 season', hint: 'Use YYYY-YYYY season, for example 2026-2027 season.' }
               - { label: Description, name: description, widget: text }
+              - { label: Use manual photo order, name: manualPhotoOrder, widget: boolean, required: false, default: false, hint: 'Display photos in list order instead of grouping by category.' }
               - label: Photos
                 name: photos
                 widget: list

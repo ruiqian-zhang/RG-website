@@ -26,6 +26,21 @@
           "category": "team"
         },
         {
+          "image": "/images/arc-2026-drivers-award.jpg",
+          "caption": "2025 drivers with their award",
+          "category": "team"
+        },
+        {
+          "image": "/images/arc-2026-team-alumni.jpg",
+          "caption": "Team photo with alumni",
+          "category": "team"
+        },
+        {
+          "image": "/images/arc-2026-teams-together.jpg",
+          "caption": "RoboGrinder alongside the other teams at ARC 2026",
+          "category": "team"
+        },
+        {
           "image": "/images/arc-2026-infantry.webp",
           "caption": "Infantry on the move",
           "category": "competition"
@@ -46,6 +61,26 @@
           "category": "competition"
         },
         {
+          "image": "/images/arc-2026-headless-horseman.jpg",
+          "caption": "The headless horseman, unfortunate series of events",
+          "category": "competition"
+        },
+        {
+          "image": "/images/arc-2026-walkout.jpg",
+          "caption": "Team walkout at ARC 2026",
+          "category": "competition"
+        },
+        {
+          "image": "/images/arc-2026-huddle.jpg",
+          "caption": "Team huddle",
+          "category": "competition"
+        },
+        {
+          "image": "/images/arc-2026-drivers-stations.jpg",
+          "caption": "The drivers at their ARC competition stations",
+          "category": "competition"
+        },
+        {
           "image": "/images/arc-2026-13.webp",
           "caption": "Celebrating together",
           "category": "miscellaneous"
@@ -54,8 +89,14 @@
           "image": "/images/arc-2026-17.webp",
           "caption": "A moment worth celebrating",
           "category": "miscellaneous"
+        },
+        {
+          "image": "/images/purdue-midwest-conference-2026-team.jpg",
+          "caption": "Team photo at the Purdue Midwest Conference in February 2026",
+          "category": "team"
         }
-      ]
+      ],
+      "manualPhotoOrder": true
     },
     {
       "title": "2024-2025 season",
