@@ -79,3 +79,7 @@ src/
   layouts/     Shared page shell, fonts, color tokens, and global styles
   pages/       Astro routes
 ```
+
+Current members are stored in `src/content/members.json`; each previous season has its own `src/content/seasons/YYYY-YYYY.json` file; alumni are stored in `src/content/alumni.json`. Season files load automatically in newest-first order, and the Previous seasons CMS collection lets editors add or edit rosters. Alumni appears inside the Previous seasons dropdown. The Members CMS section provides a separate Alumni roster editor. The page filters current members out of alumni except presidents. The original alumni snapshot in `backups/alumni-2026-10-06.json` must remain unchanged.
+
+Gallery photos use a CMS category (`team`, `competition`, or `miscellaneous`) and always display in that order within each season. List order is preserved within a category.

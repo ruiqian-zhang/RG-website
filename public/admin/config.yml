@@ -141,6 +141,7 @@ collections:
                 fields:
                   - { label: Image, name: image, widget: image }
                   - { label: Caption and image description, name: caption, widget: string }
+                  - { label: Photo category, name: category, widget: select, options: [{ label: Team photo, value: team }, { label: Competition, value: competition }, { label: Miscellaneous, value: miscellaneous }], default: miscellaneous, hint: 'Photos always display team first, then competition, then miscellaneous. List order is preserved within each category.' }
 
   - name: team-numbers
     label: Team numbers (all pages)
@@ -255,23 +256,11 @@ collections:
               - { label: GitHub URL, name: github, widget: string, required: false }
               - { label: Portfolio URL, name: portfolio, widget: string, required: false }
               - { label: Public email address, name: email, widget: string, required: false }
-          - label: Previous recorded seasons
-            name: seasons
-            widget: list
-            fields:
-              - { label: Academic year, name: year, widget: string }
-              - label: Members
-                name: people
-                widget: list
-                fields:
-                  - { label: Name, name: name, widget: string }
-                  - { label: Subteam, name: subteam, widget: string, required: false }
-                  - { label: Role, name: role, widget: string, required: false }
-                  - { label: Major, name: major, widget: string, required: false }
-                  - { label: Photo, name: photo, widget: image, required: false }
-                  - { label: LinkedIn URL, name: linkedin, widget: string, required: false }
-                  - { label: GitHub URL, name: github, widget: string, required: false }
-                  - { label: Portfolio URL, name: portfolio, widget: string, required: false }
+      - name: alumni
+        label: Alumni roster
+        file: src/content/alumni.json
+        format: json
+        fields:
           - label: Undated alumni
             name: alumni
             widget: list
@@ -284,6 +273,30 @@ collections:
               - { label: LinkedIn URL, name: linkedin, widget: string, required: false }
               - { label: GitHub URL, name: github, widget: string, required: false }
               - { label: Portfolio URL, name: portfolio, widget: string, required: false }
+
+  - name: seasons
+    label: Previous seasons
+    folder: src/content/seasons
+    create: true
+    format: json
+    extension: json
+    identifier_field: year
+    slug: '{{year}}'
+    summary: '{{year}}'
+    fields:
+      - { label: Academic year, name: year, widget: string, pattern: ['^[0-9]{4}-[0-9]{4}$', 'Use YYYY-YYYY, for example 2025-2026'] }
+      - label: Members
+        name: people
+        widget: list
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Subteam, name: subteam, widget: string, required: false }
+          - { label: Role, name: role, widget: string, required: false }
+          - { label: Major, name: major, widget: string, required: false }
+          - { label: Photo, name: photo, widget: image, required: false }
+          - { label: LinkedIn URL, name: linkedin, widget: string, required: false }
+          - { label: GitHub URL, name: github, widget: string, required: false }
+          - { label: Portfolio URL, name: portfolio, widget: string, required: false }
 
   - name: subteams
     label: Subteams

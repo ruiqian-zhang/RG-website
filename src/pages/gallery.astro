@@ -5,16 +5,21 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import OrangeFeature from '../components/OrangeFeature.astro';
 import gallery from '../content/gallery.json';
+const photoOrder: Record<string, number> = { team: 0, competition: 1, miscellaneous: 2 };
+const seasons = gallery.seasons.map((season) => ({
+  ...season,
+  photos: [...season.photos].sort((a, b) => (photoOrder[a.category] ?? 2) - (photoOrder[b.category] ?? 2)),
+}));
 ---
 <BaseLayout title="Gallery | RoboGrinder at Virginia Tech" description="Competition and season photos from RoboGrinder at Virginia Tech.">
   <a class="skip-link" href="#main">Skip to content</a>
   <SiteHeader active="Gallery" />
   <main id="main">
-    <OrangeFeature title="Life on the grind." description="The builds, the competitions, and the moments we share along the way." image="/images/rmul-2025-fleet.webp" imageAlt="RoboGrinder's three competition robots in the arena">
+    <OrangeFeature title="Life on the grind." description="The builds, the competitions, and the moments we share along the way." image="/images/arc-2026-17.webp" imageAlt="A moment worth celebrating" imagePosition="50% center">
       <a class="button button-swipe button-dark" href="#seasons">Explore the photos<span class="material-icon" aria-hidden="true">chevron_right</span></a>
     </OrangeFeature>
     <div class="seasons" id="seasons">
-      {gallery.seasons.map((season) => <details class="season" data-disclosure>
+      {seasons.map((season) => <details class="season" data-disclosure>
         <summary><h2>{season.title}</h2><span class="material-icon season-arrow" aria-hidden="true">expand_more</span></summary>
         <div class="disclosure-panel">
         <p class="season-description">{season.description}</p>

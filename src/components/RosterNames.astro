@@ -4,7 +4,8 @@ type Person = { name: string; subteam: string; role: string; major?: string };
 const { people, alumni = false } = Astro.props as { people: Person[]; alumni?: boolean };
 const order = ['Mechanical', 'Electronics', 'Embedded Controls', 'Software & Computer Vision', 'Operations'];
 const groups = [
-  { name: alumni ? 'Past presidents' : 'Leadership', people: people.filter((person) => person.role && leadershipRank(person.role) < 4) },
+  { name: alumni ? 'Past presidents' : 'Leadership', people: people.filter((person) => person.role && (alumni ? leadershipRank(person.role) === 0 : leadershipRank(person.role) < 4)) },
+  ...(alumni ? [{ name: 'Past leadership', people: people.filter((person) => person.role && leadershipRank(person.role) > 0 && leadershipRank(person.role) < 4) }] : []),
   ...order.map((name) => ({ name, people: people.filter((person) => leadershipRank(person.role) === 4 && person.subteam === name) })),
   { name: alumni ? 'Other alumni' : 'Other members', people: people.filter((person) => leadershipRank(person.role) === 4 && !person.subteam) },
   { name: 'Faculty advisors', people: people.filter((person) => leadershipRank(person.role) === 5) },

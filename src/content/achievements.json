@@ -3,7 +3,7 @@
   "records": [
     {
       "year": "2026",
-      "competition": "ARC Robotics Competition \u00b7 Season One",
+      "competition": "ARC Robotics Championship Season One - Lafayette, IN",
       "results": [
         "2nd place in 3v3"
       ],
@@ -12,7 +12,7 @@
     },
     {
       "year": "2025",
-      "competition": "RoboMaster University League North America",
+      "competition": "RoboMaster University League North America - San Diego, CA",
       "results": [
         "1st place in 3v3"
       ],
@@ -21,14 +21,14 @@
     },
     {
       "year": "2024",
-      "competition": "RoboMaster University League North America",
+      "competition": "RoboMaster University League North America - Boulder, CO",
       "results": [
         "2nd place in 3v3"
       ]
     },
     {
       "year": "2023",
-      "competition": "RoboMaster University League North America",
+      "competition": "RoboMaster University League North America - Seattle, WA",
       "results": [
         "4th place in 3v3",
         "4th place in 1v1"
@@ -36,7 +36,7 @@
     },
     {
       "year": "2022",
-      "competition": "ICRA AI Challenge and RMUL North America",
+      "competition": "ICRA AI Challenge and Lone Star RoboMaster University League North America - College Station, TX",
       "results": [
         "1st Prize at the ICRA AI Challenge",
         "2nd place in RMUL 1v1"
@@ -44,14 +44,14 @@
     },
     {
       "year": "2021",
-      "competition": "RoboMaster University League North America",
+      "competition": "RoboMaster University League North America - College Station, TX",
       "results": [
         "2nd place in 3v3"
       ]
     },
     {
       "year": "2019",
-      "competition": "RoboMaster University League",
+      "competition": "2019 RoboMaster University League",
       "results": [
         "2nd Prize in the Final Tournament"
       ],

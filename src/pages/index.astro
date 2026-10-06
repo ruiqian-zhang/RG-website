@@ -207,15 +207,7 @@ const anniversaryYears = Math.max(0, Number(banner.anniversaryYear) - Number(ban
       if (entry.isIntersecting && !paused) { startVideo(); heroVisibility.disconnect(); }
     });
     heroVisibility.observe(hero);
-    // Keep the control inside the visible hero, including short mobile screens.
-    const positionToggle = () => {
-      const viewport = window.visualViewport;
-      const visibleBottom = viewport ? viewport.offsetTop + viewport.height : window.innerHeight;
-      const heroBottom = hero.getBoundingClientRect().bottom;
-      toggle.style.bottom = `${22 + Math.max(0, heroBottom - visibleBottom)}px`;
-    };
     const sizeVideo = () => {
-      positionToggle();
       if (video instanceof HTMLVideoElement) return;
       const width = Math.max(hero.clientWidth, hero.clientHeight * 16 / 9);
       video.style.width = `${width}px`;
@@ -223,17 +215,6 @@ const anniversaryYears = Math.max(0, Number(banner.anniversaryYear) - Number(ban
     };
 
     window.addEventListener('resize', sizeVideo);
-    window.visualViewport?.addEventListener('resize', positionToggle);
-    window.visualViewport?.addEventListener('scroll', positionToggle);
-    let positionFrame = 0;
-    window.addEventListener('scroll', () => {
-      if (positionFrame) return;
-      positionFrame = requestAnimationFrame(() => {
-        positionFrame = 0;
-        positionToggle();
-      });
-    }, { passive: true });
-
     new ResizeObserver(sizeVideo).observe(hero);
     sizeVideo();
 
@@ -267,7 +248,7 @@ const anniversaryYears = Math.max(0, Number(banner.anniversaryYear) - Number(ban
   .anniversary-banner strong { font: 700 64px/.95 var(--display); margin: 4px 0 8px; }
   .banner-band { background: var(--paper); color: var(--ink); width: calc(100% + 20px); text-align: center; padding: 5px; font: 700 16px/1 var(--display); }
   .banner-dates { margin-top: 10px; font: 700 14px/1.25 var(--display); letter-spacing: .05em; text-align: center; }
-  .video-toggle { position: absolute; right: 24px; bottom: 22px; width: var(--button-height); min-height: var(--button-height); border: 0; cursor: pointer; }
+  .video-toggle { position: absolute; right: max(24px, env(safe-area-inset-right)); top: max(0px, min(calc(100% - var(--button-height) - 22px - env(safe-area-inset-bottom)), calc(100svh - var(--header-height) - var(--button-height) - 22px - env(safe-area-inset-bottom)))); width: var(--button-height); min-height: var(--button-height); border: 0; cursor: pointer; }
   .section-shell { padding-left: clamp(24px, 8vw, 124px); padding-right: clamp(24px, 8vw, 124px); }
   .subteams { padding-top: 64px; padding-bottom: 64px; background: var(--orange); color: var(--ink); }
   .subteams-head { margin-bottom: 32px; }

@@ -4,11 +4,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import members from '../content/members.json';
+import alumniRoster from '../content/alumni.json';
 import ProfileIcon from '../components/ProfileIcon.astro';
 import RosterNames from '../components/RosterNames.astro';
-import { compareMembers } from '../lib/roster';
+import { compareMembers, filterAlumni } from '../lib/roster';
+type Season = { year: string; people: { name: string; subteam: string; role: string; major?: string }[] };
+const seasonFiles = import.meta.glob<Season>('../content/seasons/*.json', { eager: true, import: 'default' });
+const seasons = Object.values(seasonFiles).sort((a, b) => b.year.localeCompare(a.year));
 const people = [...members.people].sort(compareMembers);
-const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season.people.filter((person) => /^President$/i.test(person.role)).map((person) => ({ ...person, role: `President, ${season.year}` })))];
+const recordedPresidents = new Set(alumniRoster.alumni.filter((person) => /^President\b/i.test(person.role)).map((person) => person.name.trim().toLowerCase()));
+const alumni = filterAlumni([...alumniRoster.alumni, ...seasons.flatMap((season) => season.people.filter((person) => /^President$/i.test(person.role) && !recordedPresidents.has(person.name.trim().toLowerCase())).map((person) => ({ ...person, role: `President, ${season.year}` })))], members.people);
 ---
 
 <BaseLayout title="Members | RoboGrinder at Virginia Tech" description="Meet the RoboGrinder team at Virginia Tech.">
@@ -40,15 +45,15 @@ const alumni = [...members.alumni, ...members.seasons.flatMap((season) => season
       <details data-disclosure>
         <summary>Previous seasons<span class="material-icon archive-arrow" aria-hidden="true">expand_more</span></summary>
         <div class="disclosure-panel">
-          {members.seasons.map((season) => <details class="season" data-disclosure>
+          {seasons.map((season) => <details class="season" data-disclosure>
             <summary>{season.year}<span class="material-icon archive-arrow" aria-hidden="true">expand_more</span></summary>
             <div class="disclosure-panel"><RosterNames people={season.people} /></div>
           </details>)}
+          <details class="season alumni" data-disclosure>
+            <summary>Alumni<span class="material-icon archive-arrow" aria-hidden="true">expand_more</span></summary>
+            <div class="disclosure-panel"><RosterNames people={alumni} alumni={true} /></div>
+          </details>
         </div>
-      </details>
-      <details class="alumni" data-disclosure>
-        <summary>Alumni<span class="material-icon archive-arrow" aria-hidden="true">expand_more</span></summary>
-        <div class="disclosure-panel"><RosterNames people={alumni} alumni={true} /></div>
       </details>
     </section>
   </main>
